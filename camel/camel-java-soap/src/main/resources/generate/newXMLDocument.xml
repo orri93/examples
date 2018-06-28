@@ -6,29 +6,21 @@ and open the template in the editor.
 -->
 
 
-<ns4:capClients
-    xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'
-    xmlns:ns5='http://www.witsml.org/api/140'
-    xmlns:ns4='http://www.witsml.org/api/140'
-    xmlns:ns3='http://www.witsml.org/api/140'
-    xmlns:ns2='http://www.witsml.org/api/140'
-    xmlns:ns1='http://www.witsml.org/api/140'
-    xsi:schemaLocation='http://www.witsml.org/api/140 ../witsml-1.4.1.1/api/XSD_Schemas/cs_function.xsd
-   http://www.witsml.org/api/140 ../witsml-1.4.1.1/api/XSD_Schemas/obj_capClient.xsd
-   http://www.witsml.org/api/140 ../witsml-1.4.1.1/api/XSD_Schemas/cs_contact.xsd
-   http://www.witsml.org/api/140 ../witsml-1.4.1.1/api/XSD_Schemas/cs_catalog.xsd
-   http://www.witsml.org/api/140 ../witsml-1.4.1.1/api/XSD_Schemas/cs_dataTypes.xsd'>
-    <ns4:capClient apiVers="">
-        <ns4:contact>
-            <ns4:name></ns4:name>
-            <ns4:email></ns4:email>
-            <ns4:phone></ns4:phone>
-        </ns4:contact>
-        <ns4:description></ns4:description>
-        <ns4:name></ns4:name>
-        <ns4:vendor></ns4:vendor>
-        <ns4:version></ns4:version>
-        <ns4:schemaVersion></ns4:schemaVersion>
-    </ns4:capClient>
+<capClients 
+  xmlns="http://www.witsml.org/api/140"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  version="1.4.0">
+    <capClient apiVers="1.4.1.1">
+        <contact>
+            <name>Geirmundur Orri Sigurdsson</name>
+            <email>geirmundur.sigurdsson@nov.com</email>
+            <phone>+47 47447044</phone>
+        </contact>
+        <description>Software engineering departent at NOV</description>
+        <name>Geirmundur Orri Sigurdsson</name>
+        <vendor>National Oilwell Varco</vendor>
+        <version>0.0.1</version>
+        <schemaVersion>1.4.1.1</schemaVersion>
+    </capClient>
 
-</ns4:capClients>
+</capClients>

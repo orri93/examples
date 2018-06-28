@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<witsml:logs version="" 
+  xmlns:abs="http://www.energistics.org/schemas/abstract"
+  xmlns:witsml="http://www.witsml.org/schemas/1series"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.witsml.org/schemas/1series ../witsml-1.4.1.1/data/witsml_v1.4.0_data/xsd_schemas/obj_log.xsd ">
+  <witsml:documentInfo>
+    <witsml:documentName namingSystem="">witsml:documentName</witsml:documentName>
+    <witsml:documentAlias namingSystem="">witsml:documentAlias</witsml:documentAlias>
+    <witsml:documentDate>2001-12-31T12:00:00</witsml:documentDate>
+    <witsml:documentClass namingSystem="">witsml:documentClass</witsml:documentClass>
+    <witsml:fileCreationInformation>
+      <witsml:fileCreationDate>2001-12-31T12:00:00</witsml:fileCreationDate>
+    </witsml:fileCreationInformation>
+    <witsml:securityInformation uid=""/>
+    <witsml:disclaimer>witsml:disclaimer</witsml:disclaimer>
+    <witsml:auditTrail>
+      <witsml:event uid="">
+        <witsml:eventDate>2001-12-31T12:00:00</witsml:eventDate>
+      </witsml:event>
+    </witsml:auditTrail>
+    <witsml:owner>witsml:owner</witsml:owner>
+    <witsml:comment>witsml:comment</witsml:comment>
+  </witsml:documentInfo>
+  <witsml:log uid="" uidWell="" uidWellbore="">
+    <witsml:nameWell>witsml:nameWell</witsml:nameWell>
+    <witsml:nameWellbore>witsml:nameWellbore</witsml:nameWellbore>
+    <witsml:name>witsml:name</witsml:name>
+    <witsml:commonData/>
+    <witsml:customData/>
+  </witsml:log>
+</witsml:logs>

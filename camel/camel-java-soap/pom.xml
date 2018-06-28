@@ -106,6 +106,7 @@
         <version>${org.codehaus.mojo-axistools-maven-plugin.version}</version>
         <executions>
           <execution>
+            <phase>generate-sources</phase>
             <goals>
               <goal>wsdl2java</goal>
             </goals>
@@ -115,7 +116,7 @@
           <packageSpace>orri.examples.camel.generated.witsml</packageSpace>
           <allElements>true</allElements>
           <sourceDirectory>${basedir}/src/main/resources/witsml-1.4.1.1/api</sourceDirectory>
-          <outputDirectory>${basedir}/target/generated-sources/wsdl2java</outputDirectory>
+          <outputDirectory>${project.build.directory}/generated-sources/wsdl2java</outputDirectory>
           <wsdlFiles>
             <wsdlFile>WMLS.WSDL</wsdlFile>
           </wsdlFiles>
