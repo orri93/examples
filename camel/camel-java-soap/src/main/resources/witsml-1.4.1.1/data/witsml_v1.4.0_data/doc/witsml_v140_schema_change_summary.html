@@ -1,0 +1,179 @@
+<HTML>
+<HED>
+  <TITLE>Schema Changes for WITSML Data Schema</TITLE>
+<STYLE>
+<!--
+ /* Style Definitions */
+h1
+	{
+	margin-top:12.0pt;
+	margin-right:0in;
+	margin-bottom:3.0pt;
+	margin-left:0in;
+	page-break-after:avoid;
+	font-size:14.0pt;
+	font-family:Times New Roman;
+	font-weight:bold;}
+p
+	{margin-right:0in;
+	margin-top:.0001pt;
+	font-size:12.0pt;
+	font-family:"Times New Roman";}
+ul
+	{margin-top:.0001pt;}
+-->
+</STYLE>
+</HEAD>
+
+<BODY>
+  <DIV class="Section1">
+    <H1 align='center'>WITSML Version 1.4.0 Data Schema Change Summary</H1>
+
+<P><P>
+
+<P>This documents is intended to sumarize Data Schema changes
+between version 1.3.1.1 and version 1.4.0.  </P>
+
+<P>Added a new attachment object.</P>
+
+<P>Added a new changeLog object.</P>
+
+<P>Added a new coordinateReferenceSystem object. This supports a GML style CRS definition.
+The old definition has been retained but is deprecated.</P>
+
+<P>Added a new drillReport object.</P>
+
+<P>Removed the dtsInstalledSystem and dtsMeasurement objects. 
+They have been moved to PRODML for support.</P>
+
+<P>Moved the WITSML_composite schema to a parallel specification which can 
+utilize both WITSML and PRODML data structures.
+In order to support the Witsml_composite and a new aggregate object in a parallel specification,
+moved some file to a schemas_common folder with the rest being in folder schemas_witsml.
+The files in the schemas_common folder will use an identical copy in PRODML such that when mutiple 
+specifications are copied to the same parent folder structure there will only be one
+schemas_common folder.</P>
+
+<P>Documented that queries against dTimCreation or dTimLastChange represent a 
+request for values that are greater-than the specified value.</P>
+
+<P>Supported retention of the timezone for an acquisition (e.g., a log).
+Made the time zone mandatory in all date-time values and in the well timeZone element.</P>
+
+<P>Added an event type to the documentInfo audit structure. This will allow clients and 
+servers to capture timestamps associated with a web service.</P>
+
+<P>Clarified that only the well object has a globally unique uid attribute.</P>
+
+<P>In the wellbore object:
+<UL>
+	<LI>Added an isActive elementt.</LI>
+
+	<LI>Added elements for the current measured depth and true vertical depth of the bit.</LI>
+</UL>
+</P>
+
+<P>Added a serviceCategory to all objects (via commonData).</P>
+
+<P>In realtime, log and wellLog:
+<UL>
+	<LI>Made dataGroup consistent between realtime, log and wellLog. 
+	Added to log and wellLog. Moved to group definition in realtime. 
+	Modified the definition of the group definition id.</LI>
+
+	<LI>Made the curve data type mandatory and added new enumerations.</LI>
+
+	<LI>Added a class index value parallel to 
+	classWitsml values in order to capture an item number (e.g., the 3'rd pump).</LI>
+
+	<LI>Clarified that columnIndex is meaningless if data records are not returned.</LI>
+
+	<LI>Deleted nullValue from cs_blockInfo.</LI>
+
+	<LI>Added curveSensorsAligned to log and wellLog.</LI>
+
+	<LI>Allowed dataRowCount to have a zero value.</LI>
+ 
+	<LI>In RealtimeData (used by classWitsml):
+	<UL>
+		<LI>Deprecated "pressure drop at bit".</LI>
+
+		<LI>Deprecated "chkPrAv" in favor of the new "choke pressure (average)".</LI>
+
+		<LI>Added new enumeration values for a WITSML activity code and a WITS activity code.</LI>
+
+		<LI>Renamed "TVD of Bit" (deprecated) to "TVD of bit".</LI>
+
+		<LI>In the enumValues.xml file, added knowledge of either the expected data type or 
+		the measure class. A measure class section was also added to capture the allowed uom.</LI>
+	</UL>
+</UL>
+</P>
+
+<P>In the realtime object:
+<UL>
+	<LI>Added an element to capture when the header was last changed.</LI>
+
+	<LI>Documented that queries against dTim represent a request for values that are
+	   greater-than the specified value.</LI>
+</UL>
+</P>
+
+<P>Added a data delimiter for log data. This allows user specified text to contain commas.</P>
+
+<P>Added a capability to capture the depth registration from an image of a wellLog.</P>
+
+<P>In the log and wellLog objects:
+<UL>
+	<LI>Made the curve data type mandatory and added new enumerations.</LI>
+
+	<LI>Documented the use of a multipass parameter.</LI>
+
+	<LI>Added an index offset flag.</LI>
+
+	<LI>Made the uom attribute mandatory in type genericMeasure.</LI>
+</UL>
+</P>
+
+<P>In the trajectory and trajectoryStation objects:
+<UL>
+	<LI>Added a calculation algorithm element to the station</LI>
+
+	<LI>Added six new correction applied elements to the station.</LI>
+
+	<LI>Added three new correction values.</LI>
+</UL>
+</P>
+
+<P>In the log, wellLog, mudLog and trajectory objects, modified the growingObject 
+element to support three states.</P>
+
+<P>Supported the concept of noun versus adjective in the lithology qualifiers.
+This primarily affects the meta data in file ancilary/enumValues.xml. 
+Deprecated 39 values and added 34 values.</P>
+
+<P>In the bjaRun object, allowed drillingParams to recur.</P>
+
+
+<P>Other small changes and fixes were also made.</P>
+<UL>
+	<LI>Eliminated use of listOfDouble (conflict with .NET).</LI>
+
+	<LI>Used an integer instead of xsd:gYear for the rig year entered service.</LI>
+
+	<LI>Eliminated "locked" and "valid" as values of the trajectory status.</LI>
+
+	<LI>Changed the type of some water depth elements to be a length rather than a coordinate.</LI>
+
+	<LI>Modified cs_documentInfo to be consistent with schema construction guidelines.</LI>
+
+	<LI>Clarified the meaning of biasVert in cs_stnTrajMatrixCov.</LI>
+
+	<LI>Added a uid attribute to cs_bitRecord.</LI>
+
+	<LI>Changed the length of strings phase and detailActivity in cs_activity.</LI>
+</UL>
+
+  </DIV>
+</BODY>
+</HTML>

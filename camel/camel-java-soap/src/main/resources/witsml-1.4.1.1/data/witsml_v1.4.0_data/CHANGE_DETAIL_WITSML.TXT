@@ -1,0 +1,1146 @@
+=======================================================================================
+Changes since 12 Nov 2008
+=======================================================================================
+
+In witsmlUnitDict.xml:
+	The conversion factor for "kft.lbf" was changed from 1355818 to 1355.818.
+
+Moved the sub_abstractSubstitutionGroup.xsd to a parallel folder structure and modified
+the links appropriately.
+
+Issue 1.3.1-71 "Add new parameters to the wellbore without changing the xsd"
+	Added the following:
+		PrimitiveType
+		ExtensionName
+		cs_extensionNameValue
+		cs_extensionAny
+		extensionvalue
+	Added element extensionNameValue to the following:
+		All cs_ types containing a uid attribute.
+		cs_commonData
+		cs_channelDefinition
+		cs_channel
+		cs_groupDefinition
+	Added element extensionAny to the following:
+		cs_commonData
+		All cs_ types containg customData.
+	In cs_enumValues.xsd:
+		Re-added extensionDataType, extensionMaximumSize, extensionMeasureClass, extensionPath
+	In enumValues.xml
+		Added a place holder for extension values.
+
+Issue 1.3.1-113 "Well Log null Values"
+	In cs_blockInfo:
+		Reinstated nullValue but flagged it as DEPRECATED.
+		Clarified precedence of null values.
+
+Issue 1.3.1-78 "WITSML - Realtime Automation"
+	In grp_realtime:
+		Reinstated dataGroup but flagged it as DEPRECATED.
+
+
+Issue 1.3.1-97 "Versioning"
+	Renamed typ_dataTypesWitsml.xsd back to typ_dataTypes.xsd.
+		Renamed witsmlSchemaVersionString back to schemaVersionStrin.
+	Merged a copy of the common types back into WITSML.
+	Deleted the following unused types (from PRODML):
+		abstractNonNegativeCount
+		amountOfSubstanceMeasure
+		AmountOfSubstanceUom
+		frequencyMeasure
+		FrequencyUom
+		massFlowRateMeasure
+		MassFlowRateUom
+		modulusOfCompressionMeasure
+		ModulusOfCompressionUom
+		workMeasure
+		WorkUom
+	Changed the namespace from "http://www.witsml.org/schemas/140" to "http://www.witsml.org/schemas/1series".
+	Changed file version from "WITSML_v1.4.0" and "common_v1.4.0" to "1.4.0".
+
+In message.xml:
+	Changed uidWellbore="B-001" to "B-01".
+In tubular.xml:
+	Added uid="1" to bitRecord.
+
+
+=======================================================================================
+Changes for retracted final.
+=======================================================================================
+
+Updated Energistics license in XSD files.
+
+Fixed examples so that they "integrate" better.
+	In wellbore.xml:
+		Changed the uids to remove an extra "0".
+	In tubular.xml:
+		Added uids to nameTag.
+	In trajectory.xml:
+		Deleted parentTrajectory.
+	In target.xml:
+		Deleted parentTarget.
+	In risk.xml:
+		Changed uidWellbore to match wellbore.xml.
+	In bhaRun.xml:
+		Changed tubular values to match tubular.xml.
+	In drillReport.xml:
+		Added uids.
+		Changed geodeticCRS values to match coordinateReferenceSystem.xml.
+	In all examples, added a documentInfo.comment that the example is not a best practice.
+
+=======================================================================================
+Changes since v1.4e
+=======================================================================================
+Added appinfo to relate changes to issues.
+
+Issue 1.3.1-97 "Versioning"
+	Created file abstractSubstitutionGroup.xsd to contain the following abstract 
+	elements and types for the substitution groups in a neutral namespace;
+		abstractDataObject
+		abstractContextualObject
+		abstractObject
+	In typ_baseType.xsd:
+		Deleted abstractSingularObject.
+	In grp_aggregate.xsd:
+		Deleted abstractContextualObject
+		Deleted abstractDataObject
+	Modified all obj_ files to use abstractSubstitutionGroup.xsd for the 
+	plural type instead of the singular type.
+	Created sub_objectIncludeWitsml.xsd and moved all "include"s from
+	grp_aggregate.xsd to the new file.
+	Modified obj_report to have a singular root (i.e., no plural).
+
+Issue 1.3.1-105 "Comments about WITSML version 1.4.0"
+	In cs_channel:
+		Modified the documentation of dTim to indicate 
+		greater-than behavior instead of greater-than-or-equal-to.
+
+Issue 1.3.1-109 "Trajectory Schema Update"
+	In grp_trajectoryStation:
+		Modified the descriptions of:
+			calcAlgorithm
+			infieldRefCorUsed
+			interpolatedInfieldRefCorUsed
+			inHoleRefCorUsed
+			axialMagInterferenceCorUsed
+		Renamed bhaSagCorUsed to cosagCorUsed and modified its description.
+		Added MSACorUsed.
+	In cs_stnTrajCorUsed:
+		Modified the description of sagAziCor.
+		Modified the description of gravTran1AccelCor.
+		Modified the description of gravTran2AccelCor.
+		Added magTran1MSACor.
+		Added magTran2MSACor.
+		Added magAxialMSACor.
+	In enumValuesWitsml.xml:
+		Added API reference to TrajStnCalcAlgorithm description.
+		Modified the descriptions of:
+			constant tool face
+			minimum curvature
+			tangential
+			balanced tangential
+			average angle
+			radius of curvature
+		Backed-out the additions and deprecations in TypeSurveyTool 
+		but kept the any descriptions with some modifications.
+			Removed "gyroscopic while drilling"
+			Removed "electronic magnetic multiple-shot"
+			Removed "electrical logging conveyed gyroscopic"
+			Removed "continuous gyroscopic multiple-shot"
+			Removed "stationary gyroscopic multiple-shot"
+			Removed "surface read-out gyroscopic"
+
+Issue 1.3.1-111 "question on schema annotation for opsReport>activity>phase"
+	In cs_activity:
+		Changed the type of phase from str16 to kindString.
+		Changed the type of detailActivity from str32 to kindString.
+
+Issue 1.3.1-112 "recommendation changing the documentation for opsReport.fluid.filtrateLtlp"
+	In cs_fluid, changed the documentation of filtrateLtlp.
+
+Issue 1.3.1-97 " Versioning"
+	Added more clarification to the version attribute.
+
+Issue 1.3.1-113 "Well Log null Values"
+	In cs_blockInfo, deleted nullValue.
+
+Issue 1.3.1-114 "log.dataRowCount"
+	In grp_log:
+		Changed the type of dataRowCount from positiveBigCount to nonNegativeBigCount and modified description.
+	In cs_blockInfo:
+		Changed the type of dataRowCount from positiveBigCount to nonNegativeBigCount and modified description.
+
+
+=======================================================================================
+Changes since v1.4rc
+=======================================================================================
+In the following, for annotation of embedded xsd:sequence or xsd:choice, move the documentation 
+to each contained element. This ensures that the information will be available 
+if transformed outside of schema (e.g., into code).
+	cs_interval
+	grp_realtime
+	grp_log
+	cs_wellCRS
+	cs_location
+
+In order to validate in some tools:
+	In typ_baseType.xsd;
+		Modified the pattern for abstractTimeZone to escape the minus sign when used a with plus sign. 
+		That is used [\-+] instead of [-+].
+	In typ_dataTypes.xsd:
+		Modified the pattern for timestamp to escape the minus sign when used with a plus sign. 
+		That is used [Z+\-] instead of [Z+-].
+
+Issue 1.3.1-71 "Add new parameters to the wellbore without changing the xsd"
+	Deleted unused type ExtensionName. This was not completely backed out.
+
+Issue Issue 1.3.1-77 "Why do not all recurring elements in WITSML 1.3.1.1 have a UID?"
+	Added a uid attribute to the following types which are used by recurring elements:
+		cs_documentEvent
+		cs_documentSecurityInfo
+
+Issue 1.3-44 "We think "statusWellbore" should be a required element in version 1.3"
+	In obj_changeLog, 
+		Documented that uidWell, uidWellbore, nameWell and nameWellbore 
+		only apply to the parentage of an object.
+		Made the uidObject attribute mandatory.
+
+Issue 1.3.1-5 "WMLS_UpdateInStore behavior"
+	In cs_logCurveInfo and cs_wellLogCurveInfo;
+		Documented that the uid can be derived from the mnemonic.
+	In typ_dataTypes.xsd:
+		Added uidParentString.
+	Added attgrp_objectUid.
+	For each obj_xxx.xsd file:
+		Modified the object uid to reference attgrp_objectUid instead of attgrp_uid.
+		Modified the type of parentage attributes to be uidParentString instead of uidString.
+	In obj_changeLog:
+		As an exception to the above, did not change the type of uidWell, uidWellbore 
+		and uidParentObject because they must always be optional.
+
+Issue 1.3.1-93 "question on the bhaRun Object"
+	In obj_bhaRuns;
+		Documented that bhaRun "represents the period beginning when the BHA enters 
+		the hole until it leaves the hole".
+	In grp_bhaRun:
+		Modified drillingParams to have a maxOccurs=unbounded.
+
+Issue 1.3.1-95 "WITSML Object Summary"
+	Modified the description of trajectoryStation in the overview file.
+	Modified the description of cementJob and surveyProgram.
+	In obj_trajectoryStation.xsd, flagged trajectoryStations as DEPRECATED.
+
+Issue 1.3.1-97 "Versioning"
+	Moved the following files to a "common" file structure parallel 
+	to the WITSML file structure:
+		attgrp_uid.xsd
+		attgrp_objectUid.xsd
+		cs_commonData.xsd
+		cs_customData.xsd
+		cs_documentAudit.xsd
+		cs_documentEvent.xsd
+		cs_documentFileCreation.xsd
+		cs_documentInfo.xsd
+		cs_documentSecurityInfo.xsd
+		cs_location.xsd
+		cs_nameTag.xsd
+		cs_refWellWellbore.xsd
+		cs_refWellWellboreRig.xsd
+		cs_wellDatum.xsd
+		grp_aggregate.xsd
+		grp_report.xsd
+		obj_aggregate.xsd
+		obj_report.xsd
+		typ_baseType.xsd
+		typ_dataTypes.xsd
+		typ_measureType.xsd
+		typ_quantityClass.xsd
+		WITSML_composite.xsd
+	Moved cs_enumValues.xsd to the ancillary folder.
+	Created typ_dataTypes.xsd in the common area and moved the following types to it:
+		commentString
+		date
+		descriptionString
+		indexedObject
+		kindString
+		logicalBoolean
+		nameString
+		nameStruct
+		refNameString
+		refString
+		refWellDatum
+		timestamp
+		timestampedTimeZone
+		uidParentString
+		uidString
+		unitlessQuantity
+		uomString
+		wellKnownNameStruct
+		measuredDepthCoord
+		wellVerticalDepthCoord
+		wellElevationCoord
+	Renamed typ_dataTypes.xsd to typ_dataTypesWitsml.xsd.
+		Renamed schemaVersionString to witsmlSchemaVersionString
+	Renamed typ_catalog.xsd to typ_catalogWitsml.xsd.
+	Created typ_catalog.xsd in the common area and moved the following types to it:
+		ElevCodeEnum
+		ItemState 
+		MeasureClass
+		NameTagLocation
+		NameTagNumberingScheme
+		NameTagTechnology
+	Modified all "includes" to account for the above.
+	In WITSML_composite.XSD, Added:
+		dtsInstalledSystem
+		dtsMeasurement
+		wellTest
+		productionOperation
+		productVolume
+		productFlowModel
+	In grp_report:
+		Added installation
+		Added contextFacility
+		Added operator
+		Added geographicContext
+		Added issueDate
+		Added issuedBy
+		Added approvalDate
+		Added approver
+	In dataTypes.xsd:
+		Added genericIdentifierStruct
+	Moved the following from prodml to common.
+		cs_businessAssociate
+		cs_personName
+		cs_generalAddress
+		cs_geographicContext
+		cs_offshoreLocation
+		cs_northSeaOffshore
+		emailQualifierStruct
+		phoneNumberStruct
+		amountOfSubstanceMeasure
+		frequencyMeasure
+		massFlowRateMeasure
+		modulusOfCompressionMeasure
+		workMeasure
+		abstractNonNegativeCount
+	In cs_businessAssociate,
+		Deleted uid attribute because it is not used by a recurring element.
+	Moved the following from prodml to common and moved values 
+	from enumValues.xml to an actual enum list.
+		AddressKindEnum
+		AddressQualifier
+		ContactPreference
+		PhoneType
+	In workMeasure, made uom mandatory.
+	In the witsml folder, changed the file version from "1.4.0" to "WITSML_v1.4.0".
+	In the common folder, changed the file version from "common_v1.4.0".
+
+Issue 1.3.1-98 "Response to WITSML Version 1.4.0 Release Candidate"
+	In log example:
+		Modified sensorOffset to have units consistent with the log data.
+	In cs_standardProjectedCRS:
+		Made nameCRS mandatory.
+
+Issue 1.3.1-102 "Response to WITSML Version 1.4.0 Release Candidate"
+	In obj_realtime and cs_commonData:
+		Documented that serviceCategory is part of the realtime unique key.
+	In cs_commonData:
+		Change the type of serviceCategory from ServiceCategory to kindString and added
+		example values.
+	In typ_catalog.xsd:
+		Deleted ServiceCategory.
+	In grp_log, cs_groupDefinition, and grp_wellLog:
+		Changed type of dataGroup from LogDataGroup to kindString.
+	In typ_catalog.xsd and enumValues.xml:
+		Deleted LogDataGroup.
+	In enumValues.xsd:
+		Deleted logGroupIndexType, logGroupIndexClass, logGroupClassWitsml.
+
+Issue 1.3.1-103 "Version 1.4.0 Release Candidate (changeHistory)"
+	In cs_changeHistory:
+		Modified startIndex and endIndex to have a type of genericMeasure instead of nameString.
+
+Issue 1.3.1-105 "Comments about WITSML version 1.4.0"
+	In cs_blockInfo and grp_log:
+		Renamed indexOffset to curveSensorsAligned and reversed the definition.
+		Adjusted definition so that a value of true means that all sensors have the same (instead of zero) offset value.
+	In cs_commonData:
+		Modified the documentation of dTimCreation and dTimLastChange to indicate 
+		greater-than behavior instead of greater-than-or-equal-to.
+	In grp_realtime:
+		Modified the documentation of dTim to indicate 
+		greater-than behavior instead of greater-than-or-equal-to.
+	In the example for coordinateReferenceSystem, changed a duplicate uid by adding "-alternate".
+
+Issue 1.3.1-108 "log object and index curve values"
+	In grp_log/indexCurve and cs_blockInfo/indexCurve, documented that duplicate indices can exist 
+	but still cannot change direction.
+
+Issue 1.3.1-109 "Trajectory Schema Update"
+	In grp_trajectoryStation:
+		Added calcAlgorithm.
+		Added infieldRefCorUsed.
+		Added interpolatedInfieldRefCorUsed.
+		Added inHoleRefCorUsed.
+		Added axialMagInterferenceCorUsed.
+		Added bhaSagCorUsed.
+	In typ_catalogWitsml:
+		Added TrajStnCalcAlgorithm.
+		Removed enumerated values from TypeSurveyTool.
+	In enumValuesWitsml:
+		Added TypeSurveyTool.
+			Added "gyroscopic while drilling".
+			Added "gyroscopic while drilling".
+			Added "electronic magnetic multiple-shot".
+			Added "electrical logging conveyed gyroscopic".
+			Added "continuous gyroscopic multiple-shot".
+			Added "stationary gyroscopic multiple-shot".
+			Added "surface read-out gyroscopic".
+			Deprecated "gyroscopic  MWD".
+			Deprecated "gyroscopic north seeking".
+			Deprecated "gyroscopic inertial".
+		Added TrajStnCalcAlgorithm.
+
+
+=======================================================================================
+Changes since v1.4c
+=======================================================================================
+In type "timestamp" changed pattern "[Z-+]" to "[Z+-]". Failed in XMLSPY 2008.
+
+In wellLog.xml, added a indexCurve in the block info section.
+
+In doc/WITSML_Schema_docu.htm, added an object overview.
+
+In stylesheets/*.xsl, fix namespace.
+
+Issue 1.3-48 "Coordinate Reference System Proposal"
+	In grp_well and cs_wellDatum, clarified that it is a "vertical" datum.
+
+
+=======================================================================================
+Changes since v1.4b
+=======================================================================================
+Issue 1.3.1-49 "Realtime Behavior"
+	In cs_channel:
+		Documented that "id" and "mnemonic" are the STORE UNIQUE KEY.
+	In cs_record:
+		Documented that "id" is the STORE UNIQUE KEY.
+	In grp_realtime:
+		Documented that each realtimeHeader is unique to one wellbore in one 
+		subscription when accessed via Store Interface.
+	In obj_realtime:
+		Documented that "uidWell", "uidWellbore" and "idSub" are the STORE UNIQUE KEY.
+	In cs_channelDefinition:
+		Documented that "id" is the STORE UNIQUE KEY.
+	In cs_axisDefinition:
+		Documented that "order" is the STORE UNIQUE KEY.
+		Documented that "uid" does not apply within the context of realtime.
+	In cs_interval:
+		Documented that "type" is the STORE UNIQUE KEY.
+
+Issue 1.3-46 "All WITSML servers should support dTimLastChange"
+	In cs_commonData:
+		Documented that dTimLastChange can be changed by a client.
+
+
+=======================================================================================
+Changes since v1.4a (alpha)
+=======================================================================================
+
+Issue 1.2-102 "Embedded Objects in WITSML"
+	In obj_attachment:
+		Made nameWellbore optional.
+
+Issue 1.3-40 "Do somebody need runNumber as a string?"
+	Backed out the changes made for this issue. See alpha.
+
+Issue 1.3-44 "We think "statusWellbore" should be a required element in version 1.3"
+	In cs_changeHistory:
+		Added startDateTimeIndex.
+		Added endDateTimeIndex.
+
+Issue 1.3-46 "All WITSML servers should support dTimLastChange"
+	In grp_trajectoryStation:
+		Changed the type of mdDelta from measuredDepthCoord to lengthMeasure.
+		Changed the type of tvdDelta from wellVerticalDepthCoord to lengthMeasure.
+	In grp_cementJob:
+		Changed the type of mdWater from measuredDepthCoord to lengthMeasure.
+	In grp_well:
+		Changed the type of waterDepth from wellVerticalDepthCoord to lengthMeasure.
+
+Issue 1.3-48 "Coordinate Reference System Proposal"
+	Reinstated types that were deleted. See alpha.
+		cs_projectionx.xsd
+		cs_geodeticModel.xsd
+		Ellipsoid
+		GeodeticDatum
+		Projection
+		ProjectionVariantsObliqueMercator
+		NADTypes
+		Hemispheres
+		geodeticZoneString
+	In cs_wellCRS.xsd:
+		Added mapProjectionCRS.
+		Added geodeticCRS.
+		Backed out the changes made to mapProjection. See alpha.
+		Backed out the changes made to geographic. See alpha.
+	In cs_localCRS.xsd:
+		Added magneticDeclination (not added in alpha).
+		Added gridConvergence (not added in alpha).
+	In cs_geodeticModel:
+		Deprecated all elements except nameCRS.
+	In cs_projectionx:
+		Deprecated all elements except nameCRS.
+	In cs_wellDatum:
+		The type of datumName was already wellKnownName (not changed in alpha).
+		Added datumCRS.
+		Added a choice around datumName and datumCRS.
+		Added horizontalLocation (not added in alpha).
+
+Issue 1.3.1-15 "well log depth registration proposal"
+	Renamed types "cs_depthRegistration..." to "cs_depthReg..."
+	In grp_wellLog:
+		Changed the type of depthRegistrationData from cs_depthRegData
+		to cs_depthRegImage.
+	Deleted:
+		cs_depthRegData
+		cs_depthRegLogImageInfo
+	In cs_depthRegLogSection:
+		Changed the type of curveInfo from cs_logCurveInfo to refNameString.
+		Made indexReference optional and documented that the information should be
+		in a comment if not otherwise specified.
+		In element indexType, documented that date-time values should be specified as
+		a time offset from the well log creationDate.
+	In cs_depthRegTrack:
+		Deleted attribute id in favor of uid.
+		Changed attribute name to be an element.
+		Changed attribute type to be an element.
+	In cs_depthRegCalibrationPoint:
+		Renamed "track_id" to "track" and changed the type from nameString to refNameString. 
+
+Issue 1.3.1-34 "Lithology qualifier - noun versus adjective"
+	In cs_enumValues.xsd:
+		Added new elements for version, deprecated, replacedBy, lithoType, lithoVariant.
+	In enumValues.xml:
+		Deprecated the following values of QualifierType:
+			anhydritic
+			belemnitic
+			bioturbated
+			bituminous
+			burrowed
+			calcite concr
+			chalky
+			conglomeratic
+			coral
+			dolomitic
+			fissile
+			forams undifferentiated
+			fossil fragment
+			glauconitic
+			gravelly
+			gypsiferous
+			lithic fragment
+			marly
+			microfossil
+			no description
+			none
+			oncolith
+			oncolithic
+			ooid or oolith
+			pebbly
+			pellet
+			pelletal
+			peloid
+			peloidal
+			pisolith
+			salty
+			sandy
+			shell
+			silty
+			spicular
+			spicule
+			stylolite
+			stylolitic
+			tuffaceous
+		Added the following values of QualifierType:
+			anhydrite
+			belemnites
+			bioturbation
+			bitumen
+			burrows
+			calcite
+			calcite concretion
+			chalk
+			conglomerate
+			coral fragments
+			forams
+			fossil fragments
+			gravel
+			gypsum
+			lithic fragments
+			marl
+			microfossils
+			oncoliths
+			ooids
+			pebble
+			pellets
+			peloids
+			pisoliths
+			rootlets
+			salt
+			sand
+			shell fragments
+			silt
+			spicules
+			stylolites
+			tuff
+		Where appropriate, added values for version, deprecated, replacedBy, 
+		lithoType and lithoVariant for values of QualifierType.
+
+Issue 1.3.1-58 "Minumum number of objects in a WITSML document"
+	Generated a "read" variant schema where all elements and attributes are optional.
+
+Issue 1.3.1-63 "Detection of new data objects" AND
+Issue 1.3.1-64 "Effective polling over WMLS"
+	In cs_commonData:
+		Documented that queries against dTimCreation or dTimLastChange represent a 
+		request for values that are greater-than-or-equal-to the specified value.
+
+Issue 1.3.1-70 "Maximum log entries returned from a WITSML server"
+	In grp_log:
+		Clarified endIndex and endDateTimeIndex that the returned value must be compared
+		with the overall value.
+	In grp_wellLog:
+		Clarified maxIndex and maxDateTimeIndex that the returned bounding values must be compared
+		with the overall bounding values.
+
+Issue 1.3.1-71 "Add new parameters to the wellbore without changing the xsd"
+	Backed out the changes made for this issue. See alpha.
+	Did not eliminate MeasureClass from enumValues.xml because it will be 
+	referenced by RealtimeData.
+
+Issue 1.3.1-72 "Why is log.logCurveInfo.columnIndex manatory for WITSML 1.3.1.1?"
+	Even though the API change was defered, retained the documentation change from the alpha.
+	That is, regardless of what the API does, the columnIndex is meaningless unless data is returned.
+
+Issue 1.3.1-77 "Why do not all recurring elements in WITSML 1.3.1.1 have a UID?"
+	No change.
+
+Issue 1.3.1-78 "WITSML - Realtime Automation"
+	In cs_wellLogCurveInfo:
+		Added classIndex.
+	In cs_logCurveInfo:
+		Added classIndex.
+	In cs_channelDefinition:
+		Added classIndex.
+	In enumValues.xml:
+		Deprecated "pressure drop at bit".
+		Deprecated "chkPrAv".
+		Added "choke pressure (average)".
+		Added elements version, deprecated and replacedBy to assist migration.
+
+Issue 1.3.1-81 "Aggregating object"
+	In typ_baseType.xsd:
+		Added abstractSingularObject.
+	Added:
+		obj_aggregate.xsd
+		obj_report.xsd
+		grp_aggregate.xsd
+		grp_report.xsd
+		genericIdentifierStruct
+	Modified all WITSML singular data object datatypes to be an extension 
+	of abstractSingularObject.
+
+Issus 1.3.1-83 "Object uid"
+	In obj_well:
+		Documented that the uid is globally unique.
+		Documented that the uid of dependent objects are unique within
+		the context of the containing well.
+	In obj_wellbore:
+		Documented that the uid of dependent objects are unique within
+		the context of the containing wellbore.
+
+Issue 1.3.1-85 "Optional uom in genericMeasure"
+	In typ_dataTypes.xsd:
+		Made the uom mandatory in genericMeasure.
+
+Issue 1.3.1-86 "Schema Construction guidelines"
+	In typ_quantityClass.xsd:
+		Renamed all unit types to be UpperCamel case.
+	In typ_measureType.xsd and typ_dataTypes.xsd:
+		Changed the type of the uom attributes to match the renamed types.
+	Moved the following uom types from typ_dataTypes.xsd to typ_quantityClass.xsd:
+		PercentUom
+		MeasuredDepthUom
+		WellVerticalCoordinateUom
+	Renamed type fileCreationType to cs_documentFileCreation.
+	Renamed type securityInfoType to cs_documentSecurityInfo.
+	Renamed type auditType to cs_documentAudit.
+	Renamed type eventType to cs_documentEvent.
+	Split the renamed types out to individual files.
+	In cs_documentInfo:
+		Renamed DocumentName to documentName.
+		Renamed DocumentAlias to documentAlias.
+		Renamed DocumentDate to documentDate.
+		Renamed FileCreationInformation to fileCreationInformation.
+		Renamed SecurityInformation to securityInformation.
+		Renamed Disclaimer to disclaimer.
+		Renamed AuditTrail to auditTrail.
+		Renamed Owner to owner.
+		Renamed Comment to comment.
+	In cs_documentFileCreation:
+		Renamed FileCreationDate to fileCreationDate.
+		Renamed SoftwareName to softwareName.
+		Renamed FileCreator to fileCreator.
+		Renamed Comment to comment.
+	In cs_documentSecurityInfo:
+		Renamed Class to class.
+		Renamed System to securitySystem (system is a reserved word in .NET).
+		Renamed EndDate to endDate.
+		Renamed Comment to comment.
+	In cs_documentAudit:
+		Renamed Event to event.
+	In cs_documentEvent:
+		Renamed EventDate to eventDate.
+		Renamed ResponsibleParty to responsibleParty.
+		Renamed Comment to comment.
+		Added eventType.
+
+Issue 1.3.1-88 "dTim behavior in realtime"
+	In grp_realtime:
+		Documented that queries against dTim represent a request for values that are
+		greater-than-or-equal-to the specified value.
+
+
+=======================================================================================
+Changes since v1.3.1.1 to produce alpha version.
+=======================================================================================
+ 
+CLEANUP FROM PREVIOUS VERSION:
+	Issue 1.3.1-28 "WITSML quantity type request" (from v1.3.1.1)
+		In typ_measureType.xsd.
+			Deleted energyPerAreaMeasure.
+		In typ_quantityClass.xsd:
+			Deleted energyPerAreaUom.
+	Issue 1.3.1-22 "Measurement assigned to Trajectory magnetic data"  (from v1.3.1.1)
+		In typ_measureType.xsd.
+			Deleted magneticFieldStrengthMeasure.
+		In typ_quantityClass.xsd:
+			Deleted magneticFieldStrengthUom.
+BUG:
+	In dataTypes.xsd:
+		Changed the type of indexCurve, listOfString and encodedValueString from str32 to abstractString32 
+		in order to prevent type-substitution in XML.
+		To be consistent, changed the base of str32 to abstractString32.
+		Insured that all types had final="#all".
+
+In each file:
+	Changed namespace from
+		"http://www.witsml.org/schemas/131"
+	to
+		"http://www.witsml.org/schemas/140"
+	Changed file version attribute to (or added) version="1.4.0".
+
+In typ_dataTypes.xsd:
+	Modified schemaVersionString to require XML schema version of 1.4.0.n where n is 0-99.
+
+In WITSML_composite.xsd:
+	Eliminated anonomous typing.
+	Deleted dtsInstalledSystem.
+	Deleted dtsMeasurement
+	Added attachment.
+	Added changeLog.
+	Added drillReport.
+	Added coordinateReferenceSystem.
+
+Moved the following enumeration types from typ_dataTypes.xsd to typ_quantityClass.xsd.
+	PercentUom
+	MeasuredDepthUom
+	WellVerticalCoordinateUom
+
+Remove DTS (moved to PRODML).
+	Deleted ./doc/DTS_Overview.html
+	Deleted ./doc/dtsBackscatter.jpg
+	Deleted ./doc/dtsFiberConfigurations.jpg
+	Deleted ./doc/dtsOTDR.jpg
+	Deleted ./doc/Shell_DTS_Primer.pdf
+	Deleted ./XML_Examples/dtsFiber.xml
+	Deleted ./XML_Examples/dtsFiber_no_xsl.xml
+	Deleted ./XML_Examples/dtsInstalledSystem.xml
+	Deleted ./XML_Examples/dtsInstalledSystem_no_xsl.xml
+	Deleted ./XML_Examples/dtsInstrumentBox.xml
+	Deleted ./XML_Examples/dtsInstrumentBox_no_xsl.xml
+	Deleted ./XML_Examples/dtsMeasurement.xml
+	Deleted ./XML_Examples/dtsMeasurement_composite.xml
+	Deleted ./XML_Examples/dtsMeasurement_composite_no_xsl.xml
+	Deleted ./XML_Examples/dtsMeasurement_no_xsl.xml
+	Deleted obj_dtsInstalledSystem
+	Deleted obj_dtsMeasurement
+	Deleted ges_dtsFiber
+	Deleted ges_dtsInstrumentBox
+	Deleted grp_dtsInstalledSystem
+	Deleted grp_dtsMeasurement
+	Deleted cs_boxInformation
+	Deleted cs_calibration
+	Deleted cs_calibrationParameter
+	Deleted cs_errorReport
+	Deleted cs_fiber
+	Deleted cs_fiberEndPoint
+	Deleted cs_fiberInformation
+	Deleted cs_fiberInstalledPoints
+	Deleted cs_instrumentBox
+	Deleted cs_instrumentBoxCalibration
+	Deleted cs_oneWayLoss
+	Deleted cs_otdr
+	Deleted cs_pumpActivity
+	Deleted cs_pumpLogRow
+	Deleted cs_pumpLogTable
+	Deleted cs_refractiveIndex
+	Deleted cs_singleInstalledPoint
+	In typ_dataTypes.xsd:
+		Deleted anyDate.
+		Deleted generalMeasureType.
+		Deleted temperatureSlopeMeasure.
+		Deleted typeOptionalClassString.
+	In typ_catalog.xsd:
+		Deleted FiberMode.
+		Deleted InstalledFiberPoint.
+		Deleted OTDRReason.
+	In typ_measureType.xsd.
+		Deleted frequencyMeasure.
+	In typ_quantityClass.xsd:
+		Deleted frequencyUom.
+
+Issue 1.2-102 "Embedded Objects in WITSML"
+	Added grp_attachment. Changed element attachment to content so we would
+		not duplicate names in the hierarchy
+	Added obj_attachment.
+
+Issue 1.3-40 "Do somebody need runNumber as a string?"
+	In grp_log:
+		Added run as a str16 value.
+		Changed the type of runNumber from str16 to positiveCount.
+		Added passNumber as a positiveCount.
+	In grp_wellLog:
+		Added run as a str16 value.
+		Changed the type of runNumber from str16 to positiveCount.
+	In cs_blockInfo:
+		Added passNumber as a positiveCount.
+	In cs_realtimeHeader:
+		Added run as a str16 value.
+		Changed the type of runNumber from str16 to positiveCount.
+		Added passNumber as a positiveCount.		
+
+Issue 1.3-44 "We think "statusWellbore" should be a required element in version 1.3"
+	Added obj_changeLog.
+	Added grp_changeLog.
+	Added cs_changeHistory.
+	Added ChangeInfoType.
+	In cs_changeHistory:
+		Added uid attribute.
+	In catalog.xsd:
+		Added ChangeInfoType.
+
+Issue 1.3-46 "All WITSML servers should support "dTimLastChange"
+?????????????
+
+
+FIX CRS proposal:
+	Changed "geographic" to "geodetic" in file names, element names and documentation.
+	This affected files:
+		grp_coordinateReferenceSystem.xsd
+		cs_standardGeographicCRS.xsd
+		cs_wellCRS.xsd
+	In cs_standardVerticalCRS:
+		Renamed usesEllipsoidalDatum to ellipsoidalDatum
+Issue 1.3-48 "Coordinate Reference System Proposal"
+	Added the GML version of:
+		obj_coordinateReferenceSystem.xsd
+		grp_coordinateReferenceSystem.xsd
+		cs_standardGeographicCRS.xsd
+		cs_standardProjectedCRS.xsd
+		cs_standardVerticalCRS.xsd
+	Deleted:
+		cs_projectionx.xsd
+		cs_geodeticModel.xsd
+		Ellipsoid
+		GeodeticDatum
+		Projection
+		ProjectionVariantsObliqueMercator
+		NADTypes
+		Hemispheres
+		geodeticZoneString
+	Imported the normative GML 3.2.1 version at http://schemas.opengis.net/gml/3.2.1/  
+		rather than the GML 3.2 copy at http://www.posc.org/registry/gmlSchema/.
+	In cs_localCRS.xsd:
+		Added magneticDeclination.
+		Added gridConvergence.
+	In cs_wellCRS.xsd:
+		Changed the type of mapProjection from cs_projectionx to refNameString.
+		Changed the type of geographic from cs_geodeticModel to refNameString.
+	In cs_wellDatum:
+		Changed the type of datumName from wellKnownName to refNameString.
+		Added horizontalLocation.
+
+Issue 1.3.1-15 "well log depth registration proposal"
+	In grp_well:
+		Added wellPublicLandSurveySystemLocation with maxOccurs="1".
+	Added cs_publicLandSurveySystem from wellNotice (GWPC).
+		In typ_catalog.xsd
+			Added PrincipalMeridian.
+			Added EastOrWest
+			Added NorthOrSouth.
+		In typ_dataTypes.xsd
+			Added sectionNumber.
+			Added publicLandSurveySystemQuarterTownship.
+			Added publicLandSurveySystemQuarterSection.
+			Added footageNorthSouth (modified to use lengthUom instead 
+			of FoottUom).
+			Added footageEastWest (modified to use lengthUom instead of 
+			FoottUom).
+	Added cs_depthRegistrationData.
+		Deleted attribute "version" because it is redundant to the same element 
+		in obj_wellLog.
+		In cs_depthRegistrationLogSection, substituted cs_logCurveInfo (contains 
+		columnIndex) for cs_wellLogCurveInfo.
+		In cs_depthRegistrationLogSection/indexReference changed the type from 
+		indexReferenceType to ElevCodeEnum.
+		Added cs_depthRegistrationLogImageInfo.
+		Added cs_depthRegistrationImage.
+		Added cs_depthRegistrationLogRect.
+		Added cs_depthRegistrationLogSection.
+		Added cs_depthRegistrationCalibrationPoint.
+		Added cs_depthRegistrationPoint.
+		Added cs_depthRegistrationRectangular.
+		Added cs_depthRegistrationParameter.
+		Added cs_depthRegistrationTrack.
+		In typ_catalog.xsd:
+			Added MimeType.
+			Added FileNameType (converted to WITSML convention).
+			Added LogRectangularType (converted to WITSML convention).
+			Added LogSectionType (converted to WITSML convention).
+			Added LogTrackType (converted to WITSML convention).
+			Added CalibrationPointRole (converted to WITSML convention).
+			Added MessageDigestType.
+		In typ_dataTypes.xsd:
+			Added nonNegativeBigCount.
+			Added fileName.
+			Added checksum.
+		Added uid attributes in all recurring types.
+	In grp_wellLog:
+		Added depthRegistrationData.
+
+Issue 1.3.1-24 "Determining regularity of log sampling"
+	In grp_log and cs_blockInfo, clarified that non-zero is regularly sampled.
+
+Issue 1.3.1-33 "Daily Drilling Report"
+	Added obj_drillReport.
+	Added grp_drillReport.
+	Added cs_drillReportControlIncidentInfo.
+	Added cs_drillReportCoreInfo.
+	Added cs_drillReportEquipFailureInfo.
+	Added cs_drillReportFormTestInfo.
+	Added cs_drillReportGasReadingInfo.
+	Added cs_drillReportLithShowInfo.
+	Added cs_drillReportLogInfo.
+	Added cs_drillReportPerfInfo.
+	Added cs_drillReportPorePressure.
+	Added cs_drillReportStatusInfo.
+		Changed maxOccurs from unbounded to 1 for the following:
+			strengthForm
+	Added cs_drillReportStratInfo.
+	Added cs_drillReportSurveyStation.
+	Added cs_drillReportWellboreInfo.
+	Added cs_drillReportWellTestInfo.
+	Added cs_alias.
+	Added cs_wellAlias.
+	In typ_baseType.xsd:
+		Added abstractDescriptionString.
+	In typ_dataTypes.xsd:
+		Added timestampedDescriptionString.
+	In typ_catalog.xsd:
+		Added InnerBarrelType.
+		Added MudClass.
+		Added OpsReportVersion.
+		Added PresTestType.
+		Added ReadingKind.
+		Added StateDetailActivity.
+		Added WellControlIncidentType.
+		Added WellKillingProcedureType.
+		Added WellNamingSystem.
+		Added WellTestType.
+	In cs_bitRecord:
+		Added codeMfg.
+	In cs_fluid:
+		Added tvd.
+		Added presBopRating.
+		Added mudClass.
+	In cs_activity:
+		Added md
+		Added tvd
+		Added proprietaryCode
+		Added stateDetailActivity
+
+Issue 1.3.1-34 "Lithology qualifier - noun versus adjective"
+???????????????????????????????
+
+Issue 1.3.1-35 "What is the exact meaning of biasVert?"
+	In cs_stnTrajMatrixCov:
+		Modified the description of biasVert to indicate positive down.
+
+Issue 1.3.1-37 "Realtime object - dTimHeaderLastChanged"
+	In grp_realtime:
+		Added dTimHeaderLastChanged.
+
+Issue 1.3.1-39 "query with time zone aganst no time zone"
+	In grp_well:
+		Made timeZone mandatory.
+		Modified the description of timeZone to remove statement about 
+		optional zone.
+	In cs_commonData:
+		Added recurring acquisitionTimeZone element.
+	In baseType.xsd:
+		Added abstractTimeZone.
+	In typ_dataTypes.xsd
+		Modified timeZone to be a restriction of abstractTimeZone.
+		Added timestampedTimeZone as an extension of abstractTimeZone.
+		Made the time zone mandatory in timestamp.
+
+Issue 1.3.1-43 "<data> delimeter: comma or coma?"
+	In grp_log and grp_wellLog:
+		Added dataDelimiter (str2).
+	
+Issue 1.3.1-48 "Bugs in schemaDiff_witsml_v120-v131.xml"
+	In schemaDiff_witsml_v120-v131.xml:
+		Changed <newValue>re-entry</newValue> to <newValue>reentry</newValue> 
+		(no hyphen)
+		Removed irrelevant references to "xxxx".
+
+Issue 1.3.1-50 "Curve of type activityState"
+	In enumValues.xml for RealtimeData:
+		Added "activity" (WITSML string ActivityCode value)
+		Added "activity WITS" (WITS numeric actiity code)
+
+Issue 1.3.1-51 ".NET problems with realtime"
+	In cs_axisDefinition:
+		Changed the type of doubleValues from listOfDouble to listOfString.
+	In typ_baseType.xsd:
+		Deleted listOfDouble.
+
+Issue 1.3.1-53 "The rig.yearEntService element is a problem for .NET"
+	In typ_dataTypes.xsd:
+		Modified calendarYear to use integer constrained to values of 1000 to 9999.
+	In typ_baseType.xsd:
+		Deleted abstractYear.
+
+Issue 1.3.1-57 "Multi Pass use case"
+	In grp_wellLog and grp_log:
+		Modified the documentation to support a "multipass" parameter which
+		asserts that values are specified for bhaRunNumber (or runNumber), 
+		passNumber and direction.
+		Note that we did not add passType!
+
+Issue 1.3.1-60 "Status Wellbore"
+	In grp_wellbore:
+		Added isActive.
+
+Issue 1.3.1-65 "How to find Growing objects"
+	In typ_catalog.xsd:
+		Added ObjectGrowingState.
+	In grp_log, grp_mudLog, grp_trajectory and grp_wellLog:
+		Changed the type of objectGrowing from logicalBoolean to ObjectGrowingState.
+
+Issue 1.3.1-66 "How to find mdCurrent"
+	In grp_wellbore:
+		Added mdBitCurrent.
+		Added tvdBitCurrent.
+	In enumValues.xml for RealtimeData:
+		Renamed "TVD of Bit" to "TVD of bit".
+		Already have "measured depth of hole", "bit total measured depth", 
+		"TVD of hole".
+
+Issue 1.3.1-71 "Add new parameters to the wellbore without changing the xsd"
+	Added cs_extension.
+	In cs_commonData:
+		Added recurring extension.
+	In typ_dataTypes.xsd
+		Added extensionvalue.
+	In typ_catalog.xsd:
+		Added ExtensionName.
+		Added MeasureClass.
+		Added PrimitiveType.
+	In enumValues.xml:
+		Added MeasureClass including the following meta-data elements:
+			measureRepresentativeUOM
+			measureBaseForConversion
+			measureUom
+		Added ExtensionName including the following meta-data elements:
+			extensionDataType
+			extensionMaximumSize
+			extensionMeasureClass
+			extensionPath
+
+Issue 1.3.1-72 "Why is log.logCurveInfo.columnIndex manatory for WITSML 1.3.1.1?"
+	In cs_channelDefinition, cs_blockCurveInfo, cs_logCurveInfo:
+		Clarified that columnIndex is meaningless if data records are not returned.
+
+Issue 1.3.1-74  "log.logCurveInfo.typeLogData"
+	In cs_channelDefinition:
+		Made dataType mandatory and removed statement about default.
+	In cs_logCurveInfo:
+		Made typeLogData mandatory.
+	In cs_wellLogCurveInfo:
+		Made choice of typeLogData or encodingDef mandatory and removed statement 
+		about default.
+	In typ_catalog.xsd:
+		Modified LogDataType to add:
+			byte
+			float
+			int
+			short
+			string40
+			string16
+
+Issue 1.3.1-76 "meaning of TrajStationStatus enumerated values"
+	In typ_catalog.xsd TrajStationStatus:
+		Deleted locked.
+		Deleted valid.
+		Added descriptions from the original WITSML project spreadsheets.
+
+Issue 1.3.1-77 "Why do not all recurring elements in WITSML 1.3.1.1 have a UID?"
+	In cs_bitRecord:
+		Added uid attribute.
+	In cs_drillReportPorePressure:
+		Added uid attribute.
+	In WITSML_Composite.xsd:
+		In co_bhaRun:
+			Added uid attribute.
+
+Issue 1.3.1-78 "WITSML - Realtime Automation"
+	In cs_commonData:
+		Added serviceCategory.
+	In typ_catalog.xsd:
+		Added LogDataGroup (with values in enumValues.xml file)
+		Added ServiceCategory.
+	In grp_realtime:
+		Deleted dataGroup (moved to cs_groupDefinition).
+	In grp_log.xsd:
+		Added dataGroup.
+		Added indexOffset.
+	In grp_wellLog.xsd:
+		Added dataGroup.
+	In cs_blockInfo:
+		Added indexOffset.
+	In cs_groupDefinition:
+		Added dataGroup.
+		Modified the definition of "id" to make it only a name.
+	In enumValues.xml:
+		Added LogDataGroup including the following meta-data elements:
+			logGroupIndexType.
+			logGroupIndexClass.
+			logGroupClassWitsml.
+		Modified RealtimeData to add "choice" of the following meta-data elements:
+			realtimeDataType
+			realtimeMeasureClass.
+
+		

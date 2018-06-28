@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<witsml:trajectorys version="" xmlns:abs="http://www.energistics.org/schemas/abstract" xmlns:witsml="http://www.witsml.org/schemas/1series" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.witsml.org/schemas/1series ../witsml-1.4.1.1/data/witsml_v1.4.0_data/generated_read_schemas/obj_trajectory.xsd ">
+  <witsml:documentInfo>
+    <witsml:documentName namingSystem="">witsml:documentName</witsml:documentName>
+    <witsml:documentAlias namingSystem="">witsml:documentAlias</witsml:documentAlias>
+    <witsml:documentDate>2001-12-31T12:00:00</witsml:documentDate>
+    <witsml:documentClass namingSystem="">witsml:documentClass</witsml:documentClass>
+    <witsml:fileCreationInformation/>
+    <witsml:securityInformation uid=""/>
+    <witsml:disclaimer>witsml:disclaimer</witsml:disclaimer>
+    <witsml:auditTrail/>
+    <witsml:owner>witsml:owner</witsml:owner>
+    <witsml:comment>witsml:comment</witsml:comment>
+  </witsml:documentInfo>
+  <witsml:trajectory uid="" uidWell="" uidWellbore="">
+    <witsml:nameWell>witsml:nameWell</witsml:nameWell>
+    <witsml:nameWellbore>witsml:nameWellbore</witsml:nameWellbore>
+    <witsml:name>witsml:name</witsml:name>
+    <witsml:commonData/>
+    <witsml:customData/>
+  </witsml:trajectory>
+</witsml:trajectorys>

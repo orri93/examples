@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+
+
+<ns4:capClients
+    xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'
+    xmlns:ns5='http://www.witsml.org/api/140'
+    xmlns:ns4='http://www.witsml.org/api/140'
+    xmlns:ns3='http://www.witsml.org/api/140'
+    xmlns:ns2='http://www.witsml.org/api/140'
+    xmlns:ns1='http://www.witsml.org/api/140'
+    xsi:schemaLocation='http://www.witsml.org/api/140 ../witsml-1.4.1.1/api/XSD_Schemas/cs_function.xsd
+   http://www.witsml.org/api/140 ../witsml-1.4.1.1/api/XSD_Schemas/obj_capClient.xsd
+   http://www.witsml.org/api/140 ../witsml-1.4.1.1/api/XSD_Schemas/cs_contact.xsd
+   http://www.witsml.org/api/140 ../witsml-1.4.1.1/api/XSD_Schemas/cs_catalog.xsd
+   http://www.witsml.org/api/140 ../witsml-1.4.1.1/api/XSD_Schemas/cs_dataTypes.xsd'>
+    <ns4:capClient apiVers="">
+        <ns4:contact>
+            <ns4:name></ns4:name>
+            <ns4:email></ns4:email>
+            <ns4:phone></ns4:phone>
+        </ns4:contact>
+        <ns4:description></ns4:description>
+        <ns4:name></ns4:name>
+        <ns4:vendor></ns4:vendor>
+        <ns4:version></ns4:version>
+        <ns4:schemaVersion></ns4:schemaVersion>
+    </ns4:capClient>
+
+</ns4:capClients>
