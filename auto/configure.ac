@@ -18,5 +18,4 @@ AC_PROG_CC
 
 # Checks for library functions.
 
-AC_CONFIG_FILES([src/Makefile])
 AC_OUTPUT
