@@ -8,6 +8,7 @@ SET CMAKE_HOME=C:\Program Files\CMake
 
 SET CMAKE_CLI=%CMAKE_HOME%\bin\cmake.exe
 SET CTEST_CLI=%CMAKE_HOME%\bin\ctest.exe
+SET CPACK_CLI=%CMAKE_HOME%\bin\cpack.exe
 
 SET CMAKE_INSTALL_PREFIX=%TUTORIAL_DIR%\instdist
 
@@ -48,6 +49,10 @@ PUSHD %BUILD_DIR%
 "%CMAKE_CLI%" %CMAKE_OPTIONS% ..
 %MSBUILD_CLI% %MSBUILD_OPTIONS%
 "%CTEST_CLI%"
+
+"%CPACK_CLI%" --config CPackConfig.cmake
+
+REM "%CPACK_CLI%" --config CPackSourceConfig.cmake
 
 POPD
 POPD
