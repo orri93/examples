@@ -50,6 +50,8 @@ PUSHD %BUILD_DIR%
 %MSBUILD_CLI% %MSBUILD_OPTIONS%
 "%CTEST_CLI%"
 
+REM "%CTEST_CLI%" –D Experimental
+
 "%CPACK_CLI%" --config CPackConfig.cmake
 
 REM "%CPACK_CLI%" --config CPackSourceConfig.cmake

@@ -1,6 +1,9 @@
 cmake_minimum_required (VERSION 2.6)
 project (Tutorial)
-include(CTest)
+
+# enable dashboard scripting
+include (CTest)
+
  
 # The version number.
 set (Tutorial_VERSION_MAJOR 1)
