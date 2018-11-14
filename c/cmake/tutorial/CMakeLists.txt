@@ -4,6 +4,13 @@ project (Tutorial)
 # The version number.
 set (Tutorial_VERSION_MAJOR 1)
 set (Tutorial_VERSION_MINOR 0)
+
+# does this system provide the log and exp functions?
+include (CheckFunctionExists)
+
+check_function_exists (log HAVE_LOG)
+check_function_exists (exp HAVE_EXP)
+
  
  # should we use our own math functions?
 option (USE_MYMATH 
