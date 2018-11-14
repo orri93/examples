@@ -4,3 +4,6 @@
 [submodule "hyperjaxb3/hyperjaxb3-support"]
 	path = hyperjaxb3/hyperjaxb3-support
 	url = https://github.com/highsource/hyperjaxb3-support.git
+[submodule "c/cmake/modern-cmake-sample"]
+	path = c/cmake/modern-cmake-sample
+	url = https://github.com/pabloariasal/modern-cmake-sample.git

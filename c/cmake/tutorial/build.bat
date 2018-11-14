@@ -24,8 +24,6 @@ IF "%VS120COMNTOOLS%" == "" (
   goto GOTO:EOF
 )
 
-CALL "%VS120COMNTOOLS%vsvars32.bat"
-
 ECHO Visual Studio 2013 Tool Path is defined as %VS120COMNTOOLS%
 
 SET BUILD_DIR=build
@@ -37,6 +35,8 @@ FOR %%i IN (%BUILD_PATH%) DO IF EXIST %%~si\NUL (
   ECHO   Delete previous build directory %BUILD_PATH%
   RMDIR  "%BUILD_PATH%" /S /Q
 )
+
+CALL "%VS120COMNTOOLS%vsvars32.bat"
 
 ECHO   Recreating %BUILD_DIR% folder
 MKDIR %BUILD_DIR%
