@@ -1,0 +1,4 @@
+# Ignore all MS Office backups
+~*.*
+
+/build/
