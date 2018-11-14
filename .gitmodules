@@ -1,0 +1,6 @@
+[submodule "hyperjaxb3/hyperjaxb3"]
+	path = hyperjaxb3/hyperjaxb3
+	url = https://github.com/highsource/hyperjaxb3.git
+[submodule "hyperjaxb3/hyperjaxb3-support"]
+	path = hyperjaxb3/hyperjaxb3-support
+	url = https://github.com/highsource/hyperjaxb3-support.git
