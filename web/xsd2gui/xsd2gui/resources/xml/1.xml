@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+ 
+<xs:shiporder xmlns:xs="http://www.umeshbatra.com/XMLSchema"> 
+    <shiptoaddress>
+        <name>UBatra</name> 
+        <address>Cupertino</address> 
+    </shiptoaddress> 
+    <items>
+    	<quantity>5</quantity> 
+        <price>45.5</price> 
+    </items> 
+    <items>
+    	<quantity>55</quantity> 
+        <price>55.5</price> 
+    </items> 
+</xs:shiporder>
