@@ -1,3 +1,9 @@
 [submodule "java/xsd-forms/xsd-forms-orri-fork"]
 	path = java/xsd-forms/xsd-forms-orri-fork
 	url = https://github.com/orri93/xsd-forms.git
+[submodule "java/pi4j/pi4j-orri-fork"]
+	path = java/pi4j/pi4j-orri-fork
+	url = https://github.com/orri93/pi4j.git
+[submodule "java/mini-pid/mini-pid-orri-fork"]
+	path = java/mini-pid/mini-pid-orri-fork
+	url = https://github.com/orri93/MiniPID-Java.git
