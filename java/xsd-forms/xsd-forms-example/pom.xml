@@ -21,7 +21,7 @@
     <dependency>
       <groupId>com.github.davidmoten.xsdforms</groupId>
       <artifactId>xsd-forms-generator</artifactId>
-      <version>0.2.2-SNAPSHOT</version>
+      <version>0.2.1</version>
     </dependency>
   </dependencies>
 
