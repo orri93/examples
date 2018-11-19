@@ -7,17 +7,16 @@ public class WebInitializer extends AbstractAnnotationConfigDispatcherServletIni
 
 	@Override
 	protected Class<?>[] getRootConfigClasses() {
-		return null;
+	  return new Class[] { SpringConfiguration.class };
 	}
 
 	@Override
 	protected Class<?>[] getServletConfigClasses() {
-		return new Class[] { SpringConfiguration.class };
+	  return null;
 	}
 
 	@Override
 	protected String[] getServletMappings() {
-		return new String[] { "/" };
+	  return new String[] { "/" };
 	}
-
 }
