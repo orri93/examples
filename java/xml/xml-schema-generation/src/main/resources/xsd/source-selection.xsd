@@ -1,0 +1,34 @@
+<xsd:schema
+  targetNamespace="http://www.gos.org/schema/examples/xml/schema/generator"
+  xmlns:gse="http://www.gos.org/schema/examples/xml/schema/generator"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+  xmlns:i="http://moten.david.org/xsd-forms"
+  elementFormDefault="qualified"
+>
+
+  <xsd:annotation i:numberItems="false">
+    <xsd:appinfo>
+      <i:header><![CDATA[<h2>WITSML data sources</h2>]]></i:header>
+    </xsd:appinfo>
+  </xsd:annotation>
+  
+  <xsd:simpleType name="Source">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="Default" />
+    </xsd:restriction>
+  </xsd:simpleType>
+
+  <xsd:complexType name="SourceSelection">
+    <xsd:sequence>
+      <xsd:element name="Source" type="gse:Source">
+        <xsd:annotation i:label="Select data source" />
+      </xsd:element>
+      <xsd:element name="Remember" type="xsd:boolean">
+        <xsd:annotation i:label="Remember my selection" />
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:element name="SourceSelection" type="gse:SourceSelection" />
+
+</xsd:schema>
