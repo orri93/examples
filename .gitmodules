@@ -7,3 +7,6 @@
 [submodule "java/mini-pid/mini-pid-orri-fork"]
 	path = java/mini-pid/mini-pid-orri-fork
 	url = https://github.com/orri93/MiniPID-Java.git
+[submodule "apache/camel/camel-example-servlet-rest-tomcat-orri-fork"]
+	path = apache/camel/camel-example-servlet-rest-tomcat-orri-fork
+	url = https://github.com/orri93/camel-example-servlet-rest-tomcat.git

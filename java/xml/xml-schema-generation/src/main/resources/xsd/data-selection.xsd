@@ -8,20 +8,29 @@
 
   <xsd:annotation i:numberItems="false">
     <xsd:appinfo>
-      <i:header><![CDATA[<h2>WITSML source sources</h2>]]></i:header>
+      <i:header><![CDATA[<h2>WITSML data sources</h2>]]></i:header>
     </xsd:appinfo>
   </xsd:annotation>
   
-  <xsd:simpleType name="Source">
+  <xsd:simpleType name="Well">
     <xsd:restriction base="xsd:string">
-      <xsd:enumeration value="Default" />
+      <xsd:enumeration value="Target" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  
+  <xsd:simpleType name="Wellbore">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="Target" />
     </xsd:restriction>
   </xsd:simpleType>
 
-  <xsd:complexType name="SourceSelection">
+  <xsd:complexType name="DataSelection">
     <xsd:sequence>
-      <xsd:element name="Source" type="gse:Source">
-        <xsd:annotation i:label="Select data source" />
+      <xsd:element name="Well" type="gse:Well">
+        <xsd:annotation i:label="Select well" />
+      </xsd:element>
+      <xsd:element name="Wellbore" type="gse:Wellbore">
+        <xsd:annotation i:label="Select wellbore" />
       </xsd:element>
       <xsd:element name="Remember" type="xsd:boolean">
         <xsd:annotation i:label="Remember my selection" />
@@ -29,6 +38,6 @@
     </xsd:sequence>
   </xsd:complexType>
 
-  <xsd:element name="SourceSelection" type="gse:SourceSelection" />
+  <xsd:element name="DataSelection" type="gse:DataSelection" />
 
 </xsd:schema>
