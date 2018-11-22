@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+    http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>gos.example.maven</groupId>
+  <artifactId>example.solution</artifactId>
+  <version>${revision}</version>
+  <packaging>pom</packaging>
+
+  <name>Example Solution Parent</name>
+  <description>GOS Example Solution Parent</description>
+  <url>${fds.url}</url>
+
+  <organization>
+    <name>FDS</name>
+    <url>${fds.url}</url>
+  </organization>
+
+  <properties>
+
+    <!-- Version -->
+    <release-version-major>1</release-version-major>
+    <release-version-minor>0</release-version-minor>
+    <release-version-patch>0</release-version-patch>
+    <release-tag>0</release-tag>
+    <revision>${release-version-major}.${release-version-minor}.${release-version-patch}.${release-tag}</revision>
+
+    <!-- FDS properties -->
+    <fds.url>http://www.fds.com</fds.url>
+    <fds.solution.version>${revision}</fds.solution.version>
+
+    <!-- Log path properties -->
+    <log4j2-log-path>file://var/log/</log4j2-log-path>
+    <log4j2-log-solution-file>fds.solution</log4j2-log-solution-file>
+
+    <!-- Project general properties -->
+    <java.version>1.8</java.version>
+    <source.encoding>UTF-8</source.encoding>
+
+    <!-- Project inherit properties -->
+    <project.build.sourceEncoding>${source.encoding}</project.build.sourceEncoding>
+    <project.reporting.outputEncoding>${source.encoding}</project.reporting.outputEncoding>
+
+    <!-- Maven properties -->
+    <maven-enforcer.version>3.2.2</maven-enforcer.version>
+    <maven-enforcer-plugin.version>1.4.1</maven-enforcer-plugin.version>
+    <maven.compiler.source>${java.version}</maven.compiler.source>
+    <maven.compiler.target>${java.version}</maven.compiler.target>
+
+    <!-- Version properties for dependencies -->
+    <org.springframework.version>5.1.2.RELEASE</org.springframework.version>
+    <org.apache.camel-camel-parent.version>2.21.1</org.apache.camel-camel-parent.version>
+    <org.apache.commons-commons-lang3.version>3.7</org.apache.commons-commons-lang3.version>
+    <org.apache.ws.commons.schema-xml-schema.version>1.4.7</org.apache.ws.commons.schema-xml-schema.version>
+    <org.slf4j.version>1.7.25</org.slf4j.version>
+    <org.apache.logging.log4j.version>2.10.0</org.apache.logging.log4j.version>
+    <org.ini4j.version>0.5.4</org.ini4j.version>
+
+    <!-- Version properties for test dependency -->
+    <junit.version>4.12</junit.version>
+
+    <!-- Version properties for plug-ins -->
+    <org.codehaus.mojo-xml-maven-plugin.version>1.0.2</org.codehaus.mojo-xml-maven-plugin.version>
+    <org.codehaus.mojo-exec-maven-plugin.version>1.6.0</org.codehaus.mojo-exec-maven-plugin.version>
+    <org.apache.maven.plugins-maven-compiler-plugin.version>3.7.0</org.apache.maven.plugins-maven-compiler-plugin.version>
+    <org.apache.maven.plugins-maven-resources-plugin.version>3.0.2</org.apache.maven.plugins-maven-resources-plugin.version>
+    <org.springframework.boot-spring-boot-dependencies.version>1.5.8.RELEASE</org.springframework.boot-spring-boot-dependencies.version>
+
+  </properties>
+
+  <modules>
+    <module>src/maven-solution-project-jar</module>
+    <module>src/maven-solution-project-web</module>
+    <module>src/maven-solution-project-camel</module>
+  </modules>
+
+  <profiles>
+    <profile>
+      <id>continuous-build</id>
+      <activation>
+        <property>
+          <name>env.GIT_COMMIT</name>
+        </property>
+      </activation>
+      <properties>
+        <!-- Override only if necessary -->
+        <release-tag>${env.GIT_BRANCH}-${env.GIT_COMMIT}</release-tag>
+      </properties>
+    </profile>
+  </profiles>
+
+</project>
