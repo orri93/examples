@@ -16,41 +16,13 @@
   <packaging>jar</packaging>
 	<name>maven-solution-project-jar</name>
 	<url>http://maven.apache.org</url>
-	
-	<properties>
-	</properties>
-	
-  <dependencyManagement>
-    <dependencies>
-
-      <!-- Spring Boot BOM -->
-      <dependency>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-dependencies</artifactId>
-        <version>${org.springframework.boot-spring-boot-dependencies.version}</version>
-        <type>pom</type>
-        <scope>import</scope>
-      </dependency>
-
-      <!-- Camel BOM -->
-      <dependency>
-        <groupId>org.apache.camel</groupId>
-        <artifactId>camel-parent</artifactId>
-        <version>${org.apache.camel-camel-parent.version}</version>
-        <scope>import</scope>
-        <type>pom</type>
-      </dependency>
-
-    </dependencies>
-  </dependencyManagement>
 
 	<dependencies>
 	
 	  <!-- Solution -->
 	  <dependency>
-	    <groupId>gos.example.maven</groupId>
+	    <groupId>${fds.solution.group}</groupId>
 	    <artifactId>example.project.jar</artifactId>
-	    <version>${fds.solution.version}</version>
 	  </dependency>
 	
 	  <!-- Camel -->
