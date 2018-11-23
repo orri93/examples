@@ -23,11 +23,8 @@
   <properties>
 
     <!-- Version -->
-    <release-version-major>1</release-version-major>
-    <release-version-minor>0</release-version-minor>
-    <release-version-patch>0</release-version-patch>
-    <release-tag>0</release-tag>
-    <revision>${release-version-major}.${release-version-minor}.${release-version-patch}.${release-tag}</revision>
+    <revision>0.0.1</revision>
+    <release-tag>local</release-tag>
 
     <!-- FDS properties -->
     <fds.url>http://www.fds.com</fds.url>
@@ -76,6 +73,7 @@
     <module>src/maven-solution-project-jar</module>
     <module>src/maven-solution-project-web</module>
     <module>src/maven-solution-project-camel</module>
+    <module>etc/solution-bom</module>
   </modules>
 
   <profiles>
@@ -92,5 +90,9 @@
       </properties>
     </profile>
   </profiles>
+  
+  <build>
+    <finalName>example.solution-${revision}-${release-tag}</finalName>
+  </build>
 
 </project>

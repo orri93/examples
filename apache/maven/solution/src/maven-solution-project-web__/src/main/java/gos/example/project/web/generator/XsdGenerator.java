@@ -1,4 +1,4 @@
-package gos.example.project.web.generator;
+package gos.examples.xsd.forms.generator;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;

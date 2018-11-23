@@ -26,7 +26,7 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Attr;
 
-public class XsdGenerator {
+public class XsdGeneratorTest {
 
   private static final String XsdDemo = "/xsd/demo.xsd";
   
