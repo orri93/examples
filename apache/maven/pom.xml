@@ -8,7 +8,7 @@
 
   <groupId>gos.example.maven</groupId>
   <artifactId>example.parent</artifactId>
-  <version>0.0.1</version>
+  <version>${revision}</version>
   <packaging>pom</packaging>
 
   <name>Example Parent</name>
@@ -23,6 +23,7 @@
   <properties>
     <fds.name>FDS</fds.name>
     <fds.url>http://www.fds.com</fds.url>
+    <revision>0.0.1</revision>
   </properties>
 
   <modules>

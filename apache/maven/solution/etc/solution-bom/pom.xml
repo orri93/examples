@@ -28,10 +28,10 @@
 
     <!-- FDS properties -->
     <fds.url>http://www.fds.com</fds.url>
-    <fds.solution.version>${revision}</fds.solution.version>
-    
+    <fds.solution.version>0.0.1</fds.solution.version>
+
   </properties>
-  
+
   <dependencyManagement>
     <dependencies>
       <dependency>
@@ -66,32 +66,30 @@
       </properties>
     </profile>
   </profiles>
-  
+
   <build>
     <finalName>example.solution.pom+${release-tag}</finalName>
-    
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-assembly-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <id>make shared resources</id>
-                        <goals>
-                            <goal>single</goal>
-                        </goals>
-                        <phase>package</phase>
-                        <configuration>
-                            <descriptors>
-                                <descriptor>src/main/assembly/resources.xml</descriptor>
-                            </descriptors>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-        </plugins>
-    </build>
+
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-assembly-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>make shared resources</id>
+            <goals>
+              <goal>single</goal>
+            </goals>
+            <phase>package</phase>
+            <configuration>
+              <descriptors>
+                <descriptor>src/main/assembly/resources.xml</descriptor>
+              </descriptors>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
   </build>
 
 </project>

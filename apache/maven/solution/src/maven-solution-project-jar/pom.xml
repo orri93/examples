@@ -8,25 +8,46 @@
   <parent>
     <groupId>gos.example.maven</groupId>
     <artifactId>example.solution</artifactId>
-    <version>${revision}</version>
+    <version>0.0.1</version>
     <relativePath>../../pom.xml</relativePath>
   </parent>
 
   <artifactId>example.project.jar</artifactId>
   <packaging>jar</packaging>
 	<name>maven-solution-project-jar</name>
-	<url>http://maven.apache.org</url>
+	<url>${fds.url}</url>
 
 	<dependencies>
+  
+    <dependency>
+      <groupId>org.springframework.security</groupId>
+      <artifactId>spring-security-config</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.security</groupId>
+      <artifactId>spring-security-web</artifactId>
+    </dependency>
+  
+    <dependency>
+      <groupId>javax.servlet</groupId>
+      <artifactId>javax.servlet-api</artifactId>
+    </dependency>
+    
+    <dependency>
+      <groupId>org.hibernate</groupId>
+      <artifactId>hibernate-core</artifactId>
+    </dependency>
+    
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<scope>test</scope>
 		</dependency>
+    
 	</dependencies>
   
   <build>
-    <finalName>example.project-${revision}-${release-tag}</finalName>
+    <finalName>example.project-${fds.solution.version}-${release-tag}</finalName>
   </build>
 	
 </project>

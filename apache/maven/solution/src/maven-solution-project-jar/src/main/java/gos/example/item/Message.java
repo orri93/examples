@@ -1,4 +1,4 @@
-package gos.example;
+package gos.example.item;
 
 public class Message {
   private String text;

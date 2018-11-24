@@ -8,7 +8,7 @@
   <parent>
     <groupId>gos.example.maven</groupId>
     <artifactId>example.solution</artifactId>
-    <version>${revision}</version>
+    <version>0.0.1</version>
     <relativePath>../../pom.xml</relativePath>
   </parent>
 
@@ -75,7 +75,7 @@
 	
   <build>
 
-    <finalName>example.project.camel-${revision}-${release-tag}</finalName>
+    <finalName>example.project.camel-${fds.solution.version}-${release-tag}</finalName>
 
     <defaultGoal>install</defaultGoal>
 

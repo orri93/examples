@@ -1,6 +1,8 @@
-package gos.example;
+package gos.example.provider;
 
-public class Provider {
+import gos.example.item.Message;
+
+public class MessageProvider {
   private int count = 0;
   
   public Message getMessage() {

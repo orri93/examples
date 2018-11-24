@@ -5,19 +5,19 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
-import gos.example.Provider;
 import gos.example.camel.processor.SimpleProcessor;
+import gos.example.provider.MessageProvider;
 
 @Component
 public class SimpleRoute extends RouteBuilder {
 
   private static final Logger LOG = LoggerFactory.getLogger(SimpleRoute.class);
 
-  private Provider provider;
+  private MessageProvider provider;
   private SimpleProcessor processor;
 
   public SimpleRoute() {
-    this.provider = new Provider();
+    this.provider = new MessageProvider();
     this.processor = new SimpleProcessor();
   }
 
