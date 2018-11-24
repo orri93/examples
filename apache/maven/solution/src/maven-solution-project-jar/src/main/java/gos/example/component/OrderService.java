@@ -1,4 +1,4 @@
-package gos.example.boot;
+package gos.example.component;
 
 import java.util.Optional;
 import java.util.Random;
@@ -8,8 +8,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import gos.examples.example.project.boot.items.Book;
-import gos.examples.example.project.boot.items.Order;
+import gos.example.item.Book;
+import gos.example.item.Order;
+import gos.example.repository.BookRepository;
 
 @Component
 public class OrderService {
@@ -48,14 +49,15 @@ public class OrderService {
 		books.save(book);
 	}
 
+	@SuppressWarnings("unused")
 	private void addBook(int id, String item, String description) {
 		Book book = createBook(id, item, description);
 		books.save(book);
 	}
 	
 	private Book createBook(int id) {
-		return createBook(id, String.format("New book no. {}", id),
-		    String.format("New book no. {} by Orri", id));
+		return createBook(id, String.format("New book no. %d", id),
+		    String.format("New book no. %d by Orri", id));
 	}
 	
 	private Book createBook(int id, String item, String description) {
@@ -65,5 +67,4 @@ public class OrderService {
 		book.setDescription(description);
 		return book;
 	}
-
 }

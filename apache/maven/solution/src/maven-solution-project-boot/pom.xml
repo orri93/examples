@@ -31,6 +31,10 @@
       <groupId>${fds.solution.group}</groupId>
       <artifactId>example.project.jar</artifactId>
     </dependency>
+    <dependency>
+      <groupId>${fds.solution.group}</groupId>
+      <artifactId>example.project.camel</artifactId>
+    </dependency>
 
     <!-- Spring Boot -->
     <dependency>

@@ -1,9 +1,10 @@
-package gos.example.boot;
+package gos.example.repository;
 
 import org.springframework.data.repository.CrudRepository;
 
-import gos.examples.example.project.boot.items.Order;
+import gos.example.item.Order;
 
+@org.springframework.stereotype.Repository
 public interface OrderRepository extends CrudRepository<Order, Integer> {
 
 }

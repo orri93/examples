@@ -1,13 +1,16 @@
-package gos.example.boot;
+package gos.example.provider;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import gos.examples.example.project.boot.items.Book;
-import gos.examples.example.project.boot.items.Order;
+import gos.example.item.Book;
+import gos.example.item.Order;
+import gos.example.repository.BookRepository;
+import gos.example.repository.OrderRepository;
 
 @Component
-public class Database {
+public class BookOrderAccess {
+	
   @Autowired
   BookRepository books;
 
@@ -21,4 +24,5 @@ public class Database {
   public Order findOrder(Integer id) {
       return orders.findById(id).get();
   }
+
 }

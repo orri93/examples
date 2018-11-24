@@ -1,7 +1,6 @@
-package gos.example.boot;
+package gos.example.camel.processor;
 
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -68,5 +67,4 @@ public class FileContentProcessor implements Processor {
 		exchange.getOut().setBody(builder.toString());
 		exchange.getOut().setHeaders(exchange.getIn().getHeaders());
 	}
-
 }
