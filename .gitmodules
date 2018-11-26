@@ -10,3 +10,6 @@
 [submodule "apache/camel/camel-example-servlet-rest-tomcat-orri-fork"]
 	path = apache/camel/camel-example-servlet-rest-tomcat-orri-fork
 	url = https://github.com/orri93/camel-example-servlet-rest-tomcat.git
+[submodule "apache/maven/solution/src/maven-solution-project-web/sub/swagger-ui-orri-fork"]
+	path = apache/maven/solution/src/maven-solution-project-web/sub/swagger-ui-orri-fork
+	url = https://github.com/orri93/swagger-ui.git

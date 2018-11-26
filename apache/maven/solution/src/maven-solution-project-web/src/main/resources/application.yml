@@ -1,0 +1,16 @@
+# The name of Camel
+camel:
+  springboot:
+    name: NOV DO Integration
+    main-run-controller: true
+# 
+spring:
+  activemq:
+    broker-url: tcp://localhost:61616
+
+#
+gos:
+  example:
+     interval: 30s
+     directory: src/main/resources/static/
+     charset: utf-8

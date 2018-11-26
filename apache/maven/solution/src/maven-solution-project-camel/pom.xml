@@ -14,7 +14,7 @@
 
   <artifactId>example.project.camel</artifactId>
   <packaging>jar</packaging>
-	<name>maven-solution-project-jar</name>
+	<name>maven-solution-project-camel</name>
 	<url>http://maven.apache.org</url>
 
 	<dependencies>
@@ -24,24 +24,68 @@
 	    <groupId>${fds.solution.group}</groupId>
 	    <artifactId>example.project.jar</artifactId>
 	  </dependency>
-	
-	  <!-- Camel -->
+    
+    <!-- camel -->
     <dependency>
       <groupId>org.apache.camel</groupId>
-      <artifactId>camel-cdi</artifactId>
+      <artifactId>camel-core</artifactId>
     </dependency>
-
     <dependency>
       <groupId>org.apache.camel</groupId>
-      <artifactId>camel-spring-boot-starter</artifactId>
+      <artifactId>camel-spring</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.camel</groupId>
+      <artifactId>camel-servlet</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.camel</groupId>
+      <artifactId>camel-metrics</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.camel</groupId>
+      <artifactId>camel-spring-javaconfig</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.camel</groupId>
+      <artifactId>camel-jms</artifactId>
+    </dependency>
+    
+    <!-- swagger api -->
+    <dependency>
+      <groupId>org.apache.camel</groupId>
+      <artifactId>camel-swagger</artifactId>
+    </dependency>
+    
+    <!-- activemq -->
+    <dependency>
+      <groupId>org.apache.activemq</groupId>
+      <artifactId>activemq-broker</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.activemq</groupId>
+      <artifactId>activemq-client</artifactId>
+      <!-- lets use JMS 2.0 api but camel-jms still works with ActiveMQ 5.x that is JMS 1.1 only -->
       <exclusions>
         <exclusion>
-          <groupId>ch.qos.logback</groupId>
-          <artifactId>logback-classic</artifactId>
+          <groupId>org.apache.geronimo.specs</groupId>
+          <artifactId>geronimo-jms_1.1_spec</artifactId>
         </exclusion>
       </exclusions>
     </dependency>
+    
+    <!-- use for json binding -->
+    <dependency>
+      <groupId>org.apache.camel</groupId>
+      <artifactId>camel-jackson</artifactId>
+    </dependency>
 
+    <!-- we need spring web -->
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-web</artifactId>
+    </dependency>
+	
     <!-- logging -->
     <dependency>
       <groupId>org.apache.logging.log4j</groupId>
@@ -66,6 +110,16 @@
       <scope>test</scope>
     </dependency>
     <dependency>
+      <groupId>org.apache.camel</groupId>
+      <artifactId>camel-test-spring</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-test</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
       <scope>test</scope>
@@ -80,10 +134,10 @@
     <defaultGoal>install</defaultGoal>
 
     <plugins>
+    
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
-        <version>${org.apache.maven.plugins-maven-compiler-plugin.version}</version>
         <configuration>
           <source>${java.version}</source>
           <target>${java.version}</target>
@@ -92,9 +146,15 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-resources-plugin</artifactId>
-        <version>${org.apache.maven.plugins-maven-resources-plugin.version}</version>
         <configuration>
           <encoding>${source.encoding}</encoding>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <configuration>
+          <skipTests>true</skipTests>
         </configuration>
       </plugin>
 
@@ -102,12 +162,23 @@
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>exec-maven-plugin</artifactId>
-        <version>${org.codehaus.mojo-exec-maven-plugin.version}</version>
         <configuration>
           <mainClass>gos.example.camel.CamelDevelopment</mainClass>
           <includePluginDependencies>false</includePluginDependencies>
         </configuration>
       </plugin>
+      
+      <!-- allows running this example with mvn jetty:run -->
+      <plugin>
+        <groupId>org.eclipse.jetty</groupId>
+        <artifactId>jetty-maven-plugin</artifactId>
+        <configuration>
+          <webApp>
+            <contextPath>/${project.artifactId}</contextPath>
+          </webApp>
+        </configuration>
+      </plugin>
+      
 
     </plugins>
   </build>

@@ -10,7 +10,8 @@ public class SimpleProcessor implements Processor {
   public void process(Exchange exchange) throws Exception {
     Message in = exchange.getIn();
     Message out = exchange.getOut();
-    gos.example.item.Message message = in.getBody(gos.example.item.Message.class);
+    gos.example.item.Message message =
+    		in.getBody(gos.example.item.Message.class);
     if(message != null) {
       String body = message.getText();
       if(body != null) {

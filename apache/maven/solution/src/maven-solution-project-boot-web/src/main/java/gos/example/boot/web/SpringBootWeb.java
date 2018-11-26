@@ -1,4 +1,4 @@
-package gos.example.boot;
+package gos.example.boot.web;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -24,10 +24,10 @@ basePackageClasses = {
 		gos.example.configuration.SecurityConfiguration.class})
 @EnableJpaRepositories("gos.example.repository")
 @EntityScan("gos.example.item")
-public class SpringBootDevelopment extends SpringBootServletInitializer {
+public class SpringBootWeb extends SpringBootServletInitializer {
 	
 	public static void main(String[] args) {
-		SpringApplication.run(SpringBootDevelopment.class, args);
+		SpringApplication.run(SpringBootWeb.class, args);
 	}
 	
 	@Component

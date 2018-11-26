@@ -11,7 +11,7 @@ import gos.example.provider.MessageProvider;
 @Component
 public class SimpleRoute extends RouteBuilder {
 
-  private static final Logger LOG = LoggerFactory.getLogger(SimpleRoute.class);
+  private static final Logger Log = LoggerFactory.getLogger(SimpleRoute.class);
 
   private MessageProvider provider;
   private SimpleProcessor processor;
@@ -23,11 +23,14 @@ public class SimpleRoute extends RouteBuilder {
 
   @Override
   public void configure() throws Exception {
-    from(
-        "scheduler://example?delay={{gos.example.interval}}")
+  	StringBuilder builder = new StringBuilder("file://");
+  	builder.append("{{gos.example.directory:src/main/resources/static/}}?");
+  	builder.append("fileName=output.txt&fileExist=Override&");
+  	builder.append("charset={{gos.example.charset:utf-8}}");
+    from("scheduler://example?delay={{gos.example.interval:60s}}")
         .autoStartup(true).bean(this.provider, "getMessage")
-        .process(this.processor).
-        to("file://{{gos.example.directory}}?fileName=output.txt&fileExist=Override&charset={{gos.example.charset}}")
+        .process(this.processor)
+        .to(builder.toString())
         .to("log:example");
   }
 
