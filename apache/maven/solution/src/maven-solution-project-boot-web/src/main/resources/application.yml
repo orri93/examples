@@ -8,9 +8,9 @@ camel:
 # add for example: &repeatCount=5 to the timer endpoint to make Camel idle
 #      duration-max-idle-seconds: 15
    component:
-    servlet:
+   servlet:
       mapping:
-        contextPath: /rest/*
+        contextPath: /gos-example-web/rest/*
 
 # The application configuration properties
 example:

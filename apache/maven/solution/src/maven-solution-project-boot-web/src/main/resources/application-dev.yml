@@ -6,7 +6,7 @@ camel:
   component:
     servlet:
       mapping:
-        contextPath: /rest/*
+        contextPath: /gos-example-web/rest/*
 
 # The application configuration properties
 example:

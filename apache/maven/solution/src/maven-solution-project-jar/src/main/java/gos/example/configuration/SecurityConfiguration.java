@@ -8,27 +8,36 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 
 @EnableWebSecurity
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
-	@Autowired
-	public void configureGlobal(AuthenticationManagerBuilder auth)
-	    throws Exception {
-		auth.inMemoryAuthentication().withUser("orri").password("Bios93")
-		    .roles("ADMIN", "USER");
-		auth.inMemoryAuthentication().withUser("sa").password("")
-    .roles("ADMIN", "USER");
-	}
 
-	@Override
-	protected void configure(HttpSecurity http) throws Exception {
-		http.authorizeRequests().antMatchers("/").permitAll();
-		http.authorizeRequests().antMatchers("/rest/**").permitAll();
-		http.authorizeRequests().antMatchers("/imgs/**").permitAll();
-		http.authorizeRequests().antMatchers("/admin/**").hasRole("ADMIN");
-		http.authorizeRequests().antMatchers("/console/**").permitAll();
-		http.authorizeRequests().antMatchers("/error/**").permitAll();
+  @Autowired
+  public void configureGlobal(AuthenticationManagerBuilder auth)
+      throws Exception {
+    Constants.DevelopmentAuthentication(auth);
+  }
 
-		// add this line to use H2 web console
-		http.csrf().disable();
-		http.headers().frameOptions().disable();
-	}
+  @Override
+  protected void configure(HttpSecurity http) throws Exception {
+    
+    http.authorizeRequests().antMatchers(Constants.RootPath).permitAll();
+
+    for (String path : Constants.RestPathList) {
+      http.authorizeRequests().antMatchers(path + Constants.RestMatch)
+          .permitAll();
+    }
+
+    for (String path : Constants.ResourcePathList) {
+      http.authorizeRequests().antMatchers(path + Constants.ResourceMatch)
+          .permitAll();
+    }
+
+    for (String path : Constants.AdminPathList) {
+      http.authorizeRequests().antMatchers(path + Constants.AdminMatch)
+          .hasRole(Constants.AdminRole);
+    }
+
+    // add this line to use H2 web console
+    http.csrf().disable();
+    http.headers().frameOptions().disable();
+  }
 
 }

@@ -124,6 +124,8 @@
   </dependencies>
 
   <build>
+    <finalName>example-web-${project.parent.version}-${release-tag}</finalName>
+    
     <plugins>
       <plugin>
         <groupId>org.springframework.boot</groupId>
@@ -136,6 +138,40 @@
           </execution>
         </executions>
       </plugin>
+      
+      <plugin>
+        <groupId>org.apache.tomcat.maven</groupId>
+        <artifactId>tomcat7-maven-plugin</artifactId>
+        <configuration>
+          <url>http://localhost/manager/text</url>
+          <server>tomcat-9</server>
+          <path>/gos-example-web</path>
+        </configuration>
+      </plugin>
+      
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>exec-maven-plugin</artifactId>
+        <configuration>
+          <mainClass>gos.example.camel.CamelDevelopment</mainClass>
+          <includePluginDependencies>false</includePluginDependencies>
+        </configuration>
+      </plugin>
+      
+      
+            <!-- allows running this example with mvn:jetty-run -->
+      <plugin>
+        <groupId>org.eclipse.jetty</groupId>
+        <artifactId>jetty-maven-plugin</artifactId>
+        <configuration>
+          <webApp>
+            <!-- contextPath>/${project.artifactId}</contextPath -->
+            <contextPath>/</contextPath>
+          </webApp>
+          <webAppSourceDirectory>target/classes</webAppSourceDirectory>
+        </configuration>
+      </plugin>
+      
     </plugins>
   </build>
 

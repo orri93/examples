@@ -6,6 +6,7 @@ import org.apache.camel.model.rest.RestBindingMode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 import gos.example.camel.processor.FileContentProcessor;
+import gos.example.configuration.Constants;
 import gos.example.provider.BookOrderAccess;
 
 public class RestRoute extends RouteBuilder {
@@ -19,8 +20,8 @@ public class RestRoute extends RouteBuilder {
 	@Override
 	public void configure() {
 		
-		restConfiguration().contextPath("/rest")
-				.apiContextPath("/api-doc")
+		restConfiguration().contextPath(Constants.RestContextPath)
+				.apiContextPath(Constants.RestApiContextPath)
 		    .apiProperty("api.title", "Camel REST API")
 		    .apiProperty("api.version", "1.0").apiProperty("cors", "true")
 		    .apiContextRouteId("doc-api")
