@@ -27,6 +27,7 @@ import org.springframework.context.annotation.FilterType;
 		gos.example.camel.route.JmsRoute.class})
 //@PropertySource(factory = YamlPropertySourceFactory.class, value = "classpath:application.yml")
 public class CamelDevelopment extends CamelConfiguration {
+  
   public static void main( String[] args ) throws Exception {
   	Main main = new Main();
     main.setConfigClass(CamelDevelopment.class);

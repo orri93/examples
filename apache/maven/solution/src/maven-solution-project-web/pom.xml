@@ -22,7 +22,7 @@
 
     <!-- Solution -->
     <dependency>
-      <groupId>${fds.solution.group}</groupId>
+      <groupId>${project.parent.group}</groupId>
       <artifactId>example.project.camel</artifactId>
     </dependency>
     
