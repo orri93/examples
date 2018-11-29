@@ -14,6 +14,7 @@ public class PersonProviderService {
   private final Map<String, PersonProvider> providers =
   		new TreeMap<String, PersonProvider>();
   
+  @SuppressWarnings("unused")
   private static final Log LOG =
   		LogFactory.getLog(PersonProviderService.class);
 

@@ -1,7 +1,5 @@
 package gos.example.camel;
 
-import java.util.Properties;
-
 import org.apache.activemq.ActiveMQConnectionFactory;
 import org.apache.camel.CamelContext;
 import org.apache.camel.component.jms.JmsComponent;
@@ -11,9 +9,6 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.ComponentScan.Filter;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.FilterType;
-import org.springframework.context.annotation.PropertySource;
-
-import gos.example.configuration.YamlPropertySourceFactory;
 
 @Configuration
 @ComponentScan(
@@ -32,6 +27,7 @@ import gos.example.configuration.YamlPropertySourceFactory;
 		gos.example.camel.route.JmsRoute.class})
 //@PropertySource(factory = YamlPropertySourceFactory.class, value = "classpath:application.yml")
 public class CamelDevelopment extends CamelConfiguration {
+  
   public static void main( String[] args ) throws Exception {
   	Main main = new Main();
     main.setConfigClass(CamelDevelopment.class);

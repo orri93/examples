@@ -5,7 +5,8 @@ $ mvn package
 Run
 You can run this example with Maven using:
 
-$ mvn spring-boot:run -Dspring.profiles.active=dev
+$ mvn spring-boot:run 
+
 Alternatively, you can also run this example using the executable JAR:
 
 $ java -jar -Dspring.profiles.active=dev target/camel-example-spring-boot-rest-jpa-${project.version}.jar

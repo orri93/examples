@@ -21,7 +21,7 @@ public class WebInitializer
 
 	@Override
 	protected String[] getServletMappings() {
-		return new String[] { "/providerservice/*" };
+		return new String[] { Constants.ServletMappings };
 	}
 
 	/*
