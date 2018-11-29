@@ -1,24 +1,24 @@
 # the name of Camel
 camel:
    springboot:
-      name: GosRestTest
+      name: GosRestTestGeneral
 # to automatic shutdown the JVM after a period of time
 #      duration-max-seconds: 60
 #      duration-max-messages: 100
 # add for example: &repeatCount=5 to the timer endpoint to make Camel idle
 #      duration-max-idle-seconds: 15
    component:
-    servlet:
-      mapping:
-        contextPath: /rest/*
+      servlet:
+         mapping:
+            contextPath: /rest/*
 
 # The application configuration properties
 example:
-  generateOrderPeriod: 2s
-  processOrderPeriod: 5s
+   generateOrderPeriod: 2s
+   processOrderPeriod: 5s
   
 # what to say
-greeting: Hello Mr.
+greeting: General Greeting
 
 # how often to trigger the timer
 timer:
@@ -38,27 +38,31 @@ timer:
 #         enabled: true
 #         read-only: true
 
-spring:
-  datasource:
-    url: jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
-    username: sa
-    password:
-    driver-class-name: org.h2.Driver
-    platform: h2
+#spring:
+#   resources:
+#      resourcesLocations:
+#         -   classpath:/form/html/css/
+#         -   classpath:/form/html/js/
+   datasource:
+      url: jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+      username: sa
+      password:
+      driver-class-name: org.h2.Driver
+      platform: h2
     
-  # Spring Data JPA configuration
-  jpa:
-    hibernate:
-      # To be updated in real production usage!
-      ddl-auto: create-drop
-    show-sql: false 
+   # Spring Data JPA configuration
+   jpa:
+      hibernate:
+         # To be updated in real production usage!
+         ddl-auto: create-drop
+      show-sql: false 
 
-  # enable H2 web console and set url for web console
-  # http://localhost:8080/console
-  h2:
-    console:
-      enabled: true
-      path: /console
+   # enable H2 web console and set url for web console
+   # http://localhost:8080/console
+   h2:
+      console:
+         enabled: true
+         path: /console
 
 # to configure logging levels
 #logging:

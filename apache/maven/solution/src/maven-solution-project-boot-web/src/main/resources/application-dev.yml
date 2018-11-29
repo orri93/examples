@@ -1,43 +1,42 @@
 camel:
-  springboot:
-    # The Camel context name
-    name: CamelRestJpa
-  
-  component:
-    servlet:
-      mapping:
-        contextPath: /rest/*
+   springboot:
+      # The Camel context name
+      name: GosRestTestGeneralDevelopment
+   component:
+      servlet:
+         mapping:
+            contextPath: /rest/*
 
 # The application configuration properties
 example:
-  generateOrderPeriod: 2s
-  processOrderPeriod: 5s
+   generateOrderPeriod: 2s
+   processOrderPeriod: 5s
 
 # what to say
-greeting: Hello Mister
+greeting: Development Greeting 
 
 # how often to trigger the timer
 timer:
    period: 2000
 
 spring:
-  datasource:
-    url: jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
-    username: sa
-#    password:
-    driver-class-name: org.h2.Driver
-    platform: h2
-    
-  # Spring Data JPA configuration
-  jpa:
-    hibernate:
-      # To be updated in real production usage!
-      ddl-auto: create-drop
-    show-sql: false 
+   datasource:
+      url: jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+      username: sa
+#     password:
+   driver-class-name: org.h2.Driver
+   platform: h2
+
+   # Spring Data JPA configuration
+   jpa:
+      hibernate:
+         # To be updated in real production usage!
+         ddl-auto: create-drop
+      show-sql: false 
  
-  # enable H2 web console and set url for web console
-  # http://localhost:8080/console
-  h2:
-    console:
-      enabled: true
-      path: /console
+   # enable H2 web console and set url for web console
+   # http://localhost:8080/console
+   h2:
+      console:
+         enabled: true
+         path: /console
