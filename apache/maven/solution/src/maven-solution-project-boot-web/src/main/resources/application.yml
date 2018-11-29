@@ -12,6 +12,10 @@ camel:
          mapping:
             contextPath: /rest/*
 
+# Log config in separate xml
+logging:
+   config: classpath:logback.xml
+   
 # The application configuration properties
 example:
    generateOrderPeriod: 2s

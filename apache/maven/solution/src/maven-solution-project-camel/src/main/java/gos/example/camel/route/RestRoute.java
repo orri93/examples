@@ -6,7 +6,9 @@ import org.apache.camel.model.rest.RestBindingMode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import gos.example.camel.processor.FileContentProcessor;
 import gos.example.provider.BookOrderAccess;
@@ -19,20 +21,16 @@ public class RestRoute extends RouteBuilder {
 	@Autowired
 	FileContentProcessor processor;
 	
-	@RequestMapping(value="/api/getImageList", method=RequestMethod.GET, headers="Accept=application/json")
-	public ResponseEntity<Collection<String>> getImageList(){
-	}
-	
 	@Override
 	public void configure() {
 
-		restConfiguration().contextPath("/rest").apiContextPath("/api-doc")
+		restConfiguration().contextPath("/rest").apiContextPath("/api")
 		    .apiProperty("api.title", "Camel REST API")
 		    .apiProperty("api.version", "1.0")
 		    .apiProperty("cors", "true")
 		    .apiContextRouteId("doc-api")
 		    .port(env.getProperty("server.port", "8080"))
-		    .bindingMode(RestBindingMode.auto);
+		    .bindingMode(RestBindingMode.json);
 
 		rest("/html").produces("test/html").bindingMode(RestBindingMode.auto)
 		    .description("HTML REST service").get("/")
