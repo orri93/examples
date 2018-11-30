@@ -1,0 +1,27 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+<xs:element name="AppleGroupTPA">
+ <xs:complexType>
+  <xs:sequence> 
+  <xs:element name="SAPDC">
+    <xs:complexType>
+     <xs:sequence>
+      <xs:element name="MESTYP" type="xs:string"/>
+      <xs:element name="IDOCTYP" type="xs:string"/>
+     </xs:sequence>
+    </xs:complexType>
+   </xs:element>
+   <xs:element name="AdditionalRouting" maxOccurs="unbounded">
+    <xs:complexType>
+     <xs:sequence>
+      <xs:element name="NewSender" type="xs:string"/>
+      <xs:element name="SenderQual" type="xs:string"/> 
+     </xs:sequence>
+    </xs:complexType>
+   </xs:element> 
+  </xs:sequence> 
+  <xs:element name="PackageSize" type="xs:string"/> 
+  <xs:attribute name="isMappingRequired" type="xs:boolean"/> 
+ </xs:complexType>
+</xs:element>
+</xs:schema>

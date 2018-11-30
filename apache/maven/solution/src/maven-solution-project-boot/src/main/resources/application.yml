@@ -1,0 +1,74 @@
+# the name of Camel
+camel:
+   springboot:
+      name: GosRestTest
+# to automatic shutdown the JVM after a period of time
+#      duration-max-seconds: 60
+#      duration-max-messages: 100
+# add for example: &repeatCount=5 to the timer endpoint to make Camel idle
+#      duration-max-idle-seconds: 15
+   component:
+    servlet:
+      mapping:
+        contextPath: /rest/*
+
+# The application configuration properties
+example:
+  generateOrderPeriod: 2s
+  processOrderPeriod: 5s
+  
+# what to say
+greeting: Hello Mr.
+
+# how often to trigger the timer
+timer:
+   period: 2000
+
+# expose actuator endpoint via HTTP
+#management:
+#   endpoints:
+#      web:
+#         exposure:
+#            include: info,health,camelroutes
+# turn on actuator health check
+#      health:
+#         enabled: true
+# allow to obtain basic information about camel routes (read only mode)
+#      camelroutes:
+#         enabled: true
+#         read-only: true
+
+spring:
+  datasource:
+    url: jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+    username: sa
+    password:
+    driver-class-name: org.h2.Driver
+    platform: h2
+    
+  # Spring Data JPA configuration
+  jpa:
+    hibernate:
+      # To be updated in real production usage!
+      ddl-auto: create-drop
+    show-sql: false 
+
+  # enable H2 web console and set url for web console
+  # http://localhost:8080/console
+  h2:
+    console:
+      enabled: true
+      path: /console
+
+# to configure logging levels
+#logging:
+#   level:
+#      org:
+#         springframework: INFO
+#         apache:
+#            camel:
+#               spring:
+#                  boot: INFO
+#              impl: DEBUG
+#      sample:
+#         camel: DEBUG

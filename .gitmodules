@@ -1,15 +1,16 @@
-[submodule "hyperjaxb3/hyperjaxb3"]
-	path = java/hyperjaxb3/hyperjaxb3
-	url = https://github.com/highsource/hyperjaxb3.git
-[submodule "hyperjaxb3/hyperjaxb3-support"]
-	path = java/hyperjaxb3/hyperjaxb3-support
-	url = https://github.com/highsource/hyperjaxb3-support.git
-[submodule "c/cmake/modern-cmake-sample"]
-	path = c/cmake/modern-cmake-sample
 	url = https://github.com/pabloariasal/modern-cmake-sample.git
-[submodule "java/xsd-forms/xsd-forms"]
-	path = java/xsd-forms/xsd-forms
-	url = https://github.com/davidmoten/xsd-forms.git
-[submodule "java/spring/boot/gs-spring-boot"]
-	path = java/spring/boot/gs-spring-boot
-	url = https://github.com/spring-guides/gs-spring-boot.git
+[submodule "java/xsd-forms/xsd-forms-orri-fork"]
+	path = java/xsd-forms/xsd-forms-orri-fork
+	url = https://github.com/orri93/xsd-forms.git
+[submodule "java/pi4j/pi4j-orri-fork"]
+	path = java/pi4j/pi4j-orri-fork
+	url = https://github.com/orri93/pi4j.git
+[submodule "java/mini-pid/mini-pid-orri-fork"]
+	path = java/mini-pid/mini-pid-orri-fork
+	url = https://github.com/orri93/MiniPID-Java.git
+[submodule "apache/camel/camel-example-servlet-rest-tomcat-orri-fork"]
+	path = apache/camel/camel-example-servlet-rest-tomcat-orri-fork
+	url = https://github.com/orri93/camel-example-servlet-rest-tomcat.git
+[submodule "apache/maven/solution/src/maven-solution-project-web/sub/swagger-ui-orri-fork"]
+	path = apache/maven/solution/src/maven-solution-project-web/sub/swagger-ui-orri-fork
+	url = https://github.com/orri93/swagger-ui.git

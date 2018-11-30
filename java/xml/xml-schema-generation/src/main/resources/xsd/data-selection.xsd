@@ -1,0 +1,43 @@
+<xsd:schema
+  targetNamespace="http://www.gos.org/schema/examples/xml/schema/generator"
+  xmlns:gse="http://www.gos.org/schema/examples/xml/schema/generator"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+  xmlns:i="http://moten.david.org/xsd-forms"
+  elementFormDefault="qualified"
+>
+
+  <xsd:annotation i:numberItems="false">
+    <xsd:appinfo>
+      <i:header><![CDATA[<h2>WITSML data sources</h2>]]></i:header>
+    </xsd:appinfo>
+  </xsd:annotation>
+  
+  <xsd:simpleType name="Well">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="Target" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  
+  <xsd:simpleType name="Wellbore">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="Target" />
+    </xsd:restriction>
+  </xsd:simpleType>
+
+  <xsd:complexType name="DataSelection">
+    <xsd:sequence>
+      <xsd:element name="Well" type="gse:Well">
+        <xsd:annotation i:label="Select well" />
+      </xsd:element>
+      <xsd:element name="Wellbore" type="gse:Wellbore">
+        <xsd:annotation i:label="Select wellbore" />
+      </xsd:element>
+      <xsd:element name="Remember" type="xsd:boolean">
+        <xsd:annotation i:label="Remember my selection" />
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:element name="DataSelection" type="gse:DataSelection" />
+
+</xsd:schema>

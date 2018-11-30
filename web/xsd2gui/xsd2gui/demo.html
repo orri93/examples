@@ -1,0 +1,76 @@
+<!-- 
+                    +----------------------------------------------+
+                    |             XSD2GUI Tree (v0.0)              |
+                    |                                              |
+                    | Developed by:                Umesh Batra     |
+                    | Created:                     Aug. 05, 2007   |
+                    | Tested on :                  Safari, Firefox |
+                    +----------------------------------------------+ 
+-->  
+ 
+<html>
+<head>
+	<title> UB - XSD2GUI Engine - JavaScripts Tree </title> 
+	<link rel=stylesheet HREF="../css/xsd2gui.css" type="text/css"> </link>
+	<script type="text/javascript" src="./js/APPConfigurator.js"> </script> 
+	<br /> 
+ 	<h2> B2B Configuration Management - Demo Page</h2> 
+ 	<br /> 
+</head> 
+
+<body bgcolor="#ffffff" onload=""> <form name=form> 
+	 
+	<script> 
+		/** Initialize app, Argument = basePath */ 
+     	APP.Initialize('.'); 
+     		 	 
+    	/** Build Container to draw GUI tree *****************************************************************************/ 
+		document.write(treeGUI.buildContainer());  
+	 		 
+		     
+		/** Load XSD and XML 
+	    	Arguments: is XSD URL or XSD contents?, XSD URL, NS Prefix, Start node, is XML URL or XML contents?, XL Data file **********************************************************/ 
+     						
+     	APP.processXSD( 
+     		false, 
+   			'./resources/xsd/1.xsd', 
+  			'shiporder', 
+     		false, 
+     		'./resources/xml/1.xml'
+    	); 
+    					 
+    	/** Arguments : DOM tree + maxOccurs childrens (Array) to render, 
+			GUI tree to create, 
+			XSD tree variable name, 
+			XML tree variable name 
+			cordinates to jump to ****************************************************************************************/ 
+		GUI.Mapper.createGUITree(porousXSD, treeGUI, 'porousXSD', 'docXML', '1,1'); 
+			 
+		/** Open 13th node of level 1 ************************************************************************************/ 
+		treeGUI.jumpTo(1, 5); 
+     		 
+   </script> 
+        		 
+	<br /> 
+		 
+	<div class=link> <table> <tr> 
+		<td> [ <a href="javascript:treeGUI.open()"><b>Open all</b></a> ] </td> 
+		<td> [ <a href="javascript:treeGUI.close()"><b>Close all</b></a> ] </td> 
+	</tr> </table> </div> 
+			 
+	<br /> <br /> 
+	 
+		<input type=button 
+		       name=serialize 
+		       value=Serialize 
+		       onclick="XSD.Porous.convertGUISpecificXSD2XML(porousXSD, 'shiporder');"> 
+		        
+		<input type=submit 
+		       name=submit 
+		       value=Submit> 
+		 
+	<br /> <br /> 
+		 
+</form> </body> 
+ 
+</html> 
