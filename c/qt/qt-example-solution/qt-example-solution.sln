@@ -11,6 +11,10 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "qt-serial-port-cli-read-asy
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "qt-serial-port-cli-write-async", "qt-serial-port-cli-write-async\qt-serial-port-cli-write-async.vcxproj", "{C19FB2DA-8126-4EE8-BD0F-1F0CFBA9487C}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "qt-cli", "qt-cli\qt-cli.vcxproj", "{4C1091AA-56AB-3A8D-BDB4-13D051CF7141}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "qt-shared-lib", "qt-shared-lib\qt-shared-lib.vcxproj", "{F8ACA1DB-EC71-3309-9FE9-4C48B18299AA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -33,6 +37,14 @@ Global
 		{C19FB2DA-8126-4EE8-BD0F-1F0CFBA9487C}.Debug|Win32.Build.0 = Debug|Win32
 		{C19FB2DA-8126-4EE8-BD0F-1F0CFBA9487C}.Release|Win32.ActiveCfg = Release|Win32
 		{C19FB2DA-8126-4EE8-BD0F-1F0CFBA9487C}.Release|Win32.Build.0 = Release|Win32
+		{4C1091AA-56AB-3A8D-BDB4-13D051CF7141}.Debug|Win32.ActiveCfg = Debug|Win32
+		{4C1091AA-56AB-3A8D-BDB4-13D051CF7141}.Debug|Win32.Build.0 = Debug|Win32
+		{4C1091AA-56AB-3A8D-BDB4-13D051CF7141}.Release|Win32.ActiveCfg = Release|Win32
+		{4C1091AA-56AB-3A8D-BDB4-13D051CF7141}.Release|Win32.Build.0 = Release|Win32
+		{F8ACA1DB-EC71-3309-9FE9-4C48B18299AA}.Debug|Win32.ActiveCfg = Debug|Win32
+		{F8ACA1DB-EC71-3309-9FE9-4C48B18299AA}.Debug|Win32.Build.0 = Debug|Win32
+		{F8ACA1DB-EC71-3309-9FE9-4C48B18299AA}.Release|Win32.ActiveCfg = Release|Win32
+		{F8ACA1DB-EC71-3309-9FE9-4C48B18299AA}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
