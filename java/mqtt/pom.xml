@@ -7,12 +7,12 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>gos.example</groupId>
-  <artifactId>example.remote.parent</artifactId>
+  <artifactId>example.mqtt.parent</artifactId>
   <version>0.0.1</version>
   <packaging>pom</packaging>
 
-  <name>Remote Example Parent</name>
-  <description>GOS Remote Example Parent</description>
+  <name>Remote MQTT Example Parent</name>
+  <description>GOS MQTT Example Parent</description>
   <url>${fds.url}</url>
 
   <organization>
@@ -49,7 +49,8 @@
   </properties>
 
   <modules>
-    <module>remote-raspberry-debug</module>
+    <module>mqtt-client</module>
+    <module>paho-getting-started</module>
   </modules>
 
   <scm>
@@ -67,18 +68,73 @@
 
   <dependencyManagement>
     <dependencies>
-    
-    <dependency>
-      <groupId>com.pi4j</groupId>
-      <artifactId>pi4j-gpio-extension</artifactId>
-      <version>1.1</version>
-    </dependency>
-    <dependency>
-      <groupId>com.pi4j</groupId>
-      <artifactId>pi4j-core</artifactId>
-      <version>1.1</version>
-    </dependency>
-    
+
+      <dependency>
+        <groupId>org.eclipse.paho</groupId>
+        <artifactId>org.eclipse.paho.client.mqttv3</artifactId>
+        <version>1.2.0</version>
+      </dependency>
+
+      <!-- https://mvnrepository.com/artifact/org.assertj/assertj-core -->
+      <dependency>
+        <groupId>org.assertj</groupId>
+        <artifactId>assertj-core</artifactId>
+        <version>3.11.1</version>
+      </dependency>
+      <dependency>
+        <groupId>org.eclipse.jetty</groupId>
+        <artifactId>jetty-server</artifactId>
+        <version>9.4.14.v20181114</version>
+      </dependency>
+      <dependency>
+        <groupId>org.eclipse.jetty</groupId>
+        <artifactId>jetty-servlet</artifactId>
+        <version>9.4.14.v20181114</version>
+      </dependency>
+      <dependency>
+        <groupId>org.eclipse.jetty</groupId>
+        <artifactId>jetty-webapp</artifactId>
+        <version>9.4.14.v20181114</version>
+      </dependency>
+      <dependency>
+        <groupId>org.apache.httpcomponents</groupId>
+        <artifactId>httpclient</artifactId>
+        <version>4.5.3</version>
+      </dependency>
+      <dependency>
+        <groupId>commons-io</groupId>
+        <artifactId>commons-io</artifactId>
+        <version>2.5</version>
+      </dependency>
+      <dependency>
+        <groupId>io.netty</groupId>
+        <artifactId>netty-all</artifactId>
+        <version>4.1.20.Final</version>
+      </dependency>
+      <dependency>
+        <groupId>junit</groupId>
+        <artifactId>junit</artifactId>
+        <version>4.12</version>
+        <scope>test</scope>
+      </dependency>
+
+      <!-- tomcat -->
+      <dependency>
+        <groupId>org.apache.tomcat</groupId>
+        <artifactId>tomcat-catalina</artifactId>
+        <version>8.5.24</version>
+      </dependency>
+
+      <dependency>
+        <groupId>org.slf4j</groupId>
+        <artifactId>slf4j-api</artifactId>
+        <version>1.7.25</version>
+      </dependency>
+      <dependency>
+        <groupId>org.slf4j</groupId>
+        <artifactId>slf4j-simple</artifactId>
+        <version>1.7.25</version>
+      </dependency>
 
     </dependencies>
   </dependencyManagement>
@@ -96,10 +152,6 @@
           <version>3.1.0</version>
         </plugin>
         <plugin>
-          <artifactId>maven-jar-plugin</artifactId>
-          <version>3.1.0</version>
-        </plugin>
-        <plugin>
           <artifactId>maven-resources-plugin</artifactId>
           <version>3.1.0</version>
         </plugin>
@@ -107,10 +159,8 @@
           <artifactId>maven-compiler-plugin</artifactId>
           <version>3.8.0</version>
         </plugin>
-        <!-- plugin>
-          <artifactId>maven-surefire-plugin</artifactId>
-          <version>2.22.1</version>
-        </plugin -->
+        <!-- plugin> <artifactId>maven-surefire-plugin</artifactId> <version>2.22.1</version> 
+          </plugin -->
         <plugin>
           <artifactId>maven-install-plugin</artifactId>
           <version>2.5.2</version>
