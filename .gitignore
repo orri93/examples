@@ -1,2 +1,7 @@
 # Ignore all MS Office backups
 ~*.*
+
+.settings/
+target/
+.classpath
+.project

@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+    http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>gos.example</groupId>
+  <artifactId>example.remote.parent</artifactId>
+  <version>0.0.1</version>
+  <packaging>pom</packaging>
+
+  <name>Remote Example Parent</name>
+  <description>GOS Remote Example Parent</description>
+  <url>${fds.url}</url>
+
+  <organization>
+    <name>${fds.name}</name>
+    <url>${fds.url}</url>
+  </organization>
+
+  <properties>
+
+    <fds.name>FDS</fds.name>
+    <fds.url>http://www.fds.com</fds.url>
+
+    <!-- Version -->
+    <release-tag>local</release-tag>
+
+    <!-- Log path properties -->
+    <log4j2-log-path>file://var/log/</log4j2-log-path>
+    <log4j2-log-solution-file>fds.solution</log4j2-log-solution-file>
+
+    <!-- Project general properties -->
+    <java.version>1.8</java.version>
+    <source.encoding>UTF-8</source.encoding>
+
+    <!-- Project inherit properties -->
+    <project.build.sourceEncoding>${source.encoding}</project.build.sourceEncoding>
+    <project.reporting.outputEncoding>${source.encoding}</project.reporting.outputEncoding>
+
+    <!-- Maven properties -->
+    <maven-enforcer.version>3.2.2</maven-enforcer.version>
+    <maven-enforcer-plugin.version>1.4.1</maven-enforcer-plugin.version>
+    <maven.compiler.source>${java.version}</maven.compiler.source>
+    <maven.compiler.target>${java.version}</maven.compiler.target>
+
+  </properties>
+
+  <modules>
+    <module>remote-raspberry-debug</module>
+  </modules>
+
+  <scm>
+    <connection>
+      scm:git:ssh://orri@gos.sagos.is:22/home/git/examples
+    </connection>
+    <developerConnection>
+      scm:git:ssh://orri@gos.sagos.is:22/home/git/examples
+    </developerConnection>
+    <url>
+      http://gos.sagos.is
+    </url>
+    <tag>master</tag>
+  </scm>
+
+  <dependencyManagement>
+    <dependencies>
+    
+    <dependency>
+      <groupId>com.pi4j</groupId>
+      <artifactId>pi4j-gpio-extension</artifactId>
+      <version>1.1</version>
+    </dependency>
+    <dependency>
+      <groupId>com.pi4j</groupId>
+      <artifactId>pi4j-core</artifactId>
+      <version>1.1</version>
+    </dependency>
+    
+
+    </dependencies>
+  </dependencyManagement>
+
+  <build>
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-assembly-plugin</artifactId>
+          <version>3.1.0</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-clean-plugin</artifactId>
+          <version>3.1.0</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-resources-plugin</artifactId>
+          <version>3.1.0</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-compiler-plugin</artifactId>
+          <version>3.8.0</version>
+        </plugin>
+        <!-- plugin>
+          <artifactId>maven-surefire-plugin</artifactId>
+          <version>2.22.1</version>
+        </plugin -->
+        <plugin>
+          <artifactId>maven-install-plugin</artifactId>
+          <version>2.5.2</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-deploy-plugin</artifactId>
+          <version>2.8.2</version>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+  </build>
+</project>
