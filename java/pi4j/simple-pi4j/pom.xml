@@ -1,0 +1,78 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<!-- MAVEN ARTIFACT INFORMATION -->
+	<groupId>gos.examples</groupId>
+	<artifactId>simple</artifactId>
+	<name>GOS Examples Pi4J :: Simple Examples</name>
+	<description>Pi4J Java Examples using the Pi4J Library</description>
+        <version>1.2-SNAPSHOT</version>
+
+	<properties>
+		<com.pi4j.version>1.2-SNAPSHOT</com.pi4j.version>
+
+	</properties>
+
+
+	<!-- DEPENDENCIES -->
+	
+	<dependencies>
+<!-- START SNIPPET: maven-dependency-snippet -->
+<dependency>
+	<groupId>com.pi4j</groupId>
+	<artifactId>pi4j-core</artifactId>
+	<version>1.1</version>
+</dependency>
+<!-- END SNIPPET: maven-dependency-snippet -->
+		<dependency>
+			<groupId>com.pi4j</groupId>
+			<artifactId>pi4j-gpio-extension</artifactId>
+			<version>1.1</version>
+		</dependency>
+		<dependency>
+			<groupId>com.pi4j</groupId>
+			<artifactId>pi4j-device</artifactId>
+			<version>1.1</version>
+		</dependency>
+	</dependencies>
+
+	<build>
+
+	  <plugins>
+
+
+	          <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>exec-maven-plugin</artifactId>
+        <version>1.6.0</version>
+        <executions>
+          <execution>
+            <goals>
+              <goal>java</goal>
+            </goals>
+          </execution>
+        </executions>
+        <configuration>
+		<!-- mainClass>MCP3208GpioExample</mainClass -->
+		<mainClass>MCP3208GpioExampleNonMonitored</mainClass>
+          <!-- arguments>
+               <argument>argument1</argument>
+	       ...
+          </arguments -->
+          <!--systemProperties>
+            <systemProperty>
+              <key>myproperty</key>
+              <value>myvalue</value>
+            </systemProperty>
+            ...
+          </systemProperties-->
+        </configuration>
+      </plugin>
+
+	    
+	  </plugins>
+	  
+
+	</build>
+</project>
