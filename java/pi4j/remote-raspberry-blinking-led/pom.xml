@@ -43,7 +43,7 @@
         <configuration>
           <archive>
             <manifest>
-              <mainClass>org.raspirecipes.blinkingled.BliningLed</mainClass>
+              <mainClass>org.raspirecipes.blinkingled.BlinkingLed</mainClass>
             </manifest>
           </archive>
         </configuration>
