@@ -11,11 +11,13 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "qt-serial-port-cli-read-asy
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "qt-serial-port-cli-write-async", "qt-serial-port-cli-write-async\qt-serial-port-cli-write-async.vcxproj", "{C19FB2DA-8126-4EE8-BD0F-1F0CFBA9487C}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "qt-cli", "qt-cli\qt-cli.vcxproj", "{4C1091AA-56AB-3A8D-BDB4-13D051CF7141}"
-EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "qt-shared-lib", "qt-shared-lib\qt-shared-lib.vcxproj", "{F8ACA1DB-EC71-3309-9FE9-4C48B18299AA}"
-EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "qt-widgets", "qt-widgets\qt-widgets.vcxproj", "{BA3DE069-550A-3322-AB6D-5DE0FE9F3CC6}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "qt-cli", "qt-cli\qt-cli.vcxproj", "{9FA7D23D-3A97-36D2-B260-DB6059EEB5E5}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "qt-shared-lib", "qt-shared-lib\qt-shared-lib.vcxproj", "{E3F4406D-2DEA-3CF1-8E8E-845C50E70B8F}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "qt-static-lib", "qt-static-lib\qt-static-lib.vcxproj", "{C6382C7A-B24B-34E9-9E55-FB090C8E8E06}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,24 +41,28 @@ Global
 		{C19FB2DA-8126-4EE8-BD0F-1F0CFBA9487C}.Debug|Win32.Build.0 = Debug|Win32
 		{C19FB2DA-8126-4EE8-BD0F-1F0CFBA9487C}.Release|Win32.ActiveCfg = Release|Win32
 		{C19FB2DA-8126-4EE8-BD0F-1F0CFBA9487C}.Release|Win32.Build.0 = Release|Win32
-		{4C1091AA-56AB-3A8D-BDB4-13D051CF7141}.Debug|Win32.ActiveCfg = Debug|Win32
-		{4C1091AA-56AB-3A8D-BDB4-13D051CF7141}.Debug|Win32.Build.0 = Debug|Win32
-		{4C1091AA-56AB-3A8D-BDB4-13D051CF7141}.Release|Win32.ActiveCfg = Release|Win32
-		{4C1091AA-56AB-3A8D-BDB4-13D051CF7141}.Release|Win32.Build.0 = Release|Win32
-		{F8ACA1DB-EC71-3309-9FE9-4C48B18299AA}.Debug|Win32.ActiveCfg = Debug|Win32
-		{F8ACA1DB-EC71-3309-9FE9-4C48B18299AA}.Debug|Win32.Build.0 = Debug|Win32
-		{F8ACA1DB-EC71-3309-9FE9-4C48B18299AA}.Release|Win32.ActiveCfg = Release|Win32
-		{F8ACA1DB-EC71-3309-9FE9-4C48B18299AA}.Release|Win32.Build.0 = Release|Win32
 		{BA3DE069-550A-3322-AB6D-5DE0FE9F3CC6}.Debug|Win32.ActiveCfg = Debug|Win32
 		{BA3DE069-550A-3322-AB6D-5DE0FE9F3CC6}.Debug|Win32.Build.0 = Debug|Win32
 		{BA3DE069-550A-3322-AB6D-5DE0FE9F3CC6}.Release|Win32.ActiveCfg = Release|Win32
 		{BA3DE069-550A-3322-AB6D-5DE0FE9F3CC6}.Release|Win32.Build.0 = Release|Win32
+		{9FA7D23D-3A97-36D2-B260-DB6059EEB5E5}.Debug|Win32.ActiveCfg = Debug|Win32
+		{9FA7D23D-3A97-36D2-B260-DB6059EEB5E5}.Debug|Win32.Build.0 = Debug|Win32
+		{9FA7D23D-3A97-36D2-B260-DB6059EEB5E5}.Release|Win32.ActiveCfg = Release|Win32
+		{9FA7D23D-3A97-36D2-B260-DB6059EEB5E5}.Release|Win32.Build.0 = Release|Win32
+		{E3F4406D-2DEA-3CF1-8E8E-845C50E70B8F}.Debug|Win32.ActiveCfg = Debug|Win32
+		{E3F4406D-2DEA-3CF1-8E8E-845C50E70B8F}.Debug|Win32.Build.0 = Debug|Win32
+		{E3F4406D-2DEA-3CF1-8E8E-845C50E70B8F}.Release|Win32.ActiveCfg = Release|Win32
+		{E3F4406D-2DEA-3CF1-8E8E-845C50E70B8F}.Release|Win32.Build.0 = Release|Win32
+		{C6382C7A-B24B-34E9-9E55-FB090C8E8E06}.Debug|Win32.ActiveCfg = Debug|Win32
+		{C6382C7A-B24B-34E9-9E55-FB090C8E8E06}.Debug|Win32.Build.0 = Debug|Win32
+		{C6382C7A-B24B-34E9-9E55-FB090C8E8E06}.Release|Win32.ActiveCfg = Release|Win32
+		{C6382C7A-B24B-34E9-9E55-FB090C8E8E06}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		Qt5Version = msvc2013
 		SolutionGuid = {58A72F59-CFED-48D9-95A6-0B7B3A89F3AB}
+		Qt5Version = msvc2013
 	EndGlobalSection
 EndGlobal
