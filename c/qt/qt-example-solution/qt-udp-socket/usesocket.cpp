@@ -20,14 +20,33 @@ UseSocket::UseSocket(QObject *parent) :
   remoteport_(0),
   bindsocket_(nullptr),
   broadcastsocket_(nullptr),
+  share_socket_(false),
+  fire_event_(true),
   QObject(parent)
 {
-  this->bindsocket_ = new QUdpSocket(this);
-  this->broadcastsocket_ = new QUdpSocket(this);
 }
 
 void UseSocket::execute()
 {
+  this->bindsocket_ = new QUdpSocket(this);
+  if (this->share_socket_) {
+    std::cout
+      << "The bind and broadcast is using the same socket instance!"
+      << std::endl;
+    this->broadcastsocket_ = this->bindsocket_;
+  } else {
+    std::cout
+      << "The bind and broadcast each have a deticated instance!"
+      << std::endl;
+    this->broadcastsocket_ = new QUdpSocket(this);
+  }
+
+  if(this->fire_event_) {
+    std::cout << "The fire is on so process event will be called" << std::endl;
+  } else {
+    std::cout << "The fire is off so no processing events!" << std::endl;
+  }
+
   Tick::Ticking current = 0;
   bool bindresult =
       this->bindsocket_->bind(this->bindaddress_, this->bindport_);
@@ -50,7 +69,9 @@ void UseSocket::execute()
       std::cout << "Start counting forward" << std::endl;
       for(int i = COUNTING_START; i < COUNTING_END; i++) {
         while(!this->tick_.is(current)) {
-          QCoreApplication::processEvents();
+          if(this->fire_event_) {
+            QCoreApplication::processEvents();
+          }
           current = this->tick_.millis();
         }
         oncount(i);
@@ -59,7 +80,9 @@ void UseSocket::execute()
       std::cout << "Start counting backwards" << std::endl;
       for(int i = COUNTING_END - 1; i >= COUNTING_START; i--) {
         while(!this->tick_.is(current)) {
-          QCoreApplication::processEvents();
+          if(this->fire_event_) {
+            QCoreApplication::processEvents();
+          }
           current = this->tick_.millis();
         }
         oncount(i);

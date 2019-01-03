@@ -19,6 +19,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "qt-shared-lib", "qt-shared-
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "qt-static-lib", "qt-static-lib\qt-static-lib.vcxproj", "{C6382C7A-B24B-34E9-9E55-FB090C8E8E06}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "qt-udp-socket", "qt-udp-socket\qt-udp-socket.vcxproj", "{BA55CDD3-5EFD-3074-AA48-F2E75FBE7971}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -57,12 +59,16 @@ Global
 		{C6382C7A-B24B-34E9-9E55-FB090C8E8E06}.Debug|Win32.Build.0 = Debug|Win32
 		{C6382C7A-B24B-34E9-9E55-FB090C8E8E06}.Release|Win32.ActiveCfg = Release|Win32
 		{C6382C7A-B24B-34E9-9E55-FB090C8E8E06}.Release|Win32.Build.0 = Release|Win32
+		{BA55CDD3-5EFD-3074-AA48-F2E75FBE7971}.Debug|Win32.ActiveCfg = Debug|Win32
+		{BA55CDD3-5EFD-3074-AA48-F2E75FBE7971}.Debug|Win32.Build.0 = Debug|Win32
+		{BA55CDD3-5EFD-3074-AA48-F2E75FBE7971}.Release|Win32.ActiveCfg = Release|Win32
+		{BA55CDD3-5EFD-3074-AA48-F2E75FBE7971}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {58A72F59-CFED-48D9-95A6-0B7B3A89F3AB}
 		Qt5Version = msvc2013
+		SolutionGuid = {58A72F59-CFED-48D9-95A6-0B7B3A89F3AB}
 	EndGlobalSection
 EndGlobal

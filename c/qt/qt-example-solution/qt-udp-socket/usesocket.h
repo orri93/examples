@@ -52,6 +52,14 @@ public:
               << this->broadcastport_ << std::endl;
   }
 
+  void SetShare(bool share) {
+    this->share_socket_ = share;
+  }
+
+  void SetFire(bool fire) {
+    this->fire_event_ = fire;
+  }
+
   void quit();
 
 signals:
@@ -78,6 +86,8 @@ private:
   QMetaObject::Connection connection_;
   I16Tag i16tagin_;
   I16Tag i16tagout_;
+  bool share_socket_;
+  bool fire_event_;
 
   void oncount(const int& count);
   int send(const int& value);
