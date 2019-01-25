@@ -4,23 +4,28 @@
 #include "stdafx.h"
 #include "udpdatagramsui.h"
 
+#include <algorithm>
 #include <iostream>
 #include <iterator>
 #include <fstream>
 #include <sstream>
+#include <iomanip>
+#include <vector>
 #include <string>
+#include <ctime>
 
 #include <shellapi.h>
 
 #include <boost/algorithm/string.hpp>
 
 #include <CommunicationOptions.h>
-#include <UdpDatagrams.h>
+#include <Text.h>
 
 namespace po = boost::program_options;
 
 #define MAX_LOADSTRING 100
 
+#define GOS_MAXIMUM_EVENTS  20
 #define GOS_TIMER_INTERVAL 500
 #define GOSWCC(x) sizeof(x) / sizeof(wchar_t) 
 
@@ -39,7 +44,7 @@ namespace gos {
 namespace ex {
 namespace udpdpoc {
 
-static UINT_PTR timerid;
+static UINT_PTR timerid = 0;
 
 static InitializeResult initresult;
 static ParseOptionResult optionparseresult;
@@ -57,10 +62,18 @@ static PAINTSTRUCT* psp = nullptr;
 
 static int linespace = 10;
 
+static EventVector events;
+
 InitializeResult Initialize(const LPTSTR& lpCmdLine) {
   optionparseresult = ParseOptions(lpCmdLine);
 
   comminitresult = initialize();
+  if (comminitresult != CommunicationResult::Ok) {
+    CommunicationErrorMessageBox(
+      comminitresult,
+      L"Communication initialization error");
+    return InitializeResult::FailCommunicationIntializing;
+  }
 
   backgrcol = RGB(0x1e, 0x1e, 0x1e);
   backgrbrush = CreateSolidBrush(backgrcol);
@@ -77,7 +90,58 @@ void TimerProcessor(
   UINT_PTR idTimer,
   DWORD dwTime
   ) {
+  CommunicationResult result = CommunicationResult::Ok;
 
+  time_t tim = 0;
+  ::time(&tim);
+  tm timstruct = { 0 };
+  ::localtime_s(&timstruct, &tim);
+  std::wstringstream wstrstr;
+  wstrstr
+    << std::setfill(L'0') << std::setw(2) << timstruct.tm_hour << L":"
+    << std::setfill(L'0') << std::setw(2) << timstruct.tm_min << L":"
+    << std::setfill(L'0') << std::setw(2) << timstruct.tm_sec;
+
+  try {
+    std::string senderaddress;
+    int senderport;
+
+    result = isready();
+    if (result != CommunicationResult::Ok) {
+      goto gos_ex_udpdpoc_timer_process_outputing_result_;
+    }
+
+    result = createbindsocket();
+    if (result != CommunicationResult::Ok) {
+      goto gos_ex_udpdpoc_timer_process_outputing_result_;
+    }
+
+    int firstcount = 0, secondcount = 0;
+    while ((result = consume(senderaddress, senderport)) ==
+      CommunicationResult::BufferConsumed) {
+      firstcount++;
+    }
+    if (iscommunicationresulterror(result)) {
+      goto gos_ex_udpdpoc_timer_process_outputing_result_;
+    }
+  }
+  catch (std::exception ex) {
+    wstrstr << " - exception: " << ex.what();
+    goto gos_ex_udpdpoc_timer_process_adding_event_;
+  }
+  catch (...) {
+    wstrstr << " - exception!!!";
+    goto gos_ex_udpdpoc_timer_process_adding_event_;
+  }
+
+gos_ex_udpdpoc_timer_process_outputing_result_:
+  wstrstr << " - " << communicationresult2wstr(result);
+
+gos_ex_udpdpoc_timer_process_adding_event_:
+  AddEvent(wstrstr.str());
+  if (hWnd) {
+    ::InvalidateRect(hWnd, NULL, TRUE);
+  }
 }
 
 TimerResult CreateTimer(HWND& hWnd) {
@@ -86,6 +150,11 @@ TimerResult CreateTimer(HWND& hWnd) {
     timerid,
     GOS_TIMER_INTERVAL,
     (TIMERPROC)TimerProcessor);
+  return TimerResult::Ok;
+}
+
+void DestroyTimer(HWND& hWnd, UINT_PTR timer) {
+  ::KillTimer(hWnd, timer);
 }
 
 ParseOptionResult ParseOptions(const LPTSTR& lpCmdLine) {
@@ -141,6 +210,7 @@ PaintResult PaintWindow(HWND& hWnd, PAINTSTRUCT& ps) {
 
   const int x = 10;
   const int configx = 60;
+  const int spacetoevents = 10;
 
   int y = 10;
 
@@ -176,6 +246,12 @@ PaintResult PaintWindow(HWND& hWnd, PAINTSTRUCT& ps) {
   DrawText(wmsg, configx, y, TextStyle::Configuration);
   wmsg = datamessage();
   DrawText(wmsg, configx, y, TextStyle::Configuration);
+
+  y += spacetoevents;
+
+  for (EventVectorIterator i = events.begin(); i != events.end(); i++) {
+    DrawText(*i, x, y);
+  }
 
   return PaintResult::Ok;
 }
@@ -255,6 +331,24 @@ void ProcessCmdLine(CmdLineVector& vector, const LPTSTR& lpCmdLine) {
       }
     }
   }
+}
+
+void AddEvent(const std::wstring e) {
+  if (events.size() >= GOS_MAXIMUM_EVENTS) {
+    events.erase(events.begin());
+  }
+  events.push_back(e);
+}
+
+void CommunicationErrorMessageBox(
+  const CommunicationResult& result,
+  LPCWSTR lpCaption) {
+  std::wstring text = communicationresult2wstr(result);
+  ::MessageBoxW(
+    NULL,                     /* The window is not yet available */
+    (LPCWSTR)(text.c_str()),  /* The error message */
+    lpCaption,                /* The caption */
+    MB_OK | MB_ICONERROR);    /* Only ok button and show error */
 }
 
 }
@@ -358,6 +452,11 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
    ShowWindow(hWnd, nCmdShow);
    UpdateWindow(hWnd);
 
+   gos::ex::udpdpoc::TimerResult result = gos::ex::udpdpoc::CreateTimer(hWnd);
+   if (result != gos::ex::udpdpoc::TimerResult::Ok) {
+     return FALSE;
+   }
+
    return TRUE;
 }
 
@@ -402,6 +501,10 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 		EndPaint(hWnd, &ps);
 		break;
 	case WM_DESTROY:
+    if (gos::ex::udpdpoc::timerid) {
+      gos::ex::udpdpoc::DestroyTimer(hWnd, gos::ex::udpdpoc::timerid);
+      gos::ex::udpdpoc::timerid = 0;
+    }
 		PostQuitMessage(0);
 		break;
 	default:

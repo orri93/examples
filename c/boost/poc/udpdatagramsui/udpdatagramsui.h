@@ -5,6 +5,8 @@
 
 #include "resource.h"
 
+#include <UdpDatagrams.h>
+
 namespace gos {
 namespace ex {
 namespace udpdpoc {
@@ -12,8 +14,12 @@ namespace udpdpoc {
 typedef std::vector<std::string> CmdLineVector;
 typedef CmdLineVector::iterator CmdLineVectorIterator;
 
+typedef std::vector<std::wstring> EventVector;
+typedef EventVector::iterator EventVectorIterator;
+
 enum class InitializeResult {
-  Ok
+  Ok,
+  FailCommunicationIntializing
 };
 
 enum class TimerResult {
@@ -65,6 +71,12 @@ PaintResult DrawText(
   const TextStyle& style);
 
 void ProcessCmdLine(CmdLineVector& vector, const LPTSTR& lpCmdLine);
+
+void AddEvent(const std::wstring e);
+
+void CommunicationErrorMessageBox(
+  const CommunicationResult& result,
+  LPCWSTR lpCaption);
 
 }
 }

@@ -85,6 +85,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CommunicationOptions.cpp" />
+    <ClCompile Include="DataStructures.cpp" />
     <ClCompile Include="Text.cpp" />
     <ClCompile Include="UdpDatagrams.cpp" />
   </ItemGroup>

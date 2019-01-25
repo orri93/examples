@@ -8,14 +8,31 @@ namespace ex {
 namespace udpdpoc {
 
 enum class CommunicationResult {
+  /* Successfull */
   Ok,
+  NoMoreBuffered,
+  BufferConsumed,
+
+  /* Errors */
+  IncomingIncorrectSize,
+  BindEndpointUndefined,
+  MemoryBindEndpoint,
+  MemoryContext,
+  FailConsuming,
   FailBindAddress,
-  FailBindEndpoint,
-  FailBindSocket
+  FailBindSocket,
+  IncomingDataSize
 };
 
 CommunicationResult initialize();
+CommunicationResult isready();
 CommunicationResult createbindsocket();
+CommunicationResult consume(std::string& address, int& port);
+
+bool iscommunicationresulterror(const CommunicationResult& result);
+
+std::string communicationresult2str(const CommunicationResult& result);
+std::wstring communicationresult2wstr(const CommunicationResult& result);
 
 }
 }

@@ -5,6 +5,8 @@
 
 #include <boost/program_options.hpp>
 
+#include <DataStructures.h>
+
 namespace gos {
 namespace ex {
 namespace udpdpoc {
@@ -15,6 +17,11 @@ void parsevalues();
 std::wstring bindmessage();
 std::wstring broadcastmessage();
 std::wstring datamessage();
+
+void getbindinginfo(struct ipconfiguration& ipconf);
+void getbroadcastinfo(struct ipconfiguration& ipconf);
+DataId getoutgoingdataid();
+DataId getincomingdataid();
 
 }
 }

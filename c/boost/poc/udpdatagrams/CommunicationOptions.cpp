@@ -11,6 +11,7 @@
 
 #include <CommunicationOptions.h>
 #include <DataStructures.h>
+#include <Text.h>
 
 #define GOS_DEFAULT_BIND_ADDRESS "0.0.0.0"
 #define GOS_DEFAULT_BIND_PORT 32001
@@ -90,14 +91,22 @@ std::wstring datamessage() {
   return wss.str();
 }
 
-std::wstring text2wtext(const std::string& text) {
-  return text2wtext(text.c_str(), text.size());
+void getbindinginfo(struct ipconfiguration& ipconf) {
+  ipconf.address = binding_address;
+  ipconf.port = binding_port;
 }
 
-std::wstring text2wtext(const char* text, const size_t& size) {
-  std::unique_ptr<wchar_t[]> buffer = std::make_unique<wchar_t[]>(size + 1);
-  ::mbstowcs(buffer.get(), text, size + 1);
-  return std::wstring(buffer.get());
+void getbroadcastinfo(struct ipconfiguration& ipconf) {
+  ipconf.address = broadcast_address;
+  ipconf.port = broadcast_port;
+}
+
+DataId getoutgoingdataid() {
+  return outgoingdata;
+}
+
+DataId getincomingdataid() {
+  return incomingdata;
 }
 
 std::wstring dataid2wstr(DataId id) {
