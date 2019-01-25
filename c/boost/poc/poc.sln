@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.40629.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "udpdatagrams", "udpdatagrams\udpdatagrams.vcxproj", "{980816E3-A9E6-4812-9328-AE5E75AB126E}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "udpdatagramsui", "udpdatagramsui\udpdatagramsui.vcxproj", "{8AEEBC30-CBA7-4423-BDB6-2B55BF2D1440}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{980816E3-A9E6-4812-9328-AE5E75AB126E}.Debug|Win32.ActiveCfg = Debug|Win32
+		{980816E3-A9E6-4812-9328-AE5E75AB126E}.Debug|Win32.Build.0 = Debug|Win32
+		{980816E3-A9E6-4812-9328-AE5E75AB126E}.Release|Win32.ActiveCfg = Release|Win32
+		{980816E3-A9E6-4812-9328-AE5E75AB126E}.Release|Win32.Build.0 = Release|Win32
+		{8AEEBC30-CBA7-4423-BDB6-2B55BF2D1440}.Debug|Win32.ActiveCfg = Debug|Win32
+		{8AEEBC30-CBA7-4423-BDB6-2B55BF2D1440}.Debug|Win32.Build.0 = Debug|Win32
+		{8AEEBC30-CBA7-4423-BDB6-2B55BF2D1440}.Release|Win32.ActiveCfg = Release|Win32
+		{8AEEBC30-CBA7-4423-BDB6-2B55BF2D1440}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

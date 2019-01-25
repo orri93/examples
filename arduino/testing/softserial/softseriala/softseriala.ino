@@ -24,17 +24,24 @@
 
 #define MESSAGE_SIZE           93
 
-#define PIN_SOFT_SER_RX         8
-#define PIN_SOFT_SER_TX         9
+//#define PIN_SOFT_SER_RX         8
+//#define PIN_SOFT_SER_TX         9
+#define PIN_SOFT_SER_RX         D5
+#define PIN_SOFT_SER_TX         D6
 
-#define PIN_LED_HEARTBEAT       5
-#define PIN_LED_RX              6
-#define PIN_LED_TX              7
 
-#define INTERVAL_HEARTBEAT_LED  5
-#define INTERVAL_SOFT_SERIAL  100
+//#define PIN_LED_HEARTBEAT       5
+#define PIN_LED_HEARTBEAT       D7
+//#define PIN_LED_RX              6
+#define PIN_LED_RX              D1
+//#define PIN_LED_TX              7
 
-#define HEARTBEAT_STEPS     0.010
+#define INTERVAL_HEARTBEAT_LED  0
+#define INTERVAL_SOFT_SERIAL 1000
+
+#define DELAY_LED_TEST        500
+
+#define HEARTBEAT_STEPS     0.001
 
 //#define WAIT_FOR_HARDWARE_SERIAL
 
@@ -54,14 +61,20 @@ unsigned long long tick;
 void setup() {
 #ifdef PIN_LED_HEARTBEAT
   pinMode(PIN_LED_HEARTBEAT, OUTPUT);
+  digitalWrite(PIN_LED_HEARTBEAT, HIGH);
+  delay(DELAY_LED_TEST);
   digitalWrite(PIN_LED_HEARTBEAT, LOW);
 #endif
 #ifdef PIN_LED_RX
   pinMode(PIN_LED_RX, OUTPUT);
+  digitalWrite(PIN_LED_RX, HIGH);
+  delay(DELAY_LED_TEST);
   digitalWrite(PIN_LED_RX, LOW);
 #endif
 #ifdef PIN_LED_TX
   pinMode(PIN_LED_TX, OUTPUT);
+  digitalWrite(PIN_LED_TX, HIGH);
+  delay(DELAY_LED_TEST);
   digitalWrite(PIN_LED_TX, LOW);
 #endif
 
@@ -111,12 +124,16 @@ void loop() {
   tick = millis();
 
 #if defined(PIN_LED_HEARTBEAT)
+#if INTERVAL_HEARTBEAT_LED > 0
   if(heartbeat.is(tick)) {
+#endif
     heartbeatval = sin(heartbeatat) * 127.5 + 127.5;
     analogWrite(PIN_LED_HEARTBEAT, (int)heartbeatval);
     heartbeatat = heartbeatat <  6.283 /* 2*PI */ ?
       heartbeatat + HEARTBEAT_STEPS : 0.0;
+#if INTERVAL_HEARTBEAT_LED > 0
   }
+#endif
 #endif
 
   if(softtick.is(tick)) {
