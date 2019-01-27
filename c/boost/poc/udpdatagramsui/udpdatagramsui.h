@@ -11,9 +11,6 @@ namespace gos {
 namespace ex {
 namespace udpdpoc {
 
-typedef std::vector<std::string> CmdLineVector;
-typedef CmdLineVector::iterator CmdLineVectorIterator;
-
 typedef std::vector<std::wstring> EventVector;
 typedef EventVector::iterator EventVectorIterator;
 
@@ -25,12 +22,6 @@ enum class InitializeResult {
 enum class TimerResult {
   Ok,
   Failed
-};
-
-enum class ParseOptionResult {
-  Ok,
-  OpenConfigurationFileFailed,
-  OpenDefaultConfigurationFileFailed
 };
 
 enum class PaintResult {
@@ -45,8 +36,6 @@ enum class TextStyle {
   Title,
   Configuration
 };
-
-ParseOptionResult ParseOptions(const LPTSTR& lpCmdLine);
 
 PaintResult PaintWindow(HWND& hWnd, PAINTSTRUCT& ps);
 
@@ -69,8 +58,6 @@ PaintResult DrawText(
   const size_t& count,
   const int& x, int& y,
   const TextStyle& style);
-
-void ProcessCmdLine(CmdLineVector& vector, const LPTSTR& lpCmdLine);
 
 void AddEvent(const std::wstring e);
 

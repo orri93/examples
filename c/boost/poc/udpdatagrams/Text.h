@@ -7,6 +7,8 @@ namespace gos {
 namespace ex {
 namespace udpdpoc {
 
+std::wstring clocktext();
+
 std::wstring text2wtext(const std::string& text);
 std::wstring text2wtext(const char* text, const size_t& size);
 

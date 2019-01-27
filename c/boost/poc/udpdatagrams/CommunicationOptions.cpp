@@ -13,16 +13,21 @@
 #include <DataStructures.h>
 #include <Text.h>
 
-#define GOS_DEFAULT_BIND_ADDRESS "0.0.0.0"
-#define GOS_DEFAULT_BIND_PORT 32001
-#define GOS_DEFAULT_BROADCAST_ADDRESS "127.0.0.1"
-#define GOS_DEFAULT_BROADCAST_PORT 32002
-#define GOS_DEFAULT_OUTGOING_DATA_ID "a"
-#define GOS_DEFAULT_INCOMING_DATA_ID "b"
-
 namespace gos {
 namespace ex {
 namespace udpdpoc {
+
+static struct ipconfiguration default_binding = {
+  GOS_DEFAULT_BIND_ADDRESS,
+  GOS_DEFAULT_BIND_PORT
+};
+static struct ipconfiguration default_broadcasting = {
+  GOS_DEFAULT_BROADCAST_ADDRESS,
+  GOS_DEFAULT_BROADCAST_PORT
+};
+
+static std::string default_outgoingdata_id = GOS_DEFAULT_OUTGOING_DATA_ID;
+static std::string default_incomingdata_id = GOS_DEFAULT_INCOMING_DATA_ID;
 
 static std::string binding_address = GOS_DEFAULT_BIND_ADDRESS;
 static short binding_port = GOS_DEFAULT_BIND_PORT;
@@ -36,30 +41,50 @@ static DataId outgoingdata = DataId::Undefined;
 static DataId incomingdata = DataId::Undefined;
 
 static std::wstring dataid2wstr(DataId id);
+static void assigndefault(
+  struct ipconfiguration& destination,
+  const struct ipconfiguration& source);
+
+void setdefaults(
+  struct ipconfiguration& binding,
+  struct ipconfiguration& broadcasting,
+  const char* outgoingdataid,
+  const char* incomingdataid) {
+  assigndefault(default_binding, binding);
+  assigndefault(default_broadcasting, broadcasting);
+  default_outgoingdata_id = outgoingdataid;
+  default_incomingdata_id = incomingdataid;
+}
 
 void options(boost::program_options::options_description& description) {
+  binding_address = default_binding.address;
+  binding_port = default_binding.port;
+  broadcast_address = default_broadcasting.address;
+  broadcast_port = default_broadcasting.port;
+  outgoing_data_id = default_outgoingdata_id;
+  incoming_data_id = default_incomingdata_id;
   auto strval = [&](std::string* strp) {
     return boost::program_options::value<std::string>(strp); };
   auto shoval = [&](short* shop) {
     return boost::program_options::value<short>(shop); };
   description.add_options()
     ("binding-address,i",
-    strval(&binding_address)->default_value(GOS_DEFAULT_BIND_ADDRESS),
+    strval(&binding_address)->default_value(default_binding.address),
     "The address to bind to")
     ("binding-port,n",
-    shoval(&binding_port)->default_value(GOS_DEFAULT_BIND_PORT),
+    shoval(&binding_port)->default_value(default_binding.port),
     "The port to bind to")
     ("broadcast-address,r",
-    strval(&broadcast_address)->default_value(GOS_DEFAULT_BROADCAST_ADDRESS),
+    strval(&broadcast_address)->default_value(default_broadcasting.address),
     "The address to broadcast to")
     ("broadcast-port,o",
-    shoval(&broadcast_port)->default_value(GOS_DEFAULT_BROADCAST_PORT),
+    shoval(&broadcast_port)->default_value(default_broadcasting.port),
     "The port to broadcast to")
     ("outgoing-data,d",
-    strval(&outgoing_data_id)->default_value(GOS_DEFAULT_OUTGOING_DATA_ID),
+    strval(&outgoing_data_id)->default_value(default_outgoingdata_id),
     "The id for the outgoing data (a or b)")
     ("incoming-data,d",
-    strval(&incoming_data_id)->default_value(GOS_DEFAULT_INCOMING_DATA_ID),
+    strval(&incoming_data_id)->default_value(default_incomingdata_id),
     "The id for the incoming data (a or b)");
 }
 
@@ -121,6 +146,13 @@ std::wstring dataid2wstr(DataId id) {
     return L"Unknown";
   }
 }
+static void assigndefault(
+  struct ipconfiguration& destination,
+  const struct ipconfiguration& source) {
+  destination.address = source.address;
+  destination.port = source.port;
+}
+
 
 }
 }

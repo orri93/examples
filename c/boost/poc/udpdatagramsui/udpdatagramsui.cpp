@@ -5,23 +5,13 @@
 #include "udpdatagramsui.h"
 
 #include <algorithm>
-#include <iostream>
-#include <iterator>
-#include <fstream>
-#include <sstream>
-#include <iomanip>
 #include <vector>
 #include <string>
-#include <ctime>
 
 #include <shellapi.h>
 
-#include <boost/algorithm/string.hpp>
-
-#include <CommunicationOptions.h>
+#include <GeneralOptions.h>
 #include <Text.h>
-
-namespace po = boost::program_options;
 
 #define MAX_LOADSTRING 100
 
@@ -51,8 +41,6 @@ static ParseOptionResult optionparseresult;
 static CommunicationResult comminitresult;
 static PaintResult paintresult;
 
-static std::string configuration_file_name;
-
 static HBRUSH backgrbrush;
 static COLORREF backgrcol;
 static COLORREF textcol;
@@ -65,7 +53,7 @@ static int linespace = 10;
 static EventVector events;
 
 InitializeResult Initialize(const LPTSTR& lpCmdLine) {
-  optionparseresult = ParseOptions(lpCmdLine);
+  optionparseresult = parseoptions((const char*)lpCmdLine);
 
   comminitresult = initialize();
   if (comminitresult != CommunicationResult::Ok) {
@@ -92,15 +80,8 @@ void TimerProcessor(
   ) {
   CommunicationResult result = CommunicationResult::Ok;
 
-  time_t tim = 0;
-  ::time(&tim);
-  tm timstruct = { 0 };
-  ::localtime_s(&timstruct, &tim);
   std::wstringstream wstrstr;
-  wstrstr
-    << std::setfill(L'0') << std::setw(2) << timstruct.tm_hour << L":"
-    << std::setfill(L'0') << std::setw(2) << timstruct.tm_min << L":"
-    << std::setfill(L'0') << std::setw(2) << timstruct.tm_sec;
+  wstrstr << clocktext();
 
   try {
     std::string senderaddress;
@@ -157,50 +138,6 @@ void DestroyTimer(HWND& hWnd, UINT_PTR timer) {
   ::KillTimer(hWnd, timer);
 }
 
-ParseOptionResult ParseOptions(const LPTSTR& lpCmdLine) {
-  const char* DefaultConfigurationFile = "udpdatagrams.cfg";
-
-  ParseOptionResult result = ParseOptionResult::Ok;
-
-  CmdLineVector cmdlineargs;
-  ProcessCmdLine(cmdlineargs, lpCmdLine);
-
-  po::options_description genoptdesc("Generic options");
-  genoptdesc.add_options()
-    ("version,v", "print version string")
-    ("help,h", "show help message")
-    ("config,c", po::value<std::string>(&configuration_file_name)->
-      default_value(DefaultConfigurationFile),
-      "name of a file of a configuration");
-  po::options_description confoptdesc("Configuration");
-  gos::ex::udpdpoc::options(confoptdesc); // Creaet UDP options
-  po::options_description cmdloptdesc;
-  cmdloptdesc.add(genoptdesc).add(confoptdesc);
-  po::options_description conffiloptdesc;
-  conffiloptdesc.add(confoptdesc);
-  po::variables_map varmap;
-  po::command_line_parser cmdlinparser(cmdlineargs);
-  po::parsed_options parseopt = cmdlinparser.options(genoptdesc)
-    .style(po::command_line_style::default_style).run();
-  po::store(parseopt, varmap);
-  po::notify(varmap);
-
-  std::ifstream conffilestream(configuration_file_name.c_str());
-  if (conffilestream) {
-    auto parsedfile = po::parse_config_file(conffilestream, conffiloptdesc);
-    po::store(parsedfile, varmap);
-    po::notify(varmap);
-  } else {
-    result = configuration_file_name == DefaultConfigurationFile ?
-      ParseOptionResult::OpenDefaultConfigurationFileFailed :
-      ParseOptionResult::OpenConfigurationFileFailed;
-  }
-
-  parsevalues();
-
-  return result;
-}
-
 PaintResult PaintWindow(HWND& hWnd, PAINTSTRUCT& ps) {
   /* For helper functions */
   hwp = &hWnd;
@@ -214,7 +151,6 @@ PaintResult PaintWindow(HWND& hWnd, PAINTSTRUCT& ps) {
 
   int y = 10;
 
-  std::wstringstream wstrstr;
   std::wstring wmsg;
   
   RECT rect;
@@ -225,19 +161,9 @@ PaintResult PaintWindow(HWND& hWnd, PAINTSTRUCT& ps) {
 
   DrawText(WelcomeMessage, GOSWCC(WelcomeMessage), x, y, TextStyle::Title);
 
-  switch (optionparseresult) {
-  case ParseOptionResult::Ok:
-    wstrstr << L"Successfully processed the configuration file "
-      << text2wtext(configuration_file_name);
-    DrawText(wstrstr.str(), x, y);
-    wstrstr.clear();
-    break;
-  case ParseOptionResult::OpenConfigurationFileFailed:
-    wstrstr << L"Failed to open configuration file "
-      << text2wtext(configuration_file_name);
-    DrawText(wstrstr.str(), x, y);
-    wstrstr.clear();
-    break;
+  if (displayoptionresult(optionparseresult)) {
+    wmsg = optionresult2wstr(optionparseresult);
+    DrawText(wmsg, x, y);
   }
 
   wmsg = bindmessage();
@@ -315,22 +241,6 @@ PaintResult DrawText(
     y += metric.tmHeight + innerlinespace;
   }
   return PaintResult::Ok;
-}
-
-void ProcessCmdLine(CmdLineVector& vector, const LPTSTR& lpCmdLine) {
-  std::string trimed, cmdlinestr = std::string((const char*)lpCmdLine);
-  if (cmdlinestr.size() > 0) {
-    CmdLineVector temporaryvector;
-    boost::split(temporaryvector, cmdlinestr, [](char c){
-      return c == ' ' || c == '\t'; });
-    CmdLineVectorIterator i, e = temporaryvector.end();
-    for (i = temporaryvector.begin(); i != e; i++) {
-      trimed = ::boost::algorithm::trim_copy(*i);
-      if (trimed.size() > 0) {
-        vector.push_back(trimed);
-      }
-    }
-  }
 }
 
 void AddEvent(const std::wstring e) {

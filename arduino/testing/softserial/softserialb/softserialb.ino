@@ -34,7 +34,7 @@
 #define INTERVAL_HEARTBEAT_LED  0
 #define INTERVAL_SOFT_SERIAL 1000
 
-#define DELAY_LED_TEST        500
+#define DELAY_LED_TEST        50
 
 #define HEARTBEAT_STEPS     0.010
 

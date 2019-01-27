@@ -7,6 +7,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "udpdatagrams", "udpdatagram
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "udpdatagramsui", "udpdatagramsui\udpdatagramsui.vcxproj", "{8AEEBC30-CBA7-4423-BDB6-2B55BF2D1440}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "udpdatagramscli", "udpdatagramscli\udpdatagramscli.vcxproj", "{BF84B56E-4AB8-472C-9567-ADECA1040ADA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -21,6 +23,10 @@ Global
 		{8AEEBC30-CBA7-4423-BDB6-2B55BF2D1440}.Debug|Win32.Build.0 = Debug|Win32
 		{8AEEBC30-CBA7-4423-BDB6-2B55BF2D1440}.Release|Win32.ActiveCfg = Release|Win32
 		{8AEEBC30-CBA7-4423-BDB6-2B55BF2D1440}.Release|Win32.Build.0 = Release|Win32
+		{BF84B56E-4AB8-472C-9567-ADECA1040ADA}.Debug|Win32.ActiveCfg = Debug|Win32
+		{BF84B56E-4AB8-472C-9567-ADECA1040ADA}.Debug|Win32.Build.0 = Debug|Win32
+		{BF84B56E-4AB8-472C-9567-ADECA1040ADA}.Release|Win32.ActiveCfg = Release|Win32
+		{BF84B56E-4AB8-472C-9567-ADECA1040ADA}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

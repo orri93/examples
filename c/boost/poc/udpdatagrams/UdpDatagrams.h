@@ -14,10 +14,14 @@ enum class CommunicationResult {
   BufferConsumed,
 
   /* Errors */
+  IncomingZeroSize,
   IncomingIncorrectSize,
+  AvailableIncorrectSize,
   BindEndpointUndefined,
   MemoryBindEndpoint,
   MemoryContext,
+  MemorySocket,
+  FailAvailable,
   FailConsuming,
   FailBindAddress,
   FailBindSocket,
@@ -28,6 +32,8 @@ CommunicationResult initialize();
 CommunicationResult isready();
 CommunicationResult createbindsocket();
 CommunicationResult consume(std::string& address, int& port);
+
+void cleanup();
 
 bool iscommunicationresulterror(const CommunicationResult& result);
 
