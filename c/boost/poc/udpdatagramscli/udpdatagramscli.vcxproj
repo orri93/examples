@@ -80,12 +80,16 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Handler.cpp" />
     <ClCompile Include="udpdatagramscli.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\udpdatagrams\udpdatagrams.vcxproj">
       <Project>{980816e3-a9e6-4812-9328-ae5e75ab126e}</Project>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Handler.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -9,24 +9,25 @@
 
 #include <iostream>
 #include <chrono>
-#include <atomic>
 
+#include <UdpDatagrams.h>
 #include <GeneralOptions.h>
+#include <DataStructures.h>
 #include <Text.h>
 
-#define GOS_TIMER_INTERVAL 500
+#include "Handler.h"
+
+#define GOS_TIMER_INTERVAL 100
 
 #ifdef WIN32
 #else
 #endif
 
-static std::atomic_bool rununtilbreak;
-
 namespace gos {
 namespace ex {
 namespace udpdpoc {
 
-static ParseOptionResult optionparseresult;
+static unsigned long long incremental = 0;
 
 int Initialize(int argc, char* argv[]) {
   std::wstring wmsg;
@@ -46,7 +47,7 @@ int Initialize(int argc, char* argv[]) {
     GOS_DEFAULT_INCOMING_DATA_ID,
     GOS_DEFAULT_OUTGOING_DATA_ID);
 
-  optionparseresult = parseoptions(argc, argv);
+  ParseOptionResult optionparseresult = parseoptions(argc, argv);
   if (displayoptionresult(optionparseresult)) {
     wmsg = optionresult2wstr(optionparseresult);
     std::wcout << wmsg << std::endl;
@@ -59,33 +60,56 @@ int Initialize(int argc, char* argv[]) {
   wmsg = datamessage();
   std::wcout << wmsg << std::endl;
 
-  return 0;
+  CommunicationResult comminitresult = initialize(GOS_TIMER_INTERVAL);
+  if (comminitresult != CommunicationResult::Ok) {
+    std::wstring errormessage = communicationresult2wstr(comminitresult);
+    std::wcerr << errormessage << std::endl;
+    return EXIT_FAILURE;
+  }
+
+  return EXIT_SUCCESS;
 }
 
 }
 }
 }
+
+typedef std::chrono::steady_clock LoopClock;
+typedef LoopClock::time_point LoopTimePoint;
 
 int _tmain(int argc, char* argv[])
 {
-  int result = 0;
+  int result = EXIT_SUCCESS;
 
   result = gos::ex::udpdpoc::Initialize(argc, argv);
-
-  std::chrono::steady_clock clock;
-  std::chrono::steady_clock::time_point tick, next = clock.now();
-
-  rununtilbreak = true;
-  while (rununtilbreak) {
-    tick = clock.now();
-    if (tick >= next) {
-      std::wstringstream wstrstr;
-      wstrstr << gos::ex::udpdpoc::clocktext();
-      std::wcout << wstrstr.str() << std::endl;
-      next = tick + std::chrono::milliseconds{ GOS_TIMER_INTERVAL };
-    }
+  if (result != EXIT_SUCCESS) {
+    return result;
   }
 
-	return 0;
+  gos::ex::udpdpoc::rununtilbreak = true;
+  while (gos::ex::udpdpoc::rununtilbreak) {
+    if (gos::ex::udpdpoc::istimeforloop()) {
+      std::wstringstream wstrstr;
+      gos::ex::udpdpoc::loop(wstrstr, gos::ex::udpdpoc::incremental++);
+      std::wcout << wstrstr.str() << std::endl;
+    }
+  }
+  try {
+    std::lock_guard<std::mutex> guard(gos::ex::udpdpoc::breakstringmutex);    
+    std::wcout << std::endl << gos::ex::udpdpoc::breakingmessage << std::endl;
+    gos::ex::udpdpoc::cleanup();
+  }
+  catch (std::exception ex) {
+    std::cerr << "Locking for Ctrl handler failed with an exception: "
+      << ex.what() << std::endl;
+    return EXIT_FAILURE;
+  }
+  catch (...) {
+    std::cerr << "Locking for Ctrl handler failed with an exception!"
+      << std::endl;
+    return EXIT_FAILURE;
+  }
+
+  return result;
 }
 

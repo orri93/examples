@@ -36,6 +36,8 @@ namespace udpdpoc {
 
 static UINT_PTR timerid = 0;
 
+static unsigned long long incremental = 0;
+
 static InitializeResult initresult;
 static ParseOptionResult optionparseresult;
 static CommunicationResult comminitresult;
@@ -81,44 +83,8 @@ void TimerProcessor(
   CommunicationResult result = CommunicationResult::Ok;
 
   std::wstringstream wstrstr;
-  wstrstr << clocktext();
+  gos::ex::udpdpoc::loop(wstrstr, incremental);
 
-  try {
-    std::string senderaddress;
-    int senderport;
-
-    result = isready();
-    if (result != CommunicationResult::Ok) {
-      goto gos_ex_udpdpoc_timer_process_outputing_result_;
-    }
-
-    result = createbindsocket();
-    if (result != CommunicationResult::Ok) {
-      goto gos_ex_udpdpoc_timer_process_outputing_result_;
-    }
-
-    int firstcount = 0, secondcount = 0;
-    while ((result = consume(senderaddress, senderport)) ==
-      CommunicationResult::BufferConsumed) {
-      firstcount++;
-    }
-    if (iscommunicationresulterror(result)) {
-      goto gos_ex_udpdpoc_timer_process_outputing_result_;
-    }
-  }
-  catch (std::exception ex) {
-    wstrstr << " - exception: " << ex.what();
-    goto gos_ex_udpdpoc_timer_process_adding_event_;
-  }
-  catch (...) {
-    wstrstr << " - exception!!!";
-    goto gos_ex_udpdpoc_timer_process_adding_event_;
-  }
-
-gos_ex_udpdpoc_timer_process_outputing_result_:
-  wstrstr << " - " << communicationresult2wstr(result);
-
-gos_ex_udpdpoc_timer_process_adding_event_:
   AddEvent(wstrstr.str());
   if (hWnd) {
     ::InvalidateRect(hWnd, NULL, TRUE);

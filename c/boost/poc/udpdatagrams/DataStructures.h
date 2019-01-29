@@ -10,6 +10,8 @@ namespace gos {
 namespace ex {
 namespace udpdpoc {
 
+typedef void* DataPointer;
+
 enum class DataId { Undefined, A, B };
 
 struct ipconfiguration {
@@ -17,21 +19,24 @@ struct ipconfiguration {
   int port;
 };
 
-struct data_a {
-  char text[GOS_UDP_DATAGRAMS_TEXT_SIZE];
-  float f;
-  int i;
-  unsigned char b;
-};
-
-struct data_b {
-  char text[GOS_UDP_DATAGRAMS_TEXT_SIZE];
-  unsigned long long l;
-  uint16_t ui16;
-  int64_t i64;
-};
+typedef struct ipconfiguration IpInformation;
 
 size_t sizeofdata(const DataId& id);
+
+void createdataa(const unsigned long long& incremental);
+void createdatab(const unsigned long long& incremental);
+
+void accessdata(const DataId& id, DataPointer& pointer, size_t& size);
+void parsedata(
+  const DataId& id,
+  const DataPointer& pointer,
+  const size_t& size);
+
+void dumpdata(std::wstringstream& wstrstr, const DataId& id);
+
+void cloneipinformation(
+  IpInformation& destination,
+  const IpInformation& source);
 
 }
 }

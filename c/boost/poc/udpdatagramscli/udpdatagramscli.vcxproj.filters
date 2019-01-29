@@ -18,5 +18,13 @@
     <ClCompile Include="udpdatagramscli.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Handler.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Handler.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
