@@ -3,3 +3,5 @@
 [Rr]elease/
 *.v12.suo
 *.vcxproj.user
+*.qmake.stash
+*_qmake_qmake_immediate_qmlcache.qrc
