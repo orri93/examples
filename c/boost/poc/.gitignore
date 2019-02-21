@@ -1,4 +1,5 @@
 [Dd]ebug/
 [Tt]esting/
+.vs/
 *.user
 *.suo
