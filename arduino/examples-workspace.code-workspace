@@ -1,0 +1,14 @@
+{
+	"folders": [
+		{
+			"path": "testing\\sensors\\max6675KtypeA"
+		},
+		{
+			"path": "testing\\sensors\\max6675KtypeB"
+		},
+		{
+			"path": "testing\\sensors\\max6675and31865"
+		}
+	],
+	"settings": {}
+}
