@@ -13,3 +13,4 @@
 [submodule "apache/maven/solution/src/maven-solution-project-web/sub/swagger-ui-orri-fork"]
 	path = apache/maven/solution/src/maven-solution-project-web/sub/swagger-ui-orri-fork
 	url = https://github.com/orri93/swagger-ui.git
+

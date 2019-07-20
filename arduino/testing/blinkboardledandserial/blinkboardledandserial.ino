@@ -1,7 +1,7 @@
 #define BAUD_RATE 9600
 
 #define PIN_LED_1 LED_BUILTIN
-#define PIN_LED_2 6
+#define PIN_LED_2 3
 
 #define INTERVAL_LED     200
 #define INTERVAL_SERIAL 1100

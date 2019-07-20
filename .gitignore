@@ -8,3 +8,5 @@ target/
 .cproject
 .ino.cpp
 
+.vs/
+__vm/

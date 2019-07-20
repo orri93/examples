@@ -1,10 +1,10 @@
 #include <ModbusSlave.h>
 
 #define PIN_LED 3
-#define PIN_TX 1
-#define PIN_RE 2
-#define PIN_DE 2
-#define PIN_TE 2
+//#define PIN_TX 1
+//#define PIN_RE 2
+//#define PIN_DE 2
+#define PIN_TE 4
 
 #define RS485_BAUD  9600
 
