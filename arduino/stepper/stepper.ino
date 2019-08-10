@@ -27,6 +27,8 @@ void setup()
   digitalWrite(PIN_PWMA, HIGH);
   pinMode(PIN_PWMB, OUTPUT);
   digitalWrite(PIN_PWMB, HIGH);
+
+  fds::modbus::setup();
 }
 
 void loop()
