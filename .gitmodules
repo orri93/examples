@@ -20,3 +20,6 @@
 [submodule "c/cmake/cmake-gtest-gbench-starter"]
 	path = c/cmake/cmake-gtest-gbench-starter
 	url = https://github.com/PhDP/cmake-gtest-gbench-starter.git
+[submodule "extern/web/real-time-data-viz-d3-crossfilter-websocket-tutorial"]
+	path = extern/web/real-time-data-viz-d3-crossfilter-websocket-tutorial
+	url = https://github.com/benjaminmbrown/real-time-data-viz-d3-crossfilter-websocket-tutorial.git
