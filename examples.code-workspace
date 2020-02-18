@@ -1,7 +1,10 @@
 {
 	"folders": [
-		{
-			"path": "c\\cmake\\tutorial"
-		}
-	]
+    {
+      "path": "c\\cmake\\tutorial"
+    },
+    {
+      "path": "go"
+    }
+  ]
 }
