@@ -12,3 +12,5 @@ target/
 __vm/
 .vscode/
 *.stackdump
+
+build/

@@ -22,3 +22,6 @@
 [submodule "extern/web/real-time-data-viz-d3-crossfilter-websocket-tutorial"]
 	path = extern/web/real-time-data-viz-d3-crossfilter-websocket-tutorial
 	url = https://github.com/benjaminmbrown/real-time-data-viz-d3-crossfilter-websocket-tutorial.git
+[submodule "extern/web/socket-io-typescript-chat"]
+	path = extern/web/socket-io-typescript-chat
+	url = https://github.com/luixaviles/socket-io-typescript-chat.git

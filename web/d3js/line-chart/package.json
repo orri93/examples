@@ -1,0 +1,14 @@
+{
+  "name": "@d3/line-chart",
+  "main": "35e84dc078248e17@183.js",
+  "version": "183.0.0",
+  "homepage": "https://observablehq.com/@d3/line-chart",
+  "author": {
+    "name": "D3",
+    "url": "https://observablehq.com/@d3"
+  },
+  "type": "module",
+  "peerDependencies": {
+    "@observablehq/runtime": "4"
+  }
+}
