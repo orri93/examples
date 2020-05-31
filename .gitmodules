@@ -25,3 +25,6 @@
 [submodule "extern/web/socket-io-typescript-chat"]
 	path = extern/web/socket-io-typescript-chat
 	url = https://github.com/luixaviles/socket-io-typescript-chat.git
+[submodule "c/qt/cmake-qml-plugin-example"]
+	path = c/qt/cmake-qml-plugin-example
+	url = https://github.com/4rtzel/cmake-qml-plugin-example.git
