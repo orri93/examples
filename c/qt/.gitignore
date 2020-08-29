@@ -5,3 +5,13 @@
 *.vcxproj.user
 *.qmake.stash
 *_qmake_qmake_immediate_qmlcache.qrc
+
+# QT
+Makefile
+Makefile.Debug
+Makefile.Release
+*.user
+*.pro.user
+*.dll
+*.lib
+*.exp

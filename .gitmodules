@@ -28,3 +28,6 @@
 [submodule "c/qt/cmake-qml-plugin-example"]
 	path = c/qt/cmake-qml-plugin-example
 	url = https://github.com/4rtzel/cmake-qml-plugin-example.git
+[submodule "web/queue-worker-example"]
+	path = web/queue-worker-example
+	url = https://github.com/pilovm/queue-worker-example.git

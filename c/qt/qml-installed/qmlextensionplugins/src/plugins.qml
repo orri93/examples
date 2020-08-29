@@ -38,7 +38,7 @@
 **
 ****************************************************************************/
 //![0]
-import TimeExample 1.0 // import types from the plugin
+import TimeExample 1.0 as Te // import types from the plugin
 
 Clock { // this class is defined in QML (imports/TimeExample/Clock.qml)
 
