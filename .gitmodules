@@ -31,3 +31,9 @@
 [submodule "web/queue-worker-example"]
 	path = web/queue-worker-example
 	url = https://github.com/pilovm/queue-worker-example.git
+[submodule "extern/web/serverless-scripting-examples"]
+	path = extern/web/serverless-scripting-examples
+	url = https://github.com/stackpath/serverless-scripting-examples.git
+[submodule "extern/web/emscripten-cubes"]
+	path = extern/web/emscripten-cubes
+	url = https://github.com/mortennobel/emscripten-cubes.git
