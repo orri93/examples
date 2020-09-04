@@ -37,3 +37,6 @@
 [submodule "extern/web/emscripten-cubes"]
 	path = extern/web/emscripten-cubes
 	url = https://github.com/mortennobel/emscripten-cubes.git
+[submodule "extern/web/chart/arction/lcjs-showcase-trading"]
+	path = extern/web/chart/arction/lcjs-showcase-trading
+	url = https://github.com/Arction/lcjs-showcase-trading.git
