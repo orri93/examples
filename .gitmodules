@@ -40,3 +40,9 @@
 [submodule "extern/web/chart/arction/lcjs-showcase-trading"]
 	path = extern/web/chart/arction/lcjs-showcase-trading
 	url = https://github.com/Arction/lcjs-showcase-trading.git
+[submodule "extern/web/chart/arction/lcjs-example-0802-spectrogram"]
+	path = extern/web/chart/arction/lcjs-example-0802-spectrogram
+	url = https://github.com/Arction/lcjs-example-0802-spectrogram.git
+[submodule "extern/web/chart/arction/lcjs-showcase-audio"]
+	path = extern/web/chart/arction/lcjs-showcase-audio
+	url = https://github.com/Arction/lcjs-showcase-audio.git
