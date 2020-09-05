@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
-    "target": "ES3",
-    "watch": false,
+    "target": "ESNext",
+    "watch": true,
     "lib": ["DOM", "ES2019"]
   }
 }
