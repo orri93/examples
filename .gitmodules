@@ -46,3 +46,12 @@
 [submodule "extern/web/chart/arction/lcjs-showcase-audio"]
 	path = extern/web/chart/arction/lcjs-showcase-audio
 	url = https://github.com/Arction/lcjs-showcase-audio.git
+[submodule "extern/web/chart/arction/lcjs-ng-template"]
+	path = extern/web/chart/arction/lcjs-ng-template
+	url = https://github.com/Arction/lcjs-ng-template.git
+[submodule "extern/web/chart/arction/lcjs-vue-template"]
+	path = extern/web/chart/arction/lcjs-vue-template
+	url = https://github.com/Arction/lcjs-vue-template.git
+[submodule "extern/web/chart/arction/lcjs-react-template"]
+	path = extern/web/chart/arction/lcjs-react-template
+	url = https://github.com/Arction/lcjs-react-template.git
