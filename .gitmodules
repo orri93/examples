@@ -55,3 +55,9 @@
 [submodule "extern/web/chart/arction/lcjs-react-template"]
 	path = extern/web/chart/arction/lcjs-react-template
 	url = https://github.com/Arction/lcjs-react-template.git
+[submodule "extern/web/chart/arction/lcjs-example-0800-heatmapgrid"]
+	path = extern/web/chart/arction/lcjs-example-0800-heatmapgrid
+	url = https://github.com/Arction/lcjs-example-0800-heatmapgrid.git
+[submodule "extern/web/chart/arction/lcjs-example-0200-candlesticks"]
+	path = extern/web/chart/arction/lcjs-example-0200-candlesticks
+	url = https://github.com/Arction/lcjs-example-0200-candlesticks.git
