@@ -11,7 +11,7 @@
 	<name>Spring4MVCHelloWorldRestServiceDemo Maven Webapp</name>
 
 	<properties>
-		<springframework.version>4.3.0.RELEASE</springframework.version>
+		<springframework.version>4.3.17.RELEASE</springframework.version>
 		<jackson.library>2.11.0</jackson.library>
 	</properties>
 
