@@ -61,3 +61,6 @@
 [submodule "extern/web/chart/arction/lcjs-example-0200-candlesticks"]
 	path = extern/web/chart/arction/lcjs-example-0200-candlesticks
 	url = https://github.com/Arction/lcjs-example-0200-candlesticks.git
+[submodule "extern/web/chart/highcharts/highcharts-simplified"]
+	path = extern/web/chart/highcharts/highcharts-simplified
+	url = https://github.com/m-haziq/highcharts-simplified.git
