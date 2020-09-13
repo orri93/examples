@@ -1,0 +1,11 @@
+---
+GENERATOR: 
+  PackageName: goscforg
+  PackageDescription: "GOS C for Go"
+  Includes: ["gos/forgo.h"]
+  Options:
+    SafeStrings: true
+
+PARSER:
+  IncludePaths: ["../../include"]
+
