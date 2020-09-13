@@ -15,4 +15,6 @@ __vm/
 
 build/
 
+CMakeSettings.json
+
 /artifacts
