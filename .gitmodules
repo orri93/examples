@@ -64,3 +64,18 @@
 [submodule "extern/web/chart/highcharts/highcharts-simplified"]
 	path = extern/web/chart/highcharts/highcharts-simplified
 	url = https://github.com/m-haziq/highcharts-simplified.git
+[submodule "extern/go/angular-go-websocket"]
+	path = extern/go/angular-go-websocket
+	url = https://github.com/kedevked/angular-go-websocket.git
+[submodule "extern/go/go-todo-rest-api-example"]
+	path = extern/go/go-todo-rest-api-example
+	url = https://github.com/mingrammer/go-todo-rest-api-example.git
+[submodule "extern/go/create-rest-api-in-go-tutorial"]
+	path = extern/go/create-rest-api-in-go-tutorial
+	url = https://github.com/TutorialEdge/create-rest-api-in-go-tutorial.git
+[submodule "extern/googletest"]
+	path = extern/googletest
+	url = https://github.com/google/googletest.git
+[submodule "extern/go/using-go-with-c-libraries"]
+	path = extern/go/using-go-with-c-libraries
+	url = https://github.com/lxwagn/using-go-with-c-libraries.git
