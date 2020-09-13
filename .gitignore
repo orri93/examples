@@ -8,8 +8,12 @@ target/
 .cproject
 .ino.cpp
 
+# Visual Studio
 .vs/
 __vm/
+out/
+
+# Visual Studio Code
 .vscode/
 *.stackdump
 
