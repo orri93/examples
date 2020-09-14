@@ -3,10 +3,10 @@ package main
 //
 // Calling C code from go
 //
-// Go provides a pseudo package called “C” to interface with C libraries.
+// Go provides a pseudo package called ï¿½Cï¿½ to interface with C libraries.
 // Its not very straightforward how to do this though.
-// In this tutorial, we’ll go over creating a simple C function,
-// and calling it from go. After that, we’ll move on to a slightly
+// In this tutorial, weï¿½ll go over creating a simple C function,
+// and calling it from go. After that, weï¿½ll move on to a slightly
 // more complex example involving C structs.
 //
 // See https://karthikkaranth.me/blog/calling-c-code-from-go
@@ -18,34 +18,43 @@ package main
 // #include <gos/forgo.h>
 import "C"
 import (
-	"fmt"
-	"unsafe"
+  "fmt"
+  "unsafe"
 )
 
 func main() {
-	name := C.CString("Gopher")
-	defer C.free(unsafe.Pointer(name))
+  namea := C.CString("Gopher")
+  defer C.free(unsafe.Pointer(namea))
 
-	size := C.size_t(1024)
-	year := C.int(2018)
+  sizea := C.size_t(1024)
+  yeara := C.int(2018)
 
-	ptr := C.malloc(C.sizeof_char * 1024)
-	defer C.free(unsafe.Pointer(ptr))
+  ptra := C.malloc(C.sizeof_char * 1024)
+  defer C.free(unsafe.Pointer(ptra))
 
-	result := C.gos_for_go_greet((*C.char)(ptr), size, name, year)
+  resulta := C.gos_for_go_greet((*C.char)(ptra), sizea, namea, yeara)
 
-  b := C.GoBytes(ptr, result)
-	fmt.Println(string(b))
+  sa := C.GoBytes(ptra, resulta)
+  fmt.Println(string(sa))
 
-	g := C.struct_GosForGoGreetee {
-		buffer: ptr,
-		size: size,
-		name: name,
-		year: year
-	}
+  nameb := C.CString("Orri")
+  defer C.free(unsafe.Pointer(nameb))
 
-	result := C.gos_for_go_greet_st(&g)
+  sizeb := C.size_t(512)
+  yearb := C.int(1971)
 
-	b := C.GoBytes(ptr, result)
-	fmt.Println(string(b))
+  ptrb := C.malloc(C.sizeof_char * 512)
+  defer C.free(unsafe.Pointer(ptrb))
+
+  g := C.struct_GosForGoGreetee {
+		buffer: (*C.char)(ptrb),
+		size: sizeb,
+		name: nameb,
+		year: yearb
+  }
+
+  resultb := C.gos_for_go_greet_st(&g)
+
+  sb := C.GoBytes(ptrb, resultb)
+  fmt.Println(string(sb))
 }
