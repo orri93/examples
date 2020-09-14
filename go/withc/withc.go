@@ -1,4 +1,4 @@
-package withc
+package main
 
 // #cgo CFLAGS: -I../../include
 // #cgo LDFLAGS: -L../../lib -lgosforgo -Wl,-rpath=../../lib
