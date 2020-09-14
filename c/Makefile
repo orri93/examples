@@ -7,4 +7,4 @@ static:
 	cd forgo; make static
 
 clean:
-  cd forgo; make clean
+	cd forgo; make clean

@@ -9,5 +9,5 @@ static:
 	cd go; make all
 
 clean:
-  cd c; make clean
+	cd c; make clean
 	cd go; make clean

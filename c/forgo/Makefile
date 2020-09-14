@@ -16,4 +16,4 @@ static:
 	rm -f forgo.o
 
 clean:
-  rm -f ../../lib/libgosforgo.a ../../lib/libgosforgo.so
+	rm -f ../../lib/libgosforgo.a ../../lib/libgosforgo.so
