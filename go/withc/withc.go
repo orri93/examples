@@ -18,43 +18,43 @@ package main
 // #include <gos/forgo.h>
 import "C"
 import (
-  "fmt"
-  "unsafe"
+	"fmt"
+	"unsafe"
 )
 
 func main() {
-  namea := C.CString("Gopher")
-  defer C.free(unsafe.Pointer(namea))
+	namea := C.CString("Gopher")
+	defer C.free(unsafe.Pointer(namea))
 
-  sizea := C.size_t(1024)
-  yeara := C.int(2018)
+	sizea := C.size_t(1024)
+	yeara := C.int(2018)
 
-  ptra := C.malloc(C.sizeof_char * 1024)
-  defer C.free(unsafe.Pointer(ptra))
+	ptra := C.malloc(C.sizeof_char * 1024)
+	defer C.free(unsafe.Pointer(ptra))
 
-  resulta := C.gos_for_go_greet((*C.char)(ptra), sizea, namea, yeara)
+	resulta := C.gos_for_go_greet((*C.char)(ptra), sizea, namea, yeara)
 
-  sa := C.GoBytes(ptra, resulta)
-  fmt.Println(string(sa))
+	sa := C.GoBytes(ptra, resulta)
+	fmt.Println(string(sa))
 
-  nameb := C.CString("Orri")
-  defer C.free(unsafe.Pointer(nameb))
+	nameb := C.CString("Orri")
+	defer C.free(unsafe.Pointer(nameb))
 
-  sizeb := C.size_t(512)
-  yearb := C.int(1971)
+	sizeb := C.size_t(512)
+	yearb := C.int(1971)
 
-  ptrb := C.malloc(C.sizeof_char * 512)
-  defer C.free(unsafe.Pointer(ptrb))
+	ptrb := C.malloc(C.sizeof_char * 512)
+	defer C.free(unsafe.Pointer(ptrb))
 
-  g := C.struct_GosForGoGreetee {
+	g := C.struct_GosForGoGreetee{
 		buffer: (*C.char)(ptrb),
-		size: sizeb,
-		name: nameb,
-		year: yearb
-  }
+		size:   sizeb,
+		name:   nameb,
+		year:   yearb,
+	}
 
-  resultb := C.gos_for_go_greet_st(&g)
+	resultb := C.gos_for_go_greet_st(&g)
 
-  sb := C.GoBytes(ptrb, resultb)
-  fmt.Println(string(sb))
+	sb := C.GoBytes(ptrb, resultb)
+	fmt.Println(string(sb))
 }
