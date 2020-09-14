@@ -79,3 +79,6 @@
 [submodule "extern/go/using-go-with-c-libraries"]
 	path = extern/go/using-go-with-c-libraries
 	url = https://github.com/lxwagn/using-go-with-c-libraries.git
+[submodule "extern/web/chart/highcharts/highcharts-angular"]
+	path = extern/web/chart/highcharts/highcharts-angular
+	url = https://github.com/highcharts/highcharts-angular.git
