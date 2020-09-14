@@ -1,7 +1,7 @@
 package withc
 
 // #cgo CFLAGS: -I../../include
-// #cgo LDFLAGS: -L../../lib -llibgosforgo -Wl,-rpath=../../lib
+// #cgo LDFLAGS: -L../../lib -lgosforgo -Wl,-rpath=../../lib
 // #include <stdlib.h>
 // #include <gos/forgo.h>
 import "C"
