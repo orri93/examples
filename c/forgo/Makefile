@@ -14,3 +14,6 @@ static:
 	ranlib libgosforgo.a
 	mv -f libgosforgo.a ../../lib
 	rm -f forgo.o
+
+clean:
+  rm -f ../../lib/libgosforgo.a ../../lib/libgosforgo.so
