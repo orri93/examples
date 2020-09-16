@@ -82,3 +82,6 @@
 [submodule "extern/web/chart/highcharts/highcharts-angular"]
 	path = extern/web/chart/highcharts/highcharts-angular
 	url = https://github.com/highcharts/highcharts-angular.git
+[submodule "extern/web/angular-wasm"]
+	path = extern/web/angular-wasm
+	url = https://github.com/LukasMarx/angular-wasm.git
