@@ -91,3 +91,6 @@
 [submodule "extern/web/boyanio-soil-wasm"]
 	path = extern/web/boyanio-soil-wasm
 	url = https://github.com/boyanio/SOIL-wasm.git
+[submodule "extern/c/soil"]
+	path = extern/c/soil
+	url = https://github.com/paralin/soil
