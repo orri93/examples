@@ -85,3 +85,9 @@
 [submodule "extern/web/angular-wasm"]
 	path = extern/web/angular-wasm
 	url = https://github.com/LukasMarx/angular-wasm.git
+[submodule "extern/web/boyanio-angular-wasm"]
+	path = extern/web/boyanio-angular-wasm
+	url = https://github.com/boyanio/angular-wasm.git
+[submodule "extern/web/boyanio-soil-wasm"]
+	path = extern/web/boyanio-soil-wasm
+	url = https://github.com/boyanio/SOIL-wasm.git
