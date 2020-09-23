@@ -94,3 +94,12 @@
 [submodule "extern/c/soil"]
 	path = extern/c/soil
 	url = https://github.com/paralin/soil
+[submodule "extern/web/chart/arction/lcjs-example-0803-scrollingHeatmap"]
+	path = extern/web/chart/arction/lcjs-example-0803-scrollingHeatmap
+	url = https://github.com/Arction/lcjs-example-0803-scrollingHeatmap.git
+[submodule "extern/web/chart/arction/lcjs-example-0500-dashboardWithLegendBox"]
+	path = extern/web/chart/arction/lcjs-example-0500-dashboardWithLegendBox
+	url = https://github.com/Arction/lcjs-example-0500-dashboardWithLegendBox.git
+[submodule "extern/net/chart/arction/lcu-tutorial-2DHeatMap-07"]
+	path = extern/net/chart/arction/lcu-tutorial-2DHeatMap-07
+	url = https://github.com/Arction/lcu-tutorial-2DHeatMap-07.git
