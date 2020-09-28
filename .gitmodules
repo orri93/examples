@@ -103,3 +103,6 @@
 [submodule "extern/net/chart/arction/lcu-tutorial-2DHeatMap-07"]
 	path = extern/net/chart/arction/lcu-tutorial-2DHeatMap-07
 	url = https://github.com/Arction/lcu-tutorial-2DHeatMap-07.git
+[submodule "extern/python/color-gradient-algorithm"]
+	path = extern/python/color-gradient-algorithm
+	url = https://github.com/rofrol/color-gradient-algorithm.git
