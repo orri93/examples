@@ -106,3 +106,9 @@
 [submodule "extern/python/color-gradient-algorithm"]
 	path = extern/python/color-gradient-algorithm
 	url = https://github.com/rofrol/color-gradient-algorithm.git
+[submodule "extern/go/gorilla/websocket"]
+	path = extern/go/gorilla/websocket
+	url = https://github.com/gorilla/websocket.git
+[submodule "extern/go/gorilla/mux"]
+	path = extern/go/gorilla/mux
+	url = https://github.com/gorilla/mux.git
