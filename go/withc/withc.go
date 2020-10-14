@@ -3,10 +3,10 @@ package main
 //
 // Calling C code from go
 //
-// Go provides a pseudo package called �C� to interface with C libraries.
+// Go provides a pseudo package called C to interface with C libraries.
 // Its not very straightforward how to do this though.
-// In this tutorial, we�ll go over creating a simple C function,
-// and calling it from go. After that, we�ll move on to a slightly
+// In this tutorial, we will go over creating a simple C function,
+// and calling it from go. After that, we will move on to a slightly
 // more complex example involving C structs.
 //
 // See https://karthikkaranth.me/blog/calling-c-code-from-go
