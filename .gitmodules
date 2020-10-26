@@ -112,3 +112,12 @@
 [submodule "extern/go/gorilla/mux"]
 	path = extern/go/gorilla/mux
 	url = https://github.com/gorilla/mux.git
+[submodule "extern/web/in-memory-web-api"]
+	path = extern/web/in-memory-web-api
+	url = https://github.com/angular/in-memory-web-api.git
+[submodule "extern/web/ng-realtime-dashboard-ngrx"]
+	path = extern/web/ng-realtime-dashboard-ngrx
+	url = https://github.com/lamisChebbi/ng-realtime-dashboard-ngrx.git
+[submodule "extern/web/chart/scichart/SciChart.JS.Examples"]
+	path = extern/web/chart/scichart/SciChart.JS.Examples
+	url = https://github.com/ABTSoftware/SciChart.JS.Examples.git
