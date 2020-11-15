@@ -3,7 +3,7 @@
 
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
-#include <SDL/SDL_ttf.h>
+#include <SDL_ttf.h>
 #include <emscripten.h>
 #include <stdbool.h>
 
@@ -98,7 +98,7 @@ struct engine
     int grid_height;
 };
 
-engine eng;
+extern engine eng;
 
 engine *engine_init(
         unsigned int w,

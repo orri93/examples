@@ -2,6 +2,8 @@
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 
+engine eng;
+
 void setup_textures();
 void setup_decals();
 void setup_actors();
