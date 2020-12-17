@@ -121,3 +121,6 @@
 [submodule "extern/web/chart/scichart/SciChart.JS.Examples"]
 	path = extern/web/chart/scichart/SciChart.JS.Examples
 	url = https://github.com/ABTSoftware/SciChart.JS.Examples.git
+[submodule "extern/web/d3/angular-d3-socketio"]
+	path = extern/web/d3/angular-d3-socketio
+	url = https://github.com/auth0-blog/angular-d3-socketio
