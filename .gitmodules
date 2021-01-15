@@ -124,3 +124,9 @@
 [submodule "extern/web/d3/angular-d3-socketio"]
 	path = extern/web/d3/angular-d3-socketio
 	url = https://github.com/auth0-blog/angular-d3-socketio
+[submodule "extern/web/d3/angular-d3-karllhughes"]
+	path = extern/web/d3/angular-d3-karllhughes
+	url = https://github.com/karllhughes/angular-d3.git
+[submodule "extern/web/d3/d3-real-time-boeric"]
+	path = extern/web/d3/d3-real-time-boeric
+	url = https://github.com/boeric/d3RealTimeChartMulti.git
