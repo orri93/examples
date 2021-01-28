@@ -9,6 +9,7 @@ import { AppConfiguration } from './app.configuration';
 
 import { HpComponent } from './hp/hp.component';
 import { P1Component } from './p1/p1.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 export function initializeApp(appConfiguration: AppConfiguration) {
   return () => appConfiguration.load();
@@ -24,7 +25,8 @@ export function initializeApp(appConfiguration: AppConfiguration) {
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    HttpClientXsrfModule
+    HttpClientXsrfModule,
+    BrowserAnimationsModule
   ],
   providers: [
     AppConfiguration, {
