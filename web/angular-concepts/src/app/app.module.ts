@@ -17,7 +17,7 @@ import { HpComponent } from './hp/hp.component';
 import { P1Component } from './p1/p1.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-export function initializeApp(appConfiguration: AppConfiguration) {
+export function initializeApp(appConfiguration: AppConfiguration): any {
   return () => appConfiguration.load();
 }
 

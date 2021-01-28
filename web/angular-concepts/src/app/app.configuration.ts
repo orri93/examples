@@ -8,12 +8,12 @@ export class AppConfiguration {
 
   constructor(private http: HttpClient) {}
 
-  load() {
+  load(): Promise<void> {
     const jsonFile = `${environment.configurationFile}`;
     return new Promise<void>((resolve, reject) => {
       this.http.get(jsonFile).toPromise()
         .then((response: ApplicationConfiguration) => {
-          AppConfiguration.settings = <ApplicationConfiguration> response;
+          AppConfiguration.settings = (response as ApplicationConfiguration);
           resolve();
         }).catch((response: any) => {
           reject(`Could not load file '${jsonFile}': ${JSON.stringify(response)}`);
