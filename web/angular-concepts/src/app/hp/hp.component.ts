@@ -19,7 +19,7 @@ export class HpComponent implements OnInit {
       .filter((r) => r.data && r.data.type === 'page')
       .map((r) => ({
         name: r.data.name,
-        routerLink: r.pathMatch
+        routerLink: r.path
       }));
   }
 

@@ -1,1 +1,8 @@
-<p>p1 works!</p>
+<mat-form-field class="example-form-field">
+  <mat-label>Clearable input</mat-label>
+  <input matInput type="text" [(ngModel)]="text" />
+  <button mat-button *ngIf="text" matSuffix mat-icon-button aria-label="Clear" (click)="text=''">
+    <mat-icon>close</mat-icon>
+  </button>
+</mat-form-field>
+<mat-slider min="1" max="5" step="0.5" value="{{n}}"></mat-slider>
