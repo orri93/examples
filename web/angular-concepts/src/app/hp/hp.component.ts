@@ -12,6 +12,7 @@ export interface Page {
   styleUrls: ['./hp.component.css']
 })
 export class HpComponent implements OnInit {
+  pageName = 'Home Page';
   pages: Page[];
 
   constructor(router: Router) {

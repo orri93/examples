@@ -12,6 +12,8 @@ import { ConceptService } from './../concept.service';
 export class P1Component implements OnInit, AfterViewInit {
   @ViewChild('tp') tpr: ElementRef;
 
+  pageName = 'Page no. 1';
+
   n1: number;
   t1: string;
   t2: string;
