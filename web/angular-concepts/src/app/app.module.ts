@@ -16,6 +16,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { HpComponent } from './hp/hp.component';
 import { P1Component } from './p1/p1.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { P2Component } from './p2/p2.component';
 
 export function initializeApp(appConfiguration: AppConfiguration): any {
   return () => appConfiguration.load();
@@ -25,7 +26,8 @@ export function initializeApp(appConfiguration: AppConfiguration): any {
   declarations: [
     AppComponent,
     HpComponent,
-    P1Component
+    P1Component,
+    P2Component
   ],
   imports: [
     BrowserModule,
