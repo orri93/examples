@@ -16,8 +16,6 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 
-// import { HighchartsChartComponent } from 'highcharts-angular';
-
 import { HpComponent } from './hp/hp.component';
 import { P1Component } from './p1/p1.component';
 import { P2Component } from './p2/p2.component';
@@ -44,7 +42,6 @@ export function initializeApp(appConfiguration: AppConfiguration): any {
     HttpClientModule,
     HttpClientXsrfModule,
     BrowserAnimationsModule,
-    // HighchartsChartComponent,
     MatSliderModule,
     MatButtonModule,
     MatInputModule,

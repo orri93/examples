@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ViewChild, OnInit } from '@angular/core';
+
+import * as Highcharts from 'highcharts';
 
 @Component({
   selector: 'app-m1c1',
@@ -6,6 +8,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./m1c1.component.css']
 })
 export class M1c1Component implements OnInit {
+  @ViewChild('m1c1chart') chart: Highcharts.Chart;
+
+  componentName = 'Module no. 1 - Component no. 1';
+
+  Highcharts: typeof Highcharts = Highcharts;
+  chartOptions: Highcharts.Options = {
+    series: [{
+      data: [1, 2, 3],
+      type: 'line'
+    }]
+  };
+
 
   constructor() { }
 
