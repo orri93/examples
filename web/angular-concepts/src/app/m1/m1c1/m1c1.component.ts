@@ -12,18 +12,19 @@ export class M1c1Component implements OnInit {
 
   componentName = 'Module no. 1 - Component no. 1';
 
+  data = [1, 2, 3];
+
   Highcharts: typeof Highcharts = Highcharts;
   chartOptions: Highcharts.Options = {
     series: [{
-      data: [1, 2, 3],
+      data: this.data,
       type: 'line'
     }]
   };
 
-
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit(): void {
   }
-
 }
