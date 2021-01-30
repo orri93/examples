@@ -21,6 +21,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { HpComponent } from './hp/hp.component';
 import { P1Component } from './p1/p1.component';
 import { P2Component } from './p2/p2.component';
+import { P3Component } from './p3/p3.component';
 import { C1Component } from './c1/c1.component';
 
 export function initializeApp(appConfiguration: AppConfiguration): any {
@@ -33,7 +34,8 @@ export function initializeApp(appConfiguration: AppConfiguration): any {
     HpComponent,
     P1Component,
     P2Component,
-    C1Component
+    C1Component,
+    P3Component
   ],
   imports: [
     BrowserModule,

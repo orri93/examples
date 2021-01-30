@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, ViewChild, OnInit } from '@angular/core';
+import { MatInputModule } from '@angular/material/input';
 
 @Component({
   selector: 'app-c1',
@@ -6,10 +7,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./c1.component.css']
 })
 export class C1Component implements OnInit {
+  @Input() text: string;
+  @Input() real: number;
+
+  componentName = 'Component no. 1';
 
   constructor() { }
 
   ngOnInit(): void {
   }
-
 }

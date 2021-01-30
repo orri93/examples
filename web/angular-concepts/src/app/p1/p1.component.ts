@@ -4,6 +4,8 @@ import { AppConfiguration } from './../app.configuration';
 
 import { ConceptService } from './../concept.service';
 
+import { C1Component } from './../c1/c1.component';
+
 @Component({
   selector: 'app-p1',
   templateUrl: './p1.component.html',
@@ -11,12 +13,13 @@ import { ConceptService } from './../concept.service';
 })
 export class P1Component implements OnInit, AfterViewInit {
   @ViewChild('tp') tpr: ElementRef;
+  @ViewChild('p1c1') p1c1: C1Component;
 
   pageName = 'Page no. 1';
 
-  n1: number;
   t1: string;
   t2: string;
+  n1: number;
 
   observable: Observable<string>;
 
@@ -39,15 +42,21 @@ export class P1Component implements OnInit, AfterViewInit {
       data => {
         console.log(data);
         pe.innerHTML = data;
+        this.p1c1.text = data;
+        this.p1c1.real += 1.0;
       },
       error => {
         console.error(error);
         pe.innerHTML = error;
+        this.p1c1.text = error;
+        this.p1c1.real += 1.0;
       },
       () => {
         const message = 'Process Completed!';
         console.log(message);
         pe.innerHTML = message;
+        this.p1c1.text = message;
+        this.p1c1.real -= 1.0;
       }
     );
   }
