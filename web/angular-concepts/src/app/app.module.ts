@@ -17,11 +17,12 @@ import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 
 import { HpComponent } from './hp/hp.component';
+import { C1Component } from './c1/c1.component';
 import { P1Component } from './p1/p1.component';
 import { P2Component } from './p2/p2.component';
 import { P3Component } from './p3/p3.component';
-import { C1Component } from './c1/c1.component';
 import { P4Component } from './p4/p4.component';
+import { P5Component } from './p5/p5.component';
 
 export function initializeApp(appConfiguration: AppConfiguration): any {
   return () => appConfiguration.load();
@@ -31,11 +32,12 @@ export function initializeApp(appConfiguration: AppConfiguration): any {
   declarations: [
     AppComponent,
     HpComponent,
+    C1Component,
     P1Component,
     P2Component,
-    C1Component,
     P3Component,
-    P4Component
+    P4Component,
+    P5Component
   ],
   imports: [
     BrowserModule,
