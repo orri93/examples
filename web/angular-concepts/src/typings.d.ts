@@ -17,6 +17,35 @@ interface ChartSize {
   height: number;
 }
 
+interface ChartAxes {
+  x: number,
+  y: number,
+  size: ChartSize
+}
+
+interface DataRange {
+  x: NumberRange;
+  y: NumberRange;
+  z: NumberRange;
+}
+
+interface Parsing {
+  dateTime: string;
+}
+
+interface Formatting {
+  time: string;
+}
+
+interface D3Configuration {
+  size: ChartSize;
+  range: DataRange;
+  axes: ChartAxes;
+  parsing: Parsing;
+  formatting: Formatting;
+  interval: number;
+}
+
 interface HighchartsHeatmapConfiguration {
   numberRange: NumberRange;
   matrixRange: MatrixRange;
@@ -30,8 +59,9 @@ interface TimerObservableConfiguration {
 }
 
 interface ApplicationConfiguration {
+  d3: D3Configuration;
   hchm: HighchartsHeatmapConfiguration;
-  timer: TimerObservableConfiguration
+  timer: TimerObservableConfiguration;
   a: string;
   b: number;
 }

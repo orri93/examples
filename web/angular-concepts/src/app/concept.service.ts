@@ -1,12 +1,32 @@
 import { Injectable } from '@angular/core';
-import { from, Observable } from 'rxjs';
+import { Observable } from 'rxjs';
+
+const webkitRequestFullscreen = 'webkitRequestFullscreen';
+const msRequestFullscreen = 'msRequestFullscreen';
+const mozRequestFullScreen = 'mozRequestFullScreen';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ConceptService {
 
+  static getRequestFullscreen(doc: Document): any {
+    return doc.documentElement.requestFullscreen ||
+    doc.documentElement[webkitRequestFullscreen] ||
+    doc.documentElement[msRequestFullscreen] ||
+    doc.documentElement[mozRequestFullScreen];
+  }
+
   constructor() { }
+
+  getAxisRange(range: NumberRange): NumberRange {
+    return { from: range.from, to: range.to };
+  }
+
+  updateAxisRange(destination: NumberRange, source: NumberRange): void {
+    destination.from = source.from;
+    destination.to = source.to;
+  }
 
   getRandomNumber(range: NumberRange): number {
     const minimum = Math.ceil(range.from);
