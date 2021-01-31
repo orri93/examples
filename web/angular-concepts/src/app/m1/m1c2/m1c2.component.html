@@ -1,12 +1,12 @@
 <h4>{{componentName}}</h4>
 
 <highcharts-chart
+  id = "container"
   [Highcharts] = "Highcharts"
-  [options] = "chartOptions"
   [constructorType] = "chartConstructor"
+  [options] = "chartOptions"
   [callbackFunction] = "chartCallback"
   [(update)] = "updateFlag"
   [oneToOne] = "true"
-
   style="width: 100%; height: 400px; display: block;"
 ></highcharts-chart>

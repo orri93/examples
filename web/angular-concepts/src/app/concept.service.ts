@@ -18,7 +18,7 @@ export class ConceptService {
     const result = [];
     for (let i = 0; i < range.columnCount; i++) {
       for (let j = 0; j < range.rowCount; j++) {
-        result.push([i, j, this.getRandomNumber(numberRange)])
+        result.push([i, j, this.getRandomNumber(numberRange)]);
       }
     }
     return result;

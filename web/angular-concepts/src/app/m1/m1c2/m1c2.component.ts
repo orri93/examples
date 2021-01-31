@@ -1,6 +1,6 @@
-import { Component, ViewChild, AfterViewInit, OnInit } from '@angular/core';
+import { Component, ViewChild, OnInit, OnDestroy } from '@angular/core';
 import { flatten } from '@angular/compiler';
-import { Subscription, interval, Subject, AsyncSubject, BehaviorSubject } from 'rxjs';
+import { Subscription, Observable, interval } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
 import * as Highcharts from 'highcharts/highstock';
@@ -18,7 +18,7 @@ heatmap(Highcharts);
   templateUrl: './m1c2.component.html',
   styleUrls: ['./m1c2.component.css']
 })
-export class M1c2Component implements OnInit, AfterViewInit {
+export class M1c2Component implements OnInit, OnDestroy {
   componentName = 'Module no. 1 - Component no. 2';
 
   Highcharts: typeof Highcharts = Highcharts;
@@ -69,34 +69,28 @@ export class M1c2Component implements OnInit, AfterViewInit {
     }]
   };
   chartConstructor = 'chart';
-  chartCallback;
   updateFlag = false;
+  chartCallback;
 
   private chart: any;
+  private data: any;
+  private atColumn: number;
 
-  private data: Array<Array<number>>;
-
-  private isInitialized: Subject<boolean>;
-  private subscriptions: Subscription[];
+  private observable: Observable<number>;
+  private timer: Subscription;
 
   constructor(private conceptService: ConceptService) {
     const configuration = AppConfiguration.settings.hchm;
     const self = this;
 
+    this.observable = interval(configuration.interval);
+
     this.chartCallback = c => {
       // saving chart reference
       self.chart = c;
-
-      self.data = self.conceptService.getRandomMatrix(
-        configuration.matrixRange,
-        configuration.numberRange);
-      const adjustedData = this.adjust(this.data, configuration.size);
-
-      self.chart.series[0].update( { data: adjustedData, type: 'heatmap' });
     };
 
-    this.isInitialized = new Subject<boolean>();
-    this.subscriptions = [];
+    this.atColumn = configuration.matrixRange.columnCount;
   }
 
   private adjust(points: Array<Array<number>>, chartSize: ChartSize): Array<any> {
@@ -115,18 +109,97 @@ export class M1c2Component implements OnInit, AfterViewInit {
   }
 
   private renderChart(): void {
+    const configuration = AppConfiguration.settings.hchm;
+    const self = this;
+    const chart: Highcharts.Chart = this.chart;
+
+    console.log('Render Chart with update');
+
+    for (let j = 0; j < configuration.matrixRange.rowCount; j++) {
+      const p = [
+        this.atColumn,                                                  // X
+        j,                                                              // Y
+        this.conceptService.getRandomNumber(configuration.numberRange)  // Z
+      ];
+      /*
+        * Add the point with Shift
+        * A point is shifted off the start of the series as one is appended
+        * to the end.
+        * https://api.highcharts.com/class-reference/Highcharts.Series#addPoint
+        */
+      chart.series[0].addPoint(
+        /* The point options
+          * If options is a single number,
+          * a point with that y value is appended to the series. */
+        p,
+        false,  /* Redraw */
+        true,   /* Shift */
+        false,  /* Animation */
+        false   /* With Event */
+        );
+    }
+    this.atColumn++;
+
+    chart.redraw(true);
+  }
+
+  private onTimer(): void {
+    this.renderChart();
+  }
+
+  private createTimer(): void {
+    this.timer = this.observable.subscribe(( x => { this.onTimer(); }));
+  }
+
+  updateChart(): void {
+    const configuration = AppConfiguration.settings.hchm;
+    const self = this;
+    const chart = this.chart;
+
+    self.chartOptions.title = {
+      text: 'Updated title!'
+    };
+
+    self.data = self.conceptService.getRandomMatrix(
+      configuration.matrixRange,
+      configuration.numberRange);
+    const adjustedData = this.adjust(this.data, configuration.size);
+
+    self.chart.series[0].update( {data: adjustedData, type: 'heatmap' } );
+
+    self.updateFlag = true;
+  }
+
+  start(): void {
+    if (this.timer) {
+      if (this.timer.closed) {
+        this.createTimer();
+      } else {
+        console.warn('Timer is still opened');
+      }
+    } else {
+      this.createTimer();
+    }
+  }
+
+  stop(): void {
+    if (this.timer) {
+      if (this.timer.closed) {
+        console.warn('Timer is already closed');
+      } else {
+        this.timer.unsubscribe();
+      }
+    } else {
+      console.warn('The timer is still undefined');
+    }
   }
 
   ngOnInit(): void {
   }
 
-  ngAfterViewInit(): void {
-    const configuration = AppConfiguration.settings.hchm;
-    const self = this;
-    this.subscriptions.push(interval(configuration.interval)
-      .pipe(takeUntil(self.isInitialized))
-      .subscribe(() => {
-        this.renderChart();
-      }));
+  ngOnDestroy(): void {
+    if (this.timer && !this.timer.closed) {
+      this.timer.unsubscribe();
+    }
   }
 }

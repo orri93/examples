@@ -1,8 +1,8 @@
 {
   "hchm": {
     "numberRange": { "from": 1.0, "to": 100.0 },
-    "matrixRange": { "columnCount": 600, "rowCount": 400 },
-    "size": { "width": 600, "height": 400 },
+    "matrixRange": { "columnCount": 20, "rowCount": 10 },
+    "size": { "width": 20, "height": 10 },
     "interval": 1000
   },
   "timer": { "first": 3000, "second": 5000 },
