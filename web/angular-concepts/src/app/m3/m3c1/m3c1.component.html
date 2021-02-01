@@ -1,0 +1,11 @@
+<h4>{{componentName}}</h4>
+
+<div class="right" *ngIf="i1s$">
+
+  <span *ngFor="let i1 of i1s$ | async; let i = index">
+    <span class="m3c1-button">
+      <button mat-raised-button (click)="delI1(i)">{{ i1.name }}</button>
+    </span>
+  </span>
+
+</div>

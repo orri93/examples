@@ -1,0 +1,9 @@
+.left, .right {
+  float: left;
+  width: calc(50% - 6em);
+  padding: 3em;
+}
+
+.m3c2-full-width {
+  width: 100%;
+}

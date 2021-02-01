@@ -1,0 +1,16 @@
+<h4>{{componentName}}</h4>
+
+<div class="left">
+
+  <mat-form-field class="m3c2-full-width">
+    <mat-label>Name</mat-label>
+    <input matInput type="text" placeholder="name" #name>
+  </mat-form-field>
+
+  <mat-form-field class="m3c2-full-width">
+    <mat-label>Value</mat-label>
+    <input matInput type="number" placeholder="0" #value> 
+  </mat-form-field>
+
+  <button mat-raised-button (click)="addI1(name.value, value.value)">Add an Item</button>
+</div>

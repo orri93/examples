@@ -15,10 +15,12 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AppConfiguration } from './app.configuration';
 
-import { reducer } from './reducers/tutorial.reducer';
+import { reducers } from './store/reducers';
 
 import { M1Module } from './m1/m1.module';
 import { M2Module } from './m2/m2.module';
+import { M3Module } from './m3/m3.module';
+import { M4Module } from './m4/m4.module';
 
 import { HpComponent } from './hp/hp.component';
 import { C1Component } from './c1/c1.component';
@@ -31,6 +33,8 @@ import { P4Component } from './p4/p4.component';
 import { P5Component } from './p5/p5.component';
 import { P6Component } from './p6/p6.component';
 import { P7Component } from './p7/p7.component';
+import { P8Component } from './p8/p8.component';
+import { P9Component } from './p9/p9.component';
 
 export function initializeApp(appConfiguration: AppConfiguration): any {
   return () => appConfiguration.load();
@@ -49,7 +53,9 @@ export function initializeApp(appConfiguration: AppConfiguration): any {
     P4Component,
     P5Component,
     P6Component,
-    P7Component
+    P7Component,
+    P8Component,
+    P9Component
   ],
   imports: [
     BrowserModule,
@@ -57,14 +63,16 @@ export function initializeApp(appConfiguration: AppConfiguration): any {
     AppRoutingModule,
     HttpClientModule,
     HttpClientXsrfModule,
-    StoreModule.forRoot( { tutorial: reducer }, {} ),
+    StoreModule.forRoot(reducers),
     BrowserAnimationsModule,
     MatSliderModule,
     MatButtonModule,
     MatInputModule,
     MatIconModule,
     M1Module,
-    M2Module
+    M2Module,
+    M3Module,
+    M4Module
   ],
   providers: [
     AppConfiguration, {

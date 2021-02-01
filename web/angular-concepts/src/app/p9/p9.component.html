@@ -1,0 +1,22 @@
+<h3>{{pageName}}</h3>
+
+<app-m4c1 #m4c1></app-m4c1>
+<app-m4c2 #m4c2></app-m4c2>
+
+<span>
+  <span class="p9-button">
+    <button mat-raised-button (click)="m4c1.increment();">Increment</button>
+  </span>
+  <span class="p9-button">
+    <button mat-raised-button (click)="m4c1.decrement();">Decrement</button>
+  </span>
+  <span class="p9-button">
+    <button mat-raised-button (click)="m4c1.reset();">Reset</button>
+  </span>
+  <span class="p9-button">
+    <button mat-raised-button (click)="m4c2.login();">Login</button>
+  </span>
+  <span class="p9-button">
+    <button mat-raised-button (click)="m4c2.logout();">Logout</button>
+  </span>
+</span>

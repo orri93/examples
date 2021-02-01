@@ -9,7 +9,8 @@ import { P4Component } from './p4/p4.component';
 import { P5Component } from './p5/p5.component';
 import { P6Component } from './p6/p6.component';
 import { P7Component } from './p7/p7.component';
-
+import { P8Component } from './p8/p8.component';
+import { P9Component } from './p9/p9.component';
 
 const routes: Routes = [
   { path: '', component: HpComponent },
@@ -19,7 +20,9 @@ const routes: Routes = [
   { path: 'p4', component: P4Component, data: { type: 'page', name: 'Page 4' } },
   { path: 'p5', component: P5Component, data: { type: 'page', name: 'Page 5' } },
   { path: 'p6', component: P6Component, data: { type: 'page', name: 'Page 6' } },
-  { path: 'p7', component: P7Component, data: { type: 'page', name: 'Page 7' } }
+  { path: 'p7', component: P7Component, data: { type: 'page', name: 'Page 7' } },
+  { path: 'p8', component: P8Component, data: { type: 'page', name: 'Page 8' } },
+  { path: 'p9', component: P9Component, data: { type: 'page', name: 'Page 9' } }
 ];
 
 @NgModule({

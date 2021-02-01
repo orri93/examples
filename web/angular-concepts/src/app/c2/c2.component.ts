@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Store } from '@ngrx/store';
-import { AppState } from './../app.state';
-import { Tutorial } from './../models/tutorial.model';
-import * as TutorialActions from './../actions/tutorial.actions';
+import { Store, select } from '@ngrx/store';
+import { Tutorial } from './../store/models/tutorial.model';
+import { TutorialState, selectTutorials } from './../store/reducers/tutorial.reducer';
+import * as TutorialActions from './../store/actions/tutorial.actions';
 
 @Component({
   selector: 'app-c2',
@@ -12,10 +12,10 @@ import * as TutorialActions from './../actions/tutorial.actions';
 })
 export class C2Component implements OnInit {
   componentName = 'Component no. 2';
-  tutorials: Observable<Tutorial[]>;
+  tutorials$: Observable<Tutorial[]>;
 
-  constructor(private store: Store<AppState>) {
-    this.tutorials = store.select('tutorial');
+  constructor(private store: Store<TutorialState>) {
+    this.tutorials$ = store.pipe(select(selectTutorials));
   }
 
   delTutorial(index: number): void {

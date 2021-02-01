@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
-import { AppState } from './../app.state';
-import { Tutorial } from './../models/tutorial.model';
-import * as TutorialActions from './../actions/tutorial.actions';
+import { Tutorial } from './../store/models/tutorial.model';
+import { TutorialState } from './../store/reducers/tutorial.reducer';
+import * as TutorialActions from './../store/actions/tutorial.actions';
 
 @Component({
   selector: 'app-c3',
@@ -13,7 +12,7 @@ import * as TutorialActions from './../actions/tutorial.actions';
 export class C3Component implements OnInit {
   componentName = 'Component no. 3';
 
-  constructor(private store: Store<AppState>) { }
+  constructor(private store: Store<TutorialState>) { }
 
   addTutorial(name: string, url: string): void {
     this.store.dispatch(new TutorialActions.AddTutorial({ name, url }));
