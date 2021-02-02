@@ -17,6 +17,7 @@ import { AppConfiguration } from './app.configuration';
 
 import { reducers } from './store/reducers';
 
+import { M0Module } from './m0/m0.module';
 import { M1Module } from './m1/m1.module';
 import { M2Module } from './m2/m2.module';
 import { M3Module } from './m3/m3.module';
@@ -26,6 +27,7 @@ import { HpComponent } from './hp/hp.component';
 import { C1Component } from './c1/c1.component';
 import { C2Component } from './c2/c2.component';
 import { C3Component } from './c3/c3.component';
+import { P0Component } from './p0/p0.component';
 import { P1Component } from './p1/p1.component';
 import { P2Component } from './p2/p2.component';
 import { P3Component } from './p3/p3.component';
@@ -35,6 +37,7 @@ import { P6Component } from './p6/p6.component';
 import { P7Component } from './p7/p7.component';
 import { P8Component } from './p8/p8.component';
 import { P9Component } from './p9/p9.component';
+import { PaComponent } from './pa/pa.component';
 
 export function initializeApp(appConfiguration: AppConfiguration): any {
   return () => appConfiguration.load();
@@ -47,6 +50,7 @@ export function initializeApp(appConfiguration: AppConfiguration): any {
     C1Component,
     C2Component,
     C3Component,
+    P0Component,
     P1Component,
     P2Component,
     P3Component,
@@ -55,7 +59,8 @@ export function initializeApp(appConfiguration: AppConfiguration): any {
     P6Component,
     P7Component,
     P8Component,
-    P9Component
+    P9Component,
+    PaComponent
   ],
   imports: [
     BrowserModule,
@@ -69,6 +74,7 @@ export function initializeApp(appConfiguration: AppConfiguration): any {
     MatButtonModule,
     MatInputModule,
     MatIconModule,
+    M0Module,
     M1Module,
     M2Module,
     M3Module,

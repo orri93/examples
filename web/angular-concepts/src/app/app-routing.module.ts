@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { HpComponent } from './hp/hp.component';
+import { P0Component } from './p0/p0.component';
 import { P1Component } from './p1/p1.component';
 import { P2Component } from './p2/p2.component';
 import { P3Component } from './p3/p3.component';
@@ -14,6 +15,7 @@ import { P9Component } from './p9/p9.component';
 
 const routes: Routes = [
   { path: '', component: HpComponent },
+  { path: 'p0', component: P0Component, data: { type: 'page', name: 'Page 0' } },
   { path: 'p1', component: P1Component, data: { type: 'page', name: 'Page 1' } },
   { path: 'p2', component: P2Component, data: { type: 'page', name: 'Page 2' } },
   { path: 'p3', component: P3Component, data: { type: 'page', name: 'Page 3' } },
