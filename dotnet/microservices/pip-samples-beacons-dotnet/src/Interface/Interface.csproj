@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <AssemblyName>PipSample.Beacons.Interface</AssemblyName>
+    <RootNamespace>PipSample.Beacons</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="PipServices3.Commons" Version="3.1.2" />
+  </ItemGroup>
+
+</Project>
