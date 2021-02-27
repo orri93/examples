@@ -11,7 +11,7 @@ namespace PipSample.Beacons.Persistence
   {
     public BeaconsSqlServerPersistence() : base("beacons")
     {
-      AutoCreateObject("CREATE TABLE [beacons] ([id] VARCHAR(32), [site_id] VARCHAR(32), [type] VARCHAR(15), [udi] VARCHAR(25), [label] VARCHAR(50), [center] JSONB, [radius] REAL)");
+      AutoCreateObject("CREATE TABLE [beacons] ([id] VARCHAR(32), [site_id] VARCHAR(32), [type] VARCHAR(15), [udi] VARCHAR(25), [label] VARCHAR(50), [center] NVARCHAR(MAX), [radius] REAL)");
       EnsureIndex("beacons_site_id", new Dictionary<string, bool> { { "site_id", true } }, new IndexOptions());
       this._maxPageSize = 1000;
     }

@@ -4,7 +4,7 @@ using PipServices3.Commons.Data;
 
 namespace PipSample.Beacons.Logic
 {
-  public interface IBeaconController
+  public interface IBeaconsController
   {
     Task<DataPage<BeaconV1>> GetBeaconAsync(string correlationId, FilterParams filter, PagingParams paging);
 
