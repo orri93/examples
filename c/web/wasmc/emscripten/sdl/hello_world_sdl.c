@@ -4,6 +4,11 @@
  * found in the LICENSE file.
  */
 
+/* Build with
+ * emcc hello_world_sdl.c -o hello_world_sdl.html
+ *
+ */
+
 #include <stdio.h>
 #include <SDL/SDL.h>
 
