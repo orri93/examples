@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { environment } from '../environments/environment';
+import { environment } from './../environments/environment';
 
 @Injectable()
 export class AppConfiguration {
@@ -10,6 +10,7 @@ export class AppConfiguration {
 
   load(): Promise<void> {
     const jsonFile = `${environment.configurationFile}`;
+    console.log('Load configuration from ' + jsonFile);
     return new Promise<void>((resolve, reject) => {
       this.http.get(jsonFile).toPromise()
         .then((response: ApplicationConfiguration) => {

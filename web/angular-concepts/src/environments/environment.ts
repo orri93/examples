@@ -4,6 +4,7 @@
 
 export const environment = {
   production: false,
+  configurationDirectory: '/assets/configuration/',
   configurationFile: '/assets/configuration.json'
 };
 

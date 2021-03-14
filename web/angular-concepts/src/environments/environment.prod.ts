@@ -1,4 +1,5 @@
 export const environment = {
   production: true,
-  configurationFile: '/assets/configuration.json'
+  configurationDirectory: '/examples/angular-concepts/assets/configuration/',
+  configurationFile: '/examples/angular-concepts/assets/configuration.json'
 };
