@@ -12,5 +12,4 @@ export class P9Component implements OnInit {
 
   ngOnInit(): void {
   }
-
 }

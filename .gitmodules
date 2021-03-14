@@ -130,3 +130,6 @@
 [submodule "extern/web/d3/d3-real-time-boeric"]
 	path = extern/web/d3/d3-real-time-boeric
 	url = https://github.com/boeric/d3RealTimeChartMulti.git
+[submodule "extern/pack/qt_cpackifw"]
+	path = extern/pack/qt_cpackifw
+	url = https://github.com/skypjack/qt_cpackifw.git
