@@ -1,0 +1,17 @@
+<h4>{{componentName}}</h4>
+
+<div *ngIf="size">
+  <p>Child width: {{size.width}}, height: {{size.height}}</p>
+</div>
+
+<div class="mdl-grid">
+  <!-- Must be named $event -->
+  <div class="mdl-cell mdl-cell--9-col"
+    #cdiv
+    (resized) = "onChildResized($event)"
+  >
+    <app-m6c2 #m6c2
+      [size] = "size"
+    ></app-m6c2>
+  </div>
+</div>

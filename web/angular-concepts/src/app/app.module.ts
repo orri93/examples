@@ -6,6 +6,9 @@ import { StoreModule } from '@ngrx/store';
 
 import { HttpClientModule, HttpClientXsrfModule } from '@angular/common/http';
 
+// Enough to add the Resize Event module into the module that use it (M6)
+// import { AngularResizedEventModule } from 'angular-resize-event';
+
 import { MatSliderModule } from '@angular/material/slider';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
@@ -23,6 +26,7 @@ import { M2Module } from './m2/m2.module';
 import { M3Module } from './m3/m3.module';
 import { M4Module } from './m4/m4.module';
 import { M5Module } from './m5/m5.module';
+import { M6Module } from './m6/m6.module';
 
 import { HpComponent } from './hp/hp.component';
 import { C1Component } from './c1/c1.component';
@@ -71,6 +75,7 @@ export function initializeApp(appConfiguration: AppConfiguration): any {
     AppRoutingModule,
     HttpClientModule,
     HttpClientXsrfModule,
+    // AngularResizedEventModule,
     StoreModule.forRoot(reducers),
     BrowserAnimationsModule,
     MatSliderModule,
@@ -82,7 +87,8 @@ export function initializeApp(appConfiguration: AppConfiguration): any {
     M2Module,
     M3Module,
     M4Module,
-    M5Module
+    M5Module,
+    M6Module
   ],
   providers: [
     AppConfiguration, {

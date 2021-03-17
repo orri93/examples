@@ -1,1 +1,6 @@
-<p>pb works!</p>
+<h3>{{pageName}}</h3>
+
+<!-- Must be named $event -->
+<app-m6c1 #m6c1
+  (sizeChangedEvent) = "onSizeChanged($event)"
+></app-m6c1>
