@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter, ViewChild } from '@angular/core';
+import { Component, Output, EventEmitter, ViewChild, ElementRef } from '@angular/core';
 import { ResizedEvent } from 'angular-resize-event';
 import * as _ from 'lodash';
 import { SizeService } from './../../shared/services/size.service';
@@ -12,6 +12,8 @@ import { M6c2Component } from './../m6c2/m6c2.component';
 })
 export class M6c1Component {
   @ViewChild('m6c2') m6c2: M6c2Component;
+  // Can't have View Child on element for resizing event
+  // @ViewChild('cdiv') cdiv: ElementRef;
   @Output() sizeChangedEvent = new EventEmitter<ChartSize>();
 
   componentName = 'Module no. 6 - Component no. 1';
