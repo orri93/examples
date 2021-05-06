@@ -44,6 +44,7 @@ import { P8Component } from './p8/p8.component';
 import { P9Component } from './p9/p9.component';
 import { PaComponent } from './pa/pa.component';
 import { PbComponent } from './pb/pb.component';
+import { PcComponent } from './pc/pc.component';
 
 export function initializeApp(appConfiguration: AppConfiguration): any {
   return () => appConfiguration.load();
@@ -67,7 +68,8 @@ export function initializeApp(appConfiguration: AppConfiguration): any {
     P8Component,
     P9Component,
     PaComponent,
-    PbComponent
+    PbComponent,
+    PcComponent
   ],
   imports: [
     BrowserModule,

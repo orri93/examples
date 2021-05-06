@@ -14,6 +14,7 @@ import { P8Component } from './p8/p8.component';
 import { P9Component } from './p9/p9.component';
 import { PaComponent } from './pa/pa.component';
 import { PbComponent } from './pb/pb.component';
+import { PcComponent } from './pc/pc.component';
 
 const routes: Routes = [
   { path: '', component: HpComponent },
@@ -28,7 +29,8 @@ const routes: Routes = [
   { path: 'p8', component: P8Component, data: { type: 'page', name: 'Page 8' } },
   { path: 'p9', component: P9Component, data: { type: 'page', name: 'Page 9' } },
   { path: 'pa', component: PaComponent, data: { type: 'page', name: 'Page A' } },
-  { path: 'pb', component: PbComponent, data: { type: 'page', name: 'Page B' } }
+  { path: 'pb', component: PbComponent, data: { type: 'page', name: 'Page B' } },
+  { path: 'pc', component: PcComponent, data: { type: 'page', name: 'Page C' } }
 ];
 
 @NgModule({
