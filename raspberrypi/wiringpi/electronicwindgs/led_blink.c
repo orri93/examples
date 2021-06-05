@@ -4,12 +4,14 @@
  * 
  * gcc -o led_blink led_blink.c -l wiringPi
  * sudo ./led_blink
+ *
+ */
 
 #include <wiringPi.h>
 #include <stdio.h>
 
 /* GPIO26 as per wiringPi, GPIO12 as per BCW, pin no. 32 */
-#define LED = 26;
+#define LED 26
 
 int main() {
   wiringPiSetup();            /* initialize wiringPi setup */
