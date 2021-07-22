@@ -1,3 +1,5 @@
-module github.com/gopcua/opcua
+module example.com/gos/examples/go/opcua/simple-client-browse
 
 go 1.15
+
+require github.com/gopcua/opcua v0.1.13
