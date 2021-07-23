@@ -1,13 +1,35 @@
 package gos.example.opcua;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import java.util.concurrent.ExecutionException;
+
+import org.eclipse.milo.opcua.sdk.client.OpcUaClient;
+import org.eclipse.milo.opcua.sdk.client.nodes.UaVariableNode;
+import org.eclipse.milo.opcua.stack.core.Identifiers;
+import org.eclipse.milo.opcua.stack.core.UaException;
+import org.eclipse.milo.opcua.stack.core.types.builtin.DataValue;
 
 public class SimpleClientRead {
-  private final Logger logger = LoggerFactory.getLogger(getClass());
-
   public static void main(String[] args) {
-    logger.info("StartTime={}", value.getValue().getValue());
-    System.out.println("Hello, World!");
+    SimpleClientRead instance = new SimpleClientRead();
+    try {
+      instance.execute();
+    } catch (UaException e) {
+      e.printStackTrace();
+    } catch (InterruptedException e) {
+      e.printStackTrace();
+    } catch (ExecutionException e) {
+      e.printStackTrace();
+    }
+  }
+
+  public void execute() throws UaException, InterruptedException, ExecutionException {
+    System.out.println("Starting the Simple OPC UA Client Read Example");
+    OpcUaClient client = OpcUaClient.create("opc.tcp://localhost:4840");
+    client.connect().get();
+
+    UaVariableNode node = client.getAddressSpace().getVariableNode(Identifiers.Server_ServerStatus_StartTime);
+    DataValue value = node.readValue();
+
+    
   }
 }
