@@ -36,10 +36,19 @@ public class SimpleClientRead {
   }
 
   public void execute(String[] args) throws UaException, InterruptedException, ExecutionException {
+    NodeId readNode = null;
     String endpoint = DefaultEndpoint;
     System.out.println("Starting the Simple OPC UA Client Read Example");
     if (args.length > 0) {
       endpoint = args[0];
+    }
+    if (args.length > 1) {
+      readNode = NodeId.parseOrNull(args[1]);
+      if (readNode == null) {
+        System.err.println("Failed to parse '" + args[1] + "' as node id");
+      } else {
+        System.out.println("Plan to read from node '" + args[1] + "'");
+      }
     }
     System.out.println("Connecting to " + endpoint);
     OpcUaClient client = OpcUaClient.create(endpoint);
@@ -57,6 +66,11 @@ public class SimpleClientRead {
       logger.info("State={}", ServerState.from((Integer) v0.getValue().getValue()));
       logger.info("CurrentTime={}", v1.getValue().getValue());
     });
+
+    if (readNode != null) {
+      value = client.readValue(0.0, TimestampsToReturn.Both, readNode).get();
+      System.out.println("Value: " + value.getValue().toString());
+    }
   }
 
   private CompletableFuture<List<DataValue>> readServerStateAndTime(OpcUaClient client) {

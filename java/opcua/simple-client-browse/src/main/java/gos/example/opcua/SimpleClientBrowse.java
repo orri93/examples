@@ -38,17 +38,27 @@ public class SimpleClientBrowse {
   }
 
   public void execute(String[] args) throws UaException, InterruptedException, ExecutionException {
+    NodeId browseRoot = Identifiers.RootFolder;
     String endpoint = DefaultEndpoint;
     System.out.println("Starting the Simple OPC UA Client Read Example");
     if (args.length > 0) {
       endpoint = args[0];
+    }
+    if (args.length > 1) {
+      browseRoot = NodeId.parseOrNull(args[1]);
+      if (browseRoot == null) {
+        System.err.println("Failed to parse '" + args[1] + "' as node id");
+        browseRoot = Identifiers.RootFolder;
+      } else {
+        System.out.println("Plan to browse from node '" + args[1] + "'");
+      }
     }
     System.out.println("Connecting to " + endpoint);
     OpcUaClient client = OpcUaClient.create(endpoint);
     client.connect().get();
 
     // start browsing at root folder
-    browseNode("", client, Identifiers.RootFolder);
+    browseNode("", client, browseRoot);
   }
 
   private void browseNode(String indent, OpcUaClient client, NodeId browseRoot) {
