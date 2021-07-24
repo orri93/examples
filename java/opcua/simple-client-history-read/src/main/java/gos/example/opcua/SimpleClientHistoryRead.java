@@ -18,6 +18,7 @@ import org.eclipse.milo.opcua.stack.core.types.builtin.StatusCode;
 import org.eclipse.milo.opcua.stack.core.types.enumerated.TimestampsToReturn;
 import org.eclipse.milo.opcua.stack.core.types.structured.HistoryData;
 import org.eclipse.milo.opcua.stack.core.types.structured.HistoryReadDetails;
+import org.eclipse.milo.opcua.stack.core.types.structured.HistoryReadRequest;
 import org.eclipse.milo.opcua.stack.core.types.structured.HistoryReadResponse;
 import org.eclipse.milo.opcua.stack.core.types.structured.HistoryReadResult;
 import org.eclipse.milo.opcua.stack.core.types.structured.HistoryReadValueId;
@@ -44,10 +45,19 @@ public class SimpleClientHistoryRead {
   }
 
   public void execute(String[] args) throws UaException, InterruptedException, ExecutionException {
+    NodeId readNode = null;
     String endpoint = DefaultEndpoint;
     System.out.println("Starting the Simple OPC UA Client Read Example");
     if (args.length > 0) {
       endpoint = args[0];
+    }
+    if (args.length > 1) {
+      readNode = NodeId.parseOrNull(args[1]);
+      if (readNode == null) {
+        System.err.println("Failed to parse '" + args[1] + "' as node id");
+      } else {
+        System.out.println("Plan to read from node '" + args[1] + "'");
+      }
     }
     System.out.println("Connecting to " + endpoint);
     OpcUaClient client = OpcUaClient.create(endpoint);
@@ -59,15 +69,24 @@ public class SimpleClientHistoryRead {
       DateTime.now(),
       uint(0),
       true);
-    
+
+    List<HistoryReadValueId> nodesToRead = new ArrayList<>();
+
     HistoryReadValueId historyReadValueId = new HistoryReadValueId(
       new NodeId(3, "Counter"),
       null,
       QualifiedName.NULL_VALUE,
       ByteString.NULL_VALUE);
-    
-    List<HistoryReadValueId> nodesToRead = new ArrayList<>();
     nodesToRead.add(historyReadValueId);
+
+    if (readNode != null) {
+      HistoryReadValueId historyReadNode = new HistoryReadValueId(
+        readNode,
+        null,
+        QualifiedName.NULL_VALUE,
+        ByteString.NULL_VALUE);
+        nodesToRead.add(historyReadNode);
+    }
 
     HistoryReadResponse historyReadResponse = client.historyRead(
       historyReadDetails,
