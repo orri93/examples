@@ -1,19 +1,27 @@
 package gos.example.opcua;
 
+import static org.eclipse.milo.opcua.stack.core.types.builtin.unsigned.Unsigned.uint;
+import static org.eclipse.milo.opcua.stack.core.util.ConversionUtil.l;
+
+import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
 
-import com.google.common.collect.ImmutableList;
-
 import org.eclipse.milo.opcua.sdk.client.OpcUaClient;
-import org.eclipse.milo.opcua.sdk.client.nodes.UaVariableNode;
-import org.eclipse.milo.opcua.stack.core.Identifiers;
 import org.eclipse.milo.opcua.stack.core.UaException;
+import org.eclipse.milo.opcua.stack.core.types.builtin.ByteString;
 import org.eclipse.milo.opcua.stack.core.types.builtin.DataValue;
+import org.eclipse.milo.opcua.stack.core.types.builtin.DateTime;
 import org.eclipse.milo.opcua.stack.core.types.builtin.NodeId;
-import org.eclipse.milo.opcua.stack.core.types.enumerated.ServerState;
+import org.eclipse.milo.opcua.stack.core.types.builtin.QualifiedName;
+import org.eclipse.milo.opcua.stack.core.types.builtin.StatusCode;
 import org.eclipse.milo.opcua.stack.core.types.enumerated.TimestampsToReturn;
+import org.eclipse.milo.opcua.stack.core.types.structured.HistoryData;
+import org.eclipse.milo.opcua.stack.core.types.structured.HistoryReadDetails;
+import org.eclipse.milo.opcua.stack.core.types.structured.HistoryReadResponse;
+import org.eclipse.milo.opcua.stack.core.types.structured.HistoryReadResult;
+import org.eclipse.milo.opcua.stack.core.types.structured.HistoryReadValueId;
+import org.eclipse.milo.opcua.stack.core.types.structured.ReadRawModifiedDetails;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -44,5 +52,45 @@ public class SimpleClientHistoryRead {
     System.out.println("Connecting to " + endpoint);
     OpcUaClient client = OpcUaClient.create(endpoint);
     client.connect().get();
+
+    HistoryReadDetails historyReadDetails = new ReadRawModifiedDetails(
+      false,
+      DateTime.MIN_VALUE,
+      DateTime.now(),
+      uint(0),
+      true);
+    
+    HistoryReadValueId historyReadValueId = new HistoryReadValueId(
+      new NodeId(3, "Counter"),
+      null,
+      QualifiedName.NULL_VALUE,
+      ByteString.NULL_VALUE);
+    
+    List<HistoryReadValueId> nodesToRead = new ArrayList<>();
+    nodesToRead.add(historyReadValueId);
+
+    HistoryReadResponse historyReadResponse = client.historyRead(
+      historyReadDetails,
+      TimestampsToReturn.Both,
+      false,
+      nodesToRead).get();
+    
+    HistoryReadResult[] historyReadResults = historyReadResponse.getResults();
+
+    if (historyReadResults != null) {
+      HistoryReadResult historyReadResult = historyReadResults[0];
+      StatusCode statusCode = historyReadResult.getStatusCode();
+
+      if (statusCode.isGood()) {
+        HistoryData historyData = (HistoryData) historyReadResult.getHistoryData().decode(
+          client.getStaticSerializationContext());
+
+        List<DataValue> dataValues = l(historyData.getDataValues());
+
+        dataValues.forEach(v -> System.out.println("value=" + v));
+      } else {
+        System.out.println("History read failed: " + statusCode);
+      }
+    }
   }
 }

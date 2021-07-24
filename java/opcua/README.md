@@ -1,13 +1,13 @@
 # OPC UA Java Examples
 
-## Build
+Using the [Eclipse Milo™ library](https://github.com/eclipse/milo)
+
+## Building
+
+execute
 
 ```mvn package```
 
 or
 
 ```mvn install```
-
-## Run
-
-```java -cp ./target/simple-client-read-0.0.1.jar gos.example.opcua.SimpleClientRead```
