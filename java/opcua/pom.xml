@@ -24,12 +24,14 @@
     <project.build.sourceEncoding>${source.encoding}</project.build.sourceEncoding>
     <project.reporting.outputEncoding>${source.encoding}</project.reporting.outputEncoding>
 	
-	<slf4j.version>1.7.25</slf4j.version>
+	  <slf4j.version>1.7.25</slf4j.version>
 
   </properties>
 
   <modules>
     <module>simple-client-read</module>
+    <module>simple-client-browse</module>
+    <module>simple-client-history-read</module>
   </modules>
 
   <dependencyManagement>

@@ -17,13 +17,13 @@ import org.eclipse.milo.opcua.stack.core.types.enumerated.TimestampsToReturn;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class SimpleClientRead {
+public class SimpleClientBrowse {
   private static final String DefaultEndpoint = "opc.tcp://localhost:4840";
 
   private final Logger logger = LoggerFactory.getLogger(getClass());
 
   public static void main(String[] args) {
-    SimpleClientRead instance = new SimpleClientRead();
+    SimpleClientBrowse instance = new SimpleClientBrowse();
     try {
       instance.execute(args);
     } catch (UaException e) {
@@ -44,25 +44,5 @@ public class SimpleClientRead {
     System.out.println("Connecting to " + endpoint);
     OpcUaClient client = OpcUaClient.create(endpoint);
     client.connect().get();
-
-    UaVariableNode node = client.getAddressSpace().getVariableNode(Identifiers.Server_ServerStatus_StartTime);
-    DataValue value = node.readValue();
-
-    logger.info("StartTime={}", value.getValue().getValue());
-
-    readServerStateAndTime(client).thenAccept(values -> {
-      DataValue v0 = values.get(0);
-      DataValue v1 = values.get(0);
-
-      logger.info("State={}", ServerState.from((Integer) v0.getValue().getValue()));
-      logger.info("CurrentTime={}", v1.getValue().getValue());
-    });
-  }
-
-  private CompletableFuture<List<DataValue>> readServerStateAndTime(OpcUaClient client) {
-    List<NodeId> nodeIds = ImmutableList.of(
-      Identifiers.Server_ServerStatus_State,
-      Identifiers.Server_ServerStatus_CurrentTime);
-    return client.readValues(0.0, TimestampsToReturn.Both, nodeIds);
   }
 }
