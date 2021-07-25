@@ -77,7 +77,7 @@ public class SimpleClientHistoryRead {
         null,
         QualifiedName.NULL_VALUE,
         ByteString.NULL_VALUE);
-        nodesToRead.add(historyReadNode);
+      nodesToRead.add(historyReadNode);
     } else {
       HistoryReadValueId historyReadValueId = new HistoryReadValueId(
         new NodeId(3, "Counter"),
