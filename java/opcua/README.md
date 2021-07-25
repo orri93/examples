@@ -11,3 +11,9 @@ execute
 or
 
 ```mvn install```
+
+## Troubleshooting
+
+[java.net.UnknownHostException](https://www.baeldung.com/java-unknownhostexception)
+
+solution: add entry in the hosts for the failed host
