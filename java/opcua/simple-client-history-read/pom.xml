@@ -28,6 +28,8 @@
     <project.build.sourceEncoding>${source.encoding}</project.build.sourceEncoding>
     <project.reporting.outputEncoding>${source.encoding}</project.reporting.outputEncoding>
 
+    <main.class>gos.example.opcua.SimpleClientHistoryRead</main.class>
+
   </properties>
 
   <dependencies>
@@ -62,12 +64,21 @@
         <configuration>
           <archive>
             <manifest>
-              <mainClass>gos.example.opcua.SimpleClientHistoryRead</mainClass>
+              <mainClass>${main.class}</mainClass>
             </manifest>
           </archive>
           <descriptorRefs>
             <descriptorRef>jar-with-dependencies</descriptorRef>
           </descriptorRefs>
+        </configuration>
+      </plugin>
+      <!-- Support execution with Maven -->
+      <!-- mvn exec:java -->
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>exec-maven-plugin</artifactId>
+        <configuration>
+          <mainClass>${main.class}</mainClass>
         </configuration>
       </plugin>
     </plugins>

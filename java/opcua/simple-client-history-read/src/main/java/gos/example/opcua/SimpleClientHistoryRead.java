@@ -18,7 +18,6 @@ import org.eclipse.milo.opcua.stack.core.types.builtin.StatusCode;
 import org.eclipse.milo.opcua.stack.core.types.enumerated.TimestampsToReturn;
 import org.eclipse.milo.opcua.stack.core.types.structured.HistoryData;
 import org.eclipse.milo.opcua.stack.core.types.structured.HistoryReadDetails;
-import org.eclipse.milo.opcua.stack.core.types.structured.HistoryReadRequest;
 import org.eclipse.milo.opcua.stack.core.types.structured.HistoryReadResponse;
 import org.eclipse.milo.opcua.stack.core.types.structured.HistoryReadResult;
 import org.eclipse.milo.opcua.stack.core.types.structured.HistoryReadValueId;
@@ -71,14 +70,7 @@ public class SimpleClientHistoryRead {
       true);
 
     List<HistoryReadValueId> nodesToRead = new ArrayList<>();
-
-    HistoryReadValueId historyReadValueId = new HistoryReadValueId(
-      new NodeId(3, "Counter"),
-      null,
-      QualifiedName.NULL_VALUE,
-      ByteString.NULL_VALUE);
-    nodesToRead.add(historyReadValueId);
-
+    
     if (readNode != null) {
       HistoryReadValueId historyReadNode = new HistoryReadValueId(
         readNode,
@@ -86,6 +78,13 @@ public class SimpleClientHistoryRead {
         QualifiedName.NULL_VALUE,
         ByteString.NULL_VALUE);
         nodesToRead.add(historyReadNode);
+    } else {
+      HistoryReadValueId historyReadValueId = new HistoryReadValueId(
+        new NodeId(3, "Counter"),
+        null,
+        QualifiedName.NULL_VALUE,
+        ByteString.NULL_VALUE);
+      nodesToRead.add(historyReadValueId);
     }
 
     HistoryReadResponse historyReadResponse = client.historyRead(
