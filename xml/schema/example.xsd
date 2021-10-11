@@ -1,0 +1,429 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema elementFormDefault="qualified"
+  targetNamespace="http://gos.example.org/schemas/example.xsd"
+  xmlns:gos="http://gos.example.org/schemas/example.xsd"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+  version="1.0">
+
+  <!-- Type -->
+  <xsd:simpleType name="Real">
+    <xsd:annotation>
+      <xsd:documentation>Real type supported by the microcontroller
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:float" />
+  </xsd:simpleType>
+  <xsd:simpleType name="Integer">
+    <xsd:restriction base="xsd:short" />
+  </xsd:simpleType>
+  <xsd:simpleType name="UnsignedInteger">
+    <xsd:restriction base="xsd:unsignedShort" />
+  </xsd:simpleType>
+  <xsd:simpleType name="CodeType">
+    <xsd:restriction base="xsd:byte">
+      <xsd:minInclusive value="-33" />
+      <xsd:maxInclusive value="7" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="Result">
+    <xsd:restriction base="xsd:byte" />
+  </xsd:simpleType>
+  <xsd:simpleType name="Error">
+    <xsd:restriction base="xsd:byte" />
+  </xsd:simpleType>
+  <xsd:simpleType name="Value">
+    <xsd:restriction base="xsd:float" />
+  </xsd:simpleType>
+  <xsd:simpleType name="Byte">
+    <xsd:restriction base="xsd:byte" />
+  </xsd:simpleType>
+  <xsd:simpleType name="Boolean">
+    <xsd:restriction base="xsd:boolean" />
+  </xsd:simpleType>
+  <xsd:simpleType name="Transport">
+    <xsd:restriction base="xsd:byte" />
+  </xsd:simpleType>
+  <xsd:simpleType name="MilliSeconds">
+    <xsd:restriction base="xsd:unsignedInt" />
+  </xsd:simpleType>
+  <xsd:simpleType name="Count">
+    <xsd:restriction base="xsd:unsignedShort" />
+  </xsd:simpleType>
+  <xsd:simpleType name="Size">
+    <xsd:restriction base="xsd:unsignedShort" />
+  </xsd:simpleType>
+  <xsd:simpleType name="Crc">
+    <xsd:restriction base="xsd:unsignedByte" />
+  </xsd:simpleType>
+
+  <xsd:simpleType name="Level">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="Debug" />
+      <xsd:enumeration value="Warning" />
+      <xsd:enumeration value="Critical" />
+      <xsd:enumeration value="Fatal" />
+    </xsd:restriction>
+  </xsd:simpleType>
+
+  <xsd:simpleType name="Location">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="Undefined" />
+      <xsd:enumeration value="Setup" />
+      <xsd:enumeration value="Loop" />
+      <xsd:enumeration value="Controller" />
+      <xsd:enumeration value="Sensors" />
+      <xsd:enumeration value="Lm" />
+      <xsd:enumeration value="Ds" />
+      <xsd:enumeration value="Max" />
+      <xsd:enumeration value="Heater" />
+      <xsd:enumeration value="Messager" />
+      <xsd:enumeration value="Broadcaster" />
+      <xsd:enumeration value="Serializer" />
+      <xsd:enumeration value="Storag" />
+    </xsd:restriction>
+  </xsd:simpleType>
+
+  <xsd:simpleType name="MessageType">
+    <xsd:annotation>
+      <xsd:documentation>Real type supported by the microcontroller
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="Undefined" />
+      <xsd:enumeration value="Request" />
+      <xsd:enumeration value="Response" />
+      <xsd:enumeration value="Broadcast" />
+      <xsd:enumeration value="Logging" />
+      <xsd:enumeration value="Report" />
+      <xsd:enumeration value="Error" />
+    </xsd:restriction>
+  </xsd:simpleType>
+
+  <xsd:simpleType name="ReportType">
+    <xsd:annotation>
+      <xsd:documentation>Real type supported by the microcontroller
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="Undefined" />
+      <xsd:enumeration value="WakingUp" />
+    </xsd:restriction>
+  </xsd:simpleType>
+
+  <xsd:simpleType name="Type">
+    <xsd:annotation>
+      <xsd:documentation>Real type supported by the microcontroller
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="Undefined" />
+      <xsd:enumeration value="Value" />
+      <xsd:enumeration value="MilliSeconds" />
+      <xsd:enumeration value="OutputStatus" />
+    </xsd:restriction>
+  </xsd:simpleType>
+
+  <xsd:simpleType name="Mode">
+    <xsd:annotation>
+      <xsd:documentation>Real type supported by the microcontroller
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="Idle" />
+      <xsd:enumeration value="Manual" />
+      <xsd:enumeration value="Automatic" />
+      <xsd:enumeration value="Tune" />
+    </xsd:restriction>
+  </xsd:simpleType>
+
+  <xsd:simpleType name="Parameter">
+    <xsd:annotation>
+      <xsd:documentation>Real type supported by the microcontroller
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="Undefined" />
+      <xsd:enumeration value="PidKp" />
+      <xsd:enumeration value="PidKi" />
+      <xsd:enumeration value="PidKd" />
+      <xsd:enumeration value="PidSpan" />
+      <xsd:enumeration value="Target" />
+      <xsd:enumeration value="Ratio" />
+    </xsd:restriction>
+  </xsd:simpleType>
+
+  <xsd:simpleType name="Variable">
+    <xsd:annotation>
+      <xsd:documentation>Real type supported by the microcontroller
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="Undefined" />
+      <xsd:enumeration value="LmTemperature" />
+      <xsd:enumeration value="DsTemperature" />
+      <xsd:enumeration value="MaxTemperature" />
+      <xsd:enumeration value="PidInput" />
+      <xsd:enumeration value="PidOutput" />
+      <xsd:enumeration value="TuneInput" />
+      <xsd:enumeration value="TuneOutput" />
+      <xsd:enumeration value="State" />
+    </xsd:restriction>
+  </xsd:simpleType>
+
+  <xsd:simpleType name="Request">
+    <xsd:annotation>
+      <xsd:documentation>
+        Real type supported by the microcontroller
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="Undefined" />
+      <xsd:enumeration value="Broadcast" />
+      <xsd:enumeration value="SetMode" />
+      <xsd:enumeration value="SetValues" />
+      <xsd:enumeration value="Shutdown" />
+      <xsd:enumeration value="Testing" />
+      <xsd:enumeration value="Reset" />
+      <xsd:enumeration value="Set" />
+      <xsd:enumeration value="Get" />
+    </xsd:restriction>
+  </xsd:simpleType>
+
+  <xsd:simpleType name="Response">
+    <xsd:annotation>
+      <xsd:documentation>Real type supported by the microcontroller
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="Error" />
+      <xsd:enumeration value="Failure" />
+      <xsd:enumeration value="Undefined" />
+      <xsd:enumeration value="Acknowledgement" />
+      <xsd:enumeration value="Testing" />
+    </xsd:restriction>
+  </xsd:simpleType>
+
+  <xsd:simpleType name="TypeTestResult">
+    <xsd:annotation>
+      <xsd:documentation>Real type supported by the microcontroller
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="Undefined" />
+      <xsd:enumeration value="MICROCONTROLER_FAILED" />
+      <xsd:enumeration value="GROUND_CONTROL_FAILED" />
+      <xsd:enumeration
+        value="MICROCONTROLER_FAILED|GROUND_CONTROL_FAILED" />
+    </xsd:restriction>
+  </xsd:simpleType>
+
+  <xsd:simpleType name="Ip">
+    <xsd:restriction base="xsd:string">
+      <!-- This pattern requires exactly 4 unsigned byte-values, delimited 
+        by dots, each with no leading zeroes -->
+      <xsd:pattern
+        value="^(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])$" />
+    </xsd:restriction>
+  </xsd:simpleType>
+
+  <xsd:simpleType name="Mac">
+    <xsd:restriction base="xsd:string">
+      <xsd:pattern
+        value="[0-9a-fA-F]{2}-[0-9a-fA-F]{2}-[0-9a-fA-F]{2}-[0-9a-fA-F]{2}-[0-9a-fA-F]{2}-[0-9a-fA-F]{2}" />
+    </xsd:restriction>
+  </xsd:simpleType>
+
+  <xsd:simpleType name="Code">
+    <xsd:annotation>
+      <xsd:documentation>Real type supported by the microcontroller
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="Undefined" />
+      <xsd:enumeration value="UnsupportedVariable" />
+      <xsd:enumeration value="UnsupportedCommand" />
+      <xsd:enumeration value="LastIndexUndefined" />
+      <xsd:enumeration value="UndefinedArray" />
+      <xsd:enumeration value="UndefinedObject" />
+      <xsd:enumeration value="TerminatingZeroMissing" />
+      <xsd:enumeration value="InputUndefined" />
+      <xsd:enumeration value="CorruptedPointer" />
+      <xsd:enumeration value="InputToLong" />
+      <xsd:enumeration value="CorruptInputState" />
+      <xsd:enumeration value="StorageOutOfSpace" />
+      <xsd:enumeration value="NameIsToLong" />
+      <xsd:enumeration value="StorageUndefined" />
+      <xsd:enumeration value="UnsupportedOutputState" />
+      <xsd:enumeration value="NotDsFamily" />
+      <xsd:enumeration value="NotDs18B20" />
+      <xsd:enumeration value="NoMoreAddress" />
+      <xsd:enumeration value="InvalidCrc" />
+      <xsd:enumeration value="InvalidInput" />
+      <xsd:enumeration value="RtdLowThresholdMet" />
+      <xsd:enumeration value="RefInGrTh0_85xVbias" />
+      <xsd:enumeration value="ForceOpen0x10" />
+      <xsd:enumeration value="ForceOpen0x08" />
+      <xsd:enumeration value="OverUnderVoltageFault" />
+      <xsd:enumeration
+        value="UnknownFaultOrConnectionError" />
+      <xsd:enumeration value="RtdHighThresholdMet" />
+      <xsd:enumeration value="UnsupportedType" />
+      <xsd:enumeration value="UndefinedType" />
+      <xsd:enumeration value="BufferToSmall" />
+      <xsd:enumeration value="OutOfMemory" />
+      <xsd:enumeration value="Ok" />
+      <xsd:enumeration value="IncompleteReceive" />
+      <xsd:enumeration value="DataReady" />
+      <xsd:enumeration value="NoData" />
+      <xsd:enumeration value="ValuesAvailable" />
+      <xsd:enumeration value="InputNotFound" />
+      <xsd:enumeration value="IsRegistered" />
+    </xsd:restriction>
+  </xsd:simpleType>
+
+  <xsd:simpleType name="Constants">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="F"></xsd:enumeration>
+    </xsd:restriction>
+  </xsd:simpleType>
+
+  <xsd:simpleType name="Version">
+    <xsd:restriction base="xsd:string">
+      <xsd:pattern value="[0-9a-fA-F]{2}-[0-9a-fA-F]{2}" />
+    </xsd:restriction>
+  </xsd:simpleType>
+
+  <xsd:simpleType name="SetParameter">
+    <xsd:union>
+      <xsd:simpleType>
+        <xsd:restriction base="gos:Real" />
+      </xsd:simpleType>
+      <xsd:simpleType>
+        <xsd:restriction base="gos:MilliSeconds" />
+      </xsd:simpleType>
+      <xsd:simpleType>
+        <xsd:restriction base="gos:Boolean" />
+      </xsd:simpleType>
+      <xsd:simpleType>
+        <xsd:restriction base="gos:Integer" />
+      </xsd:simpleType>
+      <xsd:simpleType>
+        <xsd:restriction base="gos:UnsignedInteger" />
+      </xsd:simpleType>
+    </xsd:union>
+  </xsd:simpleType>
+
+  <xsd:complexType name="Payload">
+    <xsd:sequence>
+      <xsd:element name="Transport" type="gos:Transport" maxOccurs="255" />
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:complexType name="Test">
+    <xsd:annotation>
+      <!-- xsd:appinfo>M</xsd:appinfo -->
+      <xsd:documentation xml:lang="en">The
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="Protocol" type="gos:Version" />
+      <xsd:element name="Firmaver" type="gos:Version" />
+      <xsd:element name="Real" type="gos:Real" />
+      <xsd:element name="Integer" type="gos:Integer" />
+      <xsd:element name="UnsignedInteger" type="gos:UnsignedInteger" />
+      <xsd:element name="Boolean" type="gos:Boolean" />
+      <xsd:element name="Byte" type="gos:Byte" />
+
+      <xsd:element name="RealSize" type="gos:Size" />
+      <xsd:element name="IntegerSize" type="gos:Size" />
+      <xsd:element name="UnsignedIntegerSize" type="gos:Size" />
+      <xsd:element name="BooleanSize" type="gos:Size" />
+      <xsd:element name="ByteSize" type="gos:Size" />
+
+      <xsd:element name="RealSizeResult"
+        type="gos:TypeTestResult" />
+      <xsd:element name="IntegerSizeResult"
+        type="gos:TypeTestResult" />
+      <xsd:element name="UnsignedIntegerSizeResult"
+        type="gos:TypeTestResult" />
+      <xsd:element name="BooleanSizeResult"
+        type="gos:TypeTestResult" />
+      <xsd:element name="ByteSizeResult"
+        type="gos:TypeTestResult" />
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:complexType name="TestRequest">
+    <xsd:complexContent>
+      <xsd:extension base="gos:Test" />
+    </xsd:complexContent>
+  </xsd:complexType>
+
+  <xsd:complexType name="TestResponse">
+    <xsd:complexContent>
+      <xsd:extension base="gos:Test" />
+    </xsd:complexContent>
+  </xsd:complexType>
+
+  <xsd:complexType name="SetRequest">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="en">
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="Parameter" type="gos:Parameter" />
+      <xsd:element name="Value" type="gos:SetParameter" />
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:complexType name="ChangeModeRequest">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="en">
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="NewMode" type="gos:Mode" />
+      <xsd:element name="NewValu" type="gos:Value" />
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:complexType name="ChangeModeResponse">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="en">
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:complexType name="ReportRequest">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="en">
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:complexType name="ReportResponse">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="en">
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:complexType name="WakingUpReport">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="en">
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="Protocol" type="gos:Version" />
+      <xsd:element name="Firmaver" type="gos:Version" />
+      <xsd:element name="Address" type="gos:Ip" />
+      <xsd:element name="MacAddress" type="gos:Mac" />
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>
