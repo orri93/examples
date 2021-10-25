@@ -27,6 +27,9 @@ export class PcComponent implements OnInit {
   constructor(private dataService: DataService) {
     this.observable = interval(INTERVAL);
     this.dataService.step = moment.duration(INTERVAL, 'milliseconds');
+
+    const parsed = new Date('10/11/2021 7:9:26 AM +00:00');
+    console.log(parseInt(moment(parsed.toISOString()).startOf('second').format('x'), 10));
   }
 
   ngOnInit(): void {
@@ -49,5 +52,6 @@ export class PcComponent implements OnInit {
     const l: moment.Moment = t.clone().subtract(this.dataService.span);
     this.current = t.format();
     this.last = l.format();
+    this.counter++;
   }
 }
