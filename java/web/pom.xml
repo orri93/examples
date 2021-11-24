@@ -33,6 +33,7 @@
 
   <modules>
     <module>websocket</module>
+    <module>scheduled-websocket</module>
   </modules>
 
   <dependencyManagement>

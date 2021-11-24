@@ -1,4 +1,4 @@
-# Web Socket Java Examples
+# Scheduled Web Socket Java Examples
 
 Using the Spring Framework
 

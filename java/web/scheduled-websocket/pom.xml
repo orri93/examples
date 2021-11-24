@@ -13,15 +13,15 @@
     <version>0.0.1</version>
   </parent>
 
-  <artifactId>websocket</artifactId>
+  <artifactId>scheduled-websocket</artifactId>
   <packaging>jar</packaging>
-  <name>Web Socket Example Parent</name>
-  <description>GOS Web Socket Example Parent</description>
+  <name>Scheduled Web Socket Example Parent</name>
+  <description>GOS Scheduled Web Socket Example Parent</description>
 
   <properties>
     <!-- Project general properties -->
     <java.version>1.8</java.version>
-    <main.class>gos.example.web.WebSocketApplication</main.class>
+    <main.class>gos.example.web.ScheduledWebSocketApplication</main.class>
   </properties>
 
   <dependencies>
@@ -46,6 +46,13 @@
     <dependency>
       <groupId>org.springframework</groupId>
       <artifactId>spring-websocket</artifactId>
+    </dependency>
+
+    <!-- JSON -->
+    <dependency>
+      <groupId>com.googlecode.json-simple</groupId>
+      <artifactId>json-simple</artifactId>
+      <version>1.1.1</version>
     </dependency>
 
     <!-- Logging -->
