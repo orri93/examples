@@ -9,19 +9,19 @@
   <!--The identifier of the parent POM -->
   <parent>
     <groupId>gos.example</groupId>
-    <artifactId>example.web.parent</artifactId>
+    <artifactId>example.baeldung.parent</artifactId>
     <version>0.0.1</version>
   </parent>
 
   <artifactId>websocket</artifactId>
   <packaging>jar</packaging>
-  <name>Web Socket Example Parent</name>
-  <description>GOS Web Socket Example Parent</description>
+  <name>Baeldung Web Socket Example Parent</name>
+  <description>GOS Web Socket Baeldung Copied Example Parent</description>
 
   <properties>
     <!-- Project general properties -->
     <java.version>1.8</java.version>
-    <main.class>gos.example.web.WebSocketApplication</main.class>
+    <main.class>gos.example.baeldung.SpringBootApplication</main.class>
   </properties>
 
   <dependencies>
@@ -29,41 +29,22 @@
     <!-- Spring boot -->
     <dependency>
       <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-web</artifactId>
+      <artifactId>spring-boot-starter-websocket</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>io.projectreactor</groupId>
+      <artifactId>reactor-core</artifactId>
     </dependency>
     <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-tomcat</artifactId>
-      <scope>provided</scope>
+      <groupId>com.github.javafaker</groupId>
+      <artifactId>javafaker</artifactId>
+      <version>1.0.2</version>
     </dependency>
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-test</artifactId>
       <scope>test</scope>
-    </dependency>
-
-    <!-- Spring Framework -->
-    <dependency>
-      <groupId>org.springframework</groupId>
-      <artifactId>spring-websocket</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.springframework</groupId>
-      <artifactId>spring-messaging</artifactId>
-    </dependency>
-
-    <!-- Logging -->
-    <dependency>
-      <groupId>org.slf4j</groupId>
-      <artifactId>slf4j-api</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>ch.qos.logback</groupId>
-      <artifactId>logback-core</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>ch.qos.logback</groupId>
-      <artifactId>logback-classic</artifactId>
     </dependency>
 
   </dependencies>
