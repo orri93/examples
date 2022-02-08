@@ -1,0 +1,6 @@
+# Binary
+*.exe
+*.obj
+
+# Output
+*.tsv
