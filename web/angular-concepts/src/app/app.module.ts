@@ -27,6 +27,7 @@ import { M3Module } from './m3/m3.module';
 import { M4Module } from './m4/m4.module';
 import { M5Module } from './m5/m5.module';
 import { M6Module } from './m6/m6.module';
+import { M7Module } from './m7/m7.module';
 
 import { HpComponent } from './hp/hp.component';
 import { C1Component } from './c1/c1.component';
@@ -45,6 +46,7 @@ import { P9Component } from './p9/p9.component';
 import { PaComponent } from './pa/pa.component';
 import { PbComponent } from './pb/pb.component';
 import { PcComponent } from './pc/pc.component';
+import { PdComponent } from './pd/pd.component';
 
 export function initializeApp(appConfiguration: AppConfiguration): any {
   return () => appConfiguration.load();
@@ -69,7 +71,8 @@ export function initializeApp(appConfiguration: AppConfiguration): any {
     P9Component,
     PaComponent,
     PbComponent,
-    PcComponent
+    PcComponent,
+    PdComponent
   ],
   imports: [
     BrowserModule,
@@ -90,7 +93,8 @@ export function initializeApp(appConfiguration: AppConfiguration): any {
     M3Module,
     M4Module,
     M5Module,
-    M6Module
+    M6Module,
+    M7Module
   ],
   providers: [
     AppConfiguration, {

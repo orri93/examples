@@ -1,0 +1,10 @@
+<h5>{{componentName}}</h5>
+
+<form class="m7c1c" name="m7c1n" #configForm="ngForm" (ngSubmit)="onSave()">
+  <div class="mdl-grid" *ngIf="enableInput">
+    <div class="mdl-cell">
+      <input name="first" ngModel />
+    </div>
+    <button mat-raised-button class="submit-btn save-btn" type="submit">Save</button>
+  </div>
+</form>
