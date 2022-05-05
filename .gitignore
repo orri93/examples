@@ -22,3 +22,4 @@ build/
 CMakeSettings.json
 
 /artifacts
+.Rproj.user
