@@ -1,0 +1,69 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+# Mixing programming languages in R Markdown
+
+
+Other language engines
+
+https://bookdown.org/yihui/rmarkdown/language-engines.html
+
+# Dependencies
+
+```{r}
+library(reticulate)
+```
+
+## R code
+
+```{r}
+plot(cars)
+```
+
+# Python code
+
+```{python}
+x = 'hello, python world!'
+print(x.split(' '))
+```
+# Sharing variables between programming languages
+
+## A normal R code chunk
+
+```{r}
+x = 42
+print(x)
+```
+
+## Modify an R variable
+
+In the following chunk, the value of `x` on the right hand side
+is `r x`, which was defined in the previous chunk.
+
+```{r}
+x = x + 12
+print(x)
+```
+
+## A Python chunk
+
+This works fine and as expected. 
+
+```{python}
+x = 42 * 2
+print(x) 
+```
+## Modify a Python variable
+
+```{python}
+x = x + 18 
+print(x)
+```
+
+Retrieve the value of `x` from the Python session again:
+
+```{r}
+py$x
+```
