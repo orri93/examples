@@ -5,7 +5,7 @@ import aplpy
 import numpy
 
 gc = aplpy.FITSFigure('fits/2MASS_k.fits')
-#gc.show_rgb('graphics/2MASS_arcsinh_color.png')
+gc.show_rgb('graphics/2MASS_arcsinh_color.png')
 
 gc.tick_labels.set_font(size='small')
 
