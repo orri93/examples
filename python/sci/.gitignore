@@ -1,4 +1,12 @@
 # MAST Downloads
 /mastDownload/
+
+# FITS Files
+*.fits
+
+# Output files
+*.png
+
+# Misculationus
 *.gz
 *.sh

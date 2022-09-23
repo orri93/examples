@@ -1,0 +1,7 @@
+# Tutorial Files
+/data/
+/fits/
+/graphics/
+
+# Output files
+*.png
