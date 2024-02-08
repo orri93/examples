@@ -13,15 +13,16 @@
     <version>0.0.1</version>
   </parent>
 
-  <artifactId>websocket</artifactId>
+  <artifactId>camel</artifactId>
   <packaging>jar</packaging>
-  <name>Baeldung Web Socket Example</name>
-  <description>GOS Web Socket Baeldung Copied Example</description>
+  <name>Baeldung Apache Camel with Spring Boot Example</name>
+  <description>GOS Apache Camel with Spring Boot Baeldung Copied Example</description>
 
   <properties>
     <!-- Project general properties -->
     <java.version>1.8</java.version>
-    <main.class>gos.example.baeldung.WebSocketApplication</main.class>
+    <camel.spring.boot.version>4.3.0</camel.spring.boot.version>
+    <main.class>gos.example.baeldung.CamelApplication</main.class>
   </properties>
 
   <dependencies>
@@ -29,22 +30,29 @@
     <!-- Spring boot -->
     <dependency>
       <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-websocket</artifactId>
+      <artifactId>spring-boot-starter-web</artifactId>
     </dependency>
 
+    <!-- Camel Spring boot -->
     <dependency>
-      <groupId>io.projectreactor</groupId>
-      <artifactId>reactor-core</artifactId>
+      <groupId>org.apache.camel.springboot</groupId>
+      <artifactId>camel-servlet-starter</artifactId>
+      <version>${camel.spring.boot.version}</version>
     </dependency>
     <dependency>
-      <groupId>com.github.javafaker</groupId>
-      <artifactId>javafaker</artifactId>
-      <version>1.0.2</version>
+      <groupId>org.apache.camel.springboot</groupId>
+      <artifactId>camel-jackson-starter</artifactId>
+      <version>${camel.spring.boot.version}</version>
     </dependency>
     <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-test</artifactId>
-      <scope>test</scope>
+      <groupId>org.apache.camel.springboot</groupId>
+      <artifactId>camel-spring-boot-starter</artifactId>
+      <version>${camel.spring.boot.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.camel.springboot</groupId>
+      <artifactId>camel-swagger-java-starter</artifactId>
+      <version>3.22.0</version>
     </dependency>
 
   </dependencies>
