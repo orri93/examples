@@ -3,12 +3,14 @@
 #
 
 
+# ############################################################################
 # 1. Introduction
 
 ## The package gsignal aims to further stimulate the use of R for signal processing tasks. It is ported from the Octave signal package
 library(gsignal)
 
 
+# ############################################################################
 # 2. Signal generation and measurement
 
 op <- par(mfrow = c(2, 2))
@@ -84,6 +86,7 @@ par (op)
 title(paste("Noisy data may need tuning of the parameters.\n", "In the 2nd example, MinPeakDistance is used\n", "as a smoother of the peaks"))
 
 
+# ############################################################################
 # 3. Filter Design
 
 ## FIR filters
@@ -116,6 +119,7 @@ title("specify arbitrary frequency responses with fir2")
 ## 
 
 
+# ############################################################################
 # 5. Power spectrum analysis
 
 ## The Fourier Transform 
@@ -130,6 +134,37 @@ x <- (sin(2 * pi * 5 * t) + sin(2 * pi * 12 * t) + runif(lx))
 plot(t, x, type = "l", xlab = "Time (s)", ylab = "", main = "Original signal")
 pw <- pwelch(x, window = lx, fs = fs, detrend = "none")
 plot(pw, xlim = c(0, 20), main = "PSD estimate using FFT")
+
 py <- pyulear(x, 30, fs = fs)
 plot(py, xlim = c(0, 20), main = "PSD estimate using Yule-Walker")
 
+## Welch’s method
+
+op <- par(mfrow = c(3, 1))
+fs <- 200
+nsecs <- 100
+lx <- fs * nsecs
+t <- seq(0, nsecs, length.out =  lx)
+# sine and cosine of signal of 5 Hz noise
+x1 <- cos(2 * pi * 5 * t) + runif(lx)
+x2 <- sin(2 * pi * 5 * t) + runif(lx)
+x <- cbind(x1, x2)
+pw <- pwelch(x, fs = fs)
+plot(pw, plot.type = "spectrum", yscale = "dB", xlim = c(0, 50), main = "A sine and a cosine of 5 Hz have the same PSD")
+legend("topright", legend = c("Cosine", "Sine"), lty = 1:2, col = 1:2)
+rect(3, -35, 7, -4, border = "red", lwd = 3)
+plot(pw, plot.type = "phase", xlim = c(0, 50), main = expression(bold(paste("but differ ", pi/2, " radians in phase at 5 Hz"))))
+rect(3, -pi, 7, pi, border = "red", lwd = 3)
+plot(pw, plot.type = "coherence", xlim = c(0, 50), main = "leading to coherence ~ 1 at 5 Hz")
+rect(3, 0, 7, 1, border = "red", lwd = 3)
+
+## Time-frequency analysis
+
+op <- par(mfrow = c(2, 1))
+
+jet <- grDevices::colorRampPalette(c("#00007F", "blue", "#007FFF", "cyan", "#7FFF7F", "yellow", "#FF7F00", "red", "#7F0000"))
+sp <- specgram(chirp(seq(0, 5, by = 1/8000), 200, 2, 500, "logarithmic"), fs = 8000)
+plot(sp, col = jet(20))
+
+c2w <- grDevices::colorRampPalette(colors = c("red", "white", "blue"))
+plot(sp, col = c2w(50))
