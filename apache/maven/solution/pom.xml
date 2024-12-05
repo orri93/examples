@@ -53,7 +53,7 @@
     <maven.compiler.target>${java.version}</maven.compiler.target>
 
     <!-- Version properties for dependencies -->
-    <org.springframework.version>5.0.10.RELEASE</org.springframework.version>
+    <org.springframework.version>5.0.19.RELEASE</org.springframework.version>
     <org.springframework.boot-spring-boot-dependencies.version>2.0.6.RELEASE</org.springframework.boot-spring-boot-dependencies.version>
     <org.apache.camel-camel-parent.version>2.22.2</org.apache.camel-camel-parent.version>
     <org.apache.commons-commons-lang3.version>3.7</org.apache.commons-commons-lang3.version>
