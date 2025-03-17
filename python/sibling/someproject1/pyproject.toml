@@ -1,0 +1,8 @@
+[project]
+name = "someproject1"
+version = "0.1.0"
+description = "Some Project number one"
+
+[build-system]
+build-backend = "setuptools.build_meta"
+requires = ["setuptools>=61.0", "wheel"]
