@@ -1,6 +1,7 @@
 # Ignore all MS Office backups
 ~*.*
 
+.env
 .settings/
 target/
 .classpath
