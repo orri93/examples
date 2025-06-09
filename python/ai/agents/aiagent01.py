@@ -1,5 +1,4 @@
 from langchain_openai import ChatOpenAI
-from langchain.chains import LLMChain
 from langchain.prompts import PromptTemplate
 from dotenv import load_dotenv
 import os
@@ -8,25 +7,28 @@ import os
 load_dotenv()
 openai_api_key = os.getenv("OPENAI_API_KEY")
 
-# Initialize the OpenAI Chat model using LangChain's new integration
+# Initialize the OpenAI Chat model
 llm = ChatOpenAI(
-    model="gpt-4o", 
+    model="gpt-4o",
     temperature=0.7,
     api_key=openai_api_key,
     max_tokens=150
 )
 
-# Define a simple prompt for the agent
-prompt_template = """
+# Define a prompt template
+prompt_template = PromptTemplate(
+    input_variables=["question"],
+    template="""
 You are an AI assistant with expertise in data analysis and automation. Answer the following question:
 Question: {question}
 """
+)
 
-# Setup the prompt and LLM chain
-prompt = PromptTemplate(input_variables=["question"], template=prompt_template)
-chain = LLMChain(llm=llm, prompt=prompt)
+# Create a runnable chain using LangChain Expression Language (pipe-style)
+chain = prompt_template | llm
 
-# Example usage of the AI agent
+# Example usage
 query = "What is the impact of AI in healthcare?"
-response = chain.run(question=query)
-print("AI Agent Response:", response)
+response = chain.invoke({"question": query})
+
+print("AI Agent Response:", response.content)
