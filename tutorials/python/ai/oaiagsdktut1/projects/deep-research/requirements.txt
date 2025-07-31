@@ -1,5 +1,5 @@
 pydantic
-duckduckgo-search
+ddgs
 bs4
 requests
 rich
