@@ -36,7 +36,7 @@ def list_output_devices() -> list[tuple[int, str]]:
   return result
 
 
-def _record_audio(screen: curses.window, device: int) -> npt.NDArray[np.float32]:
+def _record_audio(screen: curses.window, device: int, samplerate: float) -> npt.NDArray[np.float32]:
   """
   Internal curses-based recording. Press space to start/stop.
   """
@@ -53,11 +53,12 @@ def _record_audio(screen: curses.window, device: int) -> npt.NDArray[np.float32]
   screen.nodelay(True)
   screen.clear()
   screen.addstr(
-    "Press <spacebar> to start recording. Press <spacebar> again to stop recording.\n"
+    f"Press <spacebar> to start recording at {int(samplerate)} Hz. "
+    "Press <spacebar> again to stop.\n"
   )
   screen.refresh()
 
-  with sd.InputStream(device=device, samplerate=24000, channels=1, dtype=np.float32, callback=_audio_callback):
+  with sd.InputStream(device=device, samplerate=samplerate, channels=1, dtype=np.float32, callback=_audio_callback):
     while True:
       key = screen.getch()
       if key == ord(' '):
@@ -77,28 +78,29 @@ def _record_audio(screen: curses.window, device: int) -> npt.NDArray[np.float32]
     return np.empty((0,), dtype=np.float32)
 
 
-def record_audio(device: int) -> npt.NDArray[np.float32]:
+def record_audio(device: int, samplerate: float) -> npt.NDArray[np.float32]:
   """
-  Wrapper for curses recording. Returns recorded float32 audio.
+  Wrapper for curses recording. Returns recorded float32 audio at given samplerate.
   """
-  return curses.wrapper(lambda scr: _record_audio(scr, device))
+  return curses.wrapper(lambda scr: _record_audio(scr, device, samplerate))
 
 
 class AudioPlayer:
   """
-  Context manager for playback.
+  Context manager for playback at a specified samplerate.
   Usage:
-    with AudioPlayer(device=<index>) as player:
+    with AudioPlayer(device=<index>, samplerate=sr) as player:
       player.add_audio(data)
   """
-  def __init__(self, device: Optional[int] = None):
+  def __init__(self, device: Optional[int] = None, samplerate: float = 44100):
     self.device = device
+    self.samplerate = samplerate
     self.stream: sd.OutputStream
 
   def __enter__(self):
     self.stream = sd.OutputStream(
       device=self.device,
-      samplerate=24000,
+      samplerate=self.samplerate,
       channels=1,
       dtype=np.int16,
       blocksize=1024
