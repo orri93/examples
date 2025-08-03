@@ -3,6 +3,7 @@ import time
 import numpy as np
 import numpy.typing as npt
 import sounddevice as sd
+from typing import Optional
 
 
 def list_input_devices() -> list[tuple[int, str]]:
@@ -90,7 +91,7 @@ class AudioPlayer:
     with AudioPlayer(device=<index>) as player:
       player.add_audio(data)
   """
-  def __init__(self, device: int | None = None):
+  def __init__(self, device: Optional[int] = None):
     self.device = device
     self.stream: sd.OutputStream
 
