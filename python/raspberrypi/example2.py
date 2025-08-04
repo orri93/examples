@@ -3,7 +3,7 @@ import digitalio
 import time
 
 # Button with pull-up
-button = digitalio.DigitalInOut(board.D4)
+button = digitalio.DigitalInOut(board.D17)
 button.direction = digitalio.Direction.INPUT
 button.pull = digitalio.Pull.UP
 

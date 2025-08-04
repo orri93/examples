@@ -24,20 +24,20 @@ pip install -r requirements.txt
 
 ## Example 1: Push Button and LEDs (example1.py)
 
-This script reads a momentary push-button on GPIO D4 and controls three LEDs on GPIO D5, D6, and D7 using Adafruit Blinka and CircuitPython libraries.
+This script reads a momentary push-button on GPIO D17 and controls three LEDs on GPIO D5, D6, and D13 using Adafruit Blinka and CircuitPython libraries.
 
 ### Wiring
 
 * **Button**
 
-  * One leg → GPIO D4
+  * One leg → GPIO D17
   * Other leg → GND
   * Uses internal pull-up resistor (enabled in code)
 * **LEDs** (use a 330 Ω resistor in series with each LED)
 
-  * LED 1: GPIO D5 → resistor → LED → GND
-  * LED 2: GPIO D6 → resistor → LED → GND
-  * LED 3: GPIO D7 → resistor → LED → GND
+  * LED 1: GPIO D5  → resistor → LED → GND
+  * LED 2: GPIO D6  → resistor → LED → GND
+  * LED 3: GPIO D13 → resistor → LED → GND
 
 ### Requirements
 
